@@ -1,0 +1,74 @@
+
+  <!-- Sidebar Holder -->
+  <nav id="sidebar">
+      <div class="sidebar-header">
+          <h3>MEDLANE-ERP</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+          <p>Xettings</p>
+          <li class="active">
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Settings</a>  
+              <ul class="collapse list-unstyled" id="homeSubmenu"> 
+                  <a routerLink="" [class.activated]="currentUrl == ''">
+                    <i class="material-icons">Home</i>
+                  </a>
+                  <a routerLink="tva" [class.activated]="currentUrl == '/tva'">
+                    <i class="material-icons">tva</i>
+                  </a> 
+                  <a routerLink="commande" [class.activated]="currentUrl == '/commande'">
+                    <i class="material-icons">commande</i>
+                  </a> 
+                  
+                  <a routerLink="bank" [class.activated]="currentUrl == '/bank'">
+                    <i class="material-icons">Bank</i>
+                  </a>  
+                  <a routerLink="contactus" [class.activated]="currentUrl == '/contactus'">
+                    <i class="material-icons">Contactus</i>
+                  </a>   
+                  <a routerLink="home" [class.activated]="currentUrl == '/home'">
+                    <i class="material-icons">Home</i>
+                  </a>     
+                   <a routerLink="chart" [class.activated]="currentUrl == '/chart'">
+                    <i class="material-icons">chart</i>
+                  </a> 
+                  <a routerLink="maps" [class.activated]="currentUrl == '/maps'">
+                    <i class="material-icons">Maps</i>
+                  </a> 
+                  <a routerLink="upload" [class.activated]="currentUrl == '/upload'">
+                    <i class="material-icons">Upload</i>
+                  </a> 
+                   <a routerLink="trip" [class.activated]="currentUrl == '/trip'">
+                    <i class="material-icons">Trip</i>
+                  </a> 
+              </ul>
+          </li>
+          <li>
+              <a href="#">About</a>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Ghizlane</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                  <li><a href="#">Page 1</a></li>
+                  <li>
+                        <a routerLink="statut" [class.activated]="currentUrl == '/statut'">
+                            <i class="material-icons">statut</i>
+                          </a> 
+                </li> 
+                <li>
+                <a routerLink="stock" [class.activated]="currentUrl == '/stock'">
+                  <i class="material-icons">stock</i>
+                </a> 
+               </li>
+              </ul>
+          </li>
+          <li>
+              <a href="#">Portfolio</a>
+          </li>
+          <li>
+              <a href="#">Contact</a>
+          </li>
+      </ul>
+
+      <ul class="list-unstyled CTAs">
+      
+      </ul>
+  </nav>

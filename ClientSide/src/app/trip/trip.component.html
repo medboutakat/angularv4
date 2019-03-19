@@ -1,0 +1,31 @@
+<p>
+  trip works!
+</p>    
+<button (click)="getSelectedRows()">Get Selected Rows</button>
+<div class="test-container">
+  <div class="test-header">
+     Page Size:   
+    <select (change)="onPageSizeChanged()"  id="page-size"> 
+        <option *ngFor="let page of pagings" value={{page}}>
+            {{page}}
+        </option>
+    </select>
+
+  </div>
+
+<ag-grid-angular 
+    #agGrid
+    style="width: 800px; height: 500px;" 
+    class="ag-theme-balham"
+    [rowData]="objlist" 
+    [columnDefs]="columnDefs"
+    rowSelection="multiple"
+    [pagination]="true"
+    [paginationPageSize]="paginationPageSize"
+    >
+</ag-grid-angular>
+</div>
+<button (click)="AddTrip()">AddTrip</button>
+ 
+
+ 

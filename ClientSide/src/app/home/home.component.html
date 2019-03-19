@@ -1,0 +1,34 @@
+<div *ngIf="!group" class="form from-start">
+  <div class="container">
+      <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" name="email" [(ngModel)]="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+          <label>Group</label>
+          <input type="text" class="form-control" name="key" [(ngModel)]="groupKey" placeholder="Group">
+      </div>
+      <button (click)="createOrJoin()" class="btn btn-primary">Create or Join Group</button>
+  </div>
+</div>
+<div *ngIf="group">
+  <div class="glass" *ngFor="let glass of group.glasses">
+      <div class="beer-container">
+          <!-- <img src="/images/glass.png" /> -->
+          <div class="beer" [style.height]="glass.value+'%'"></div>
+          <img [src]="getGravatarByEmail(glass.email)" alt="#" width="44" height="44" class="gravatar">
+      </div>
+  </div>
+
+  <div class="main-button" *ngIf="group.hasStarted && !group.hasFinished">
+      <button (click)="drink()">Drink</button>
+  </div>
+  <div class="main-button" *ngIf="!group.hasStarted && _hubConnection.connection.connectionId == group.owner">
+      <button (click)="start()">Start</button>
+  </div>
+  <div class="main-button" *ngIf="group.hasFinished">
+      Drinking is over!!! Winner is
+      <b>{{group.winnerEmail}}</b>. Click
+      <a (click)="clear()">here</a> to start over.
+  </div>
+</div>
