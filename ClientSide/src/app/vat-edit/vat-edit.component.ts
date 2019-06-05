@@ -47,13 +47,16 @@ export class VatEditComponent implements OnInit {
           }
         )
     }
-   
   }
   
   TakeHome(){
     this.nameEvent.emit("ccc");
     this.cb.nativeElement.click();
     this.route.navigateByUrl('tva');
+
+
+
+    
   }
 
 

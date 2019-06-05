@@ -12,20 +12,48 @@
     </select>
 
   </div>
-
+<!-- 
 <ag-grid-angular 
     #agGrid
     style="width: 800px; height: 500px;" 
     class="ag-theme-balham"
-    [rowData]="objlist" 
+    [rowData]="rowData" 
     [columnDefs]="columnDefs"
+    [gr]
     rowSelection="multiple"
     [pagination]="true"
     [paginationPageSize]="paginationPageSize"
     >
 </ag-grid-angular>
 </div>
-<button (click)="AddTrip()">AddTrip</button>
- 
+<button (click)="AddTrip()">AddTrip</button> -->
 
+<button (click)="getSelectedRows()">Get Selected Rows</button>
+
+<!-- <ag-grid-angular 
+    #agGrid
+    style="width: 500px; height: 500px;" 
+    class="ag-theme-balham"
+    [rowData]="rowData | async"
+    [columnDefs]="columnDefs"
+    rowSelection="multiple"
+    >
+</ag-grid-angular> -->
  
+  <div class="outer-div">
+      <div class="button-bar">
+        <button (click)="sizeToFit()">Size to Fit</button> <button (click)="autoSizeAll()">Auto-Size All</button>
+      </div>
+      <div class="grid-wrapper">
+        <ag-grid-angular
+          #agGrid
+          style="width: 100%; height: 100%;"
+          id="myGrid"
+          class="ag-theme-balham"
+          [columnDefs]="columnDefs"
+          [defaultColDef]="defaultColDef"
+          [rowData]="rowData"
+          (gridReady)="onGridReady($event)"
+        ></ag-grid-angular>
+      </div>
+    </div>

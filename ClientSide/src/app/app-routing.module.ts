@@ -19,6 +19,7 @@ import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
 import { StatutComponent } from './statut/statut.component'; 
 import { TripComponent } from './trip/trip.component'; 
 import { ProductComponent } from './stock/product/product.component';
+import { ClientsComponent } from './clients/clients.component';
 
 const routes: Routes = [
 
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path:'Home',component:EmployeesComponent}, 
   {path:'tva',component:VatComponent},
   {path:'commande',component:CommandeComponent},
+  {path:'client',component:ClientsComponent},
   {path:'bank',component:BankComponent},
   {path:'home',component:HomeComponent},
   {path:'contact',component:HomeComponent},

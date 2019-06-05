@@ -21,8 +21,7 @@ export class VatComponent implements OnInit {
     }
   
     ngOnInit() {
-      this.LoadData();
-  
+      this.LoadData(); 
     }
   
     LoadData() { 
