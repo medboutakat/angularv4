@@ -16,6 +16,8 @@ namespace WebApi.Controllers
         {
             _hub = hub;
         }
+     
+        [HttpGet]
         public IActionResult Get()
         {
             var timerManager = new TimerManager(

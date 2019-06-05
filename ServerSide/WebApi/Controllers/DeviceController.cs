@@ -15,7 +15,7 @@ namespace WebApi.Controllers
         {
             _hub = hub;
         }
-
+        [HttpGet]
         public IActionResult Get()
         {
             var timerManager = new TimerManager(() => _hub.Clients.All.SendAsync("receivedevicedata", DeviceManager.GetData()));
