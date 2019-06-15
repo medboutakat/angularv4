@@ -1,0 +1,60 @@
+ 
+
+
+
+  <div class="container">
+      <div class="row">
+          <input type="button" class="btn btn-primary" (click)="ShowEdit()"  value="ShowEdit">    
+      </div>
+      <div class="row">
+        <div class="col-md-8 {sizeLeft}"> 
+                <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal" value="Create New">
+               
+                <div *ngIf="!dataavailbale">  
+                  <h4> No delivery Data is present Click Add new to add Data.</h4>
+                </div>
+              
+              
+                <table class="table" *ngIf="dataavailbale">
+                  <thead>
+                    <tr>
+                      <th scope="col">Sr.No</th>
+                      <th scope="col">Code</th>
+                      <th scope="col">Name1</th> 
+                      <th scope="col">Name2</th> 
+                      <th scope="col">Name3</th> 
+                      <th scope="col">Adress</th> 
+                      <th scope="col" style="align-content: center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let e of objlist let i = index ">
+                      <td scope="col">{{i+1}}</td>
+                      <td scope="col">{{e.code}}</td>
+                      <td scope="col">{{e.name1}}</td> 
+                      <td scope="col">{{e.name2}}</td> 
+                      <td scope="col">{{e.name3}}</td> 
+                      <td scope="col">{{e.adress}}</td> 
+                      <td style="display:none">{{e.id}}</td>
+                      <td scope="col">
+                        <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm(e.id,e.code,e.name1,e.name2,e.name3,e.adress)">
+                          <span class="glyphicon glyphicon-edit"></span> Edit
+                        </button>
+                        |
+                        <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(e.id)">
+                          <span class="glyphicon glyphicon-trash"></span> Delete
+                        </button>
+              
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              
+               
+         </div>
+             
+        <div class="col-md-4 {sizeRight}">
+            <app-Client-edit #editMainObject (nameEvent)="RefreshData($event)"></app-Client-edit>   
+        </div>
+      </div>
+    </div>

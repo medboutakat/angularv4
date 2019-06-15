@@ -1,0 +1,32 @@
+
+
+
+<h6>Delivery edit<h6>
+<div class="container" style="border:thin"> 
+    <h1> {{IsNew}}</h1>  
+      <form #EditForm='ngForm' name="editform" (ngSubmit)="EditMainObject(EditForm)" class="form-horizontal" style="width:50%">
+    
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="fname">Display Name:</label>
+          <div class="col-sm-10">
+            <input style="width:50%" type="text" class="form-control" width="50%" id="fname" placeholder="Enter first name"
+              name="displayname" displayname required [(ngModel)]='objemp.displayname' #displayname="ngModel">
+            <span class="help-bpx" *ngIf="displayname.touched && !displayname.valid ">Required</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">Value:</label>
+          <div class="col-sm-10">
+            <input style="width:50%" required type="text" class="form-control" width="50%" id="value" placeholder="Enter Last Name"
+              name="value" value required [(ngModel)]='objemp.value' #value="ngModel">
+            <span class="help-bpx" *ngIf="value.touched && !value.valid ">Required</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <button style="display:none" type="button" #closeBtn class="btn btn-default" data-dismiss="modal">Close</button>

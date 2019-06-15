@@ -1,0 +1,57 @@
+<div class="container">
+    <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal" value="Create New">
+    <hr>
+    <div *ngIf="!dataavailbale">  
+      <h4> No delivery Data is present Click Add new to add Data.</h4>
+    </div>
+  
+  
+    <table class="table" *ngIf="dataavailbale">
+      <thead>
+        <tr>
+          <th scope="col">Sr.No</th>
+          <th scope="col">Value</th>
+          <th scope="col">Display Name</th> 
+          <th scope="col" style="align-content: center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of objlist let i = index ">
+          <td scope="col">{{i+1}}</td>
+          <td scope="col">{{e.displayName}}</td>
+          <td scope="col">{{e.value}}</td> 
+          <td style="display:none">{{e.id}}</td>
+          <td scope="col">
+            <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm(e.id,e.displayName,e.value)"
+              data-toggle="modal" data-target="#myModal">
+              <span class="glyphicon glyphicon-edit"></span> Edit
+            </button>
+            |
+            <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(e.id)">
+              <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-primary">{{action}}</h4>
+          </div>
+          <div class="modal-body"> 
+          <app-Delivery-edit #editDelivery (nameEvent)="RefreshData($event)"></app-Delivery-edit>    
+          </div>
+          <div class="modal-footer">
+            <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+     

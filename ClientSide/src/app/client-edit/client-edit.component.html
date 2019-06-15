@@ -1,0 +1,41 @@
+<div class="container" style="border:thin"  > 
+  <h1> {{IsNew}}</h1>  
+    <form #EditForm='ngForm' name="editform" (ngSubmit)="EditMainObject(EditForm)" class="form-horizontal" style="width:50%">
+  
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="name1">  Name1:</label>
+        <div class="col-sm-10">
+          <input style="width:50%" type="text" class="form-control" width="50%" id="name1" placeholder="Enter first name"
+            name="name1" name1 required [(ngModel)]='objemp.name1' #name1="ngModel">
+          <span class="help-bpx" *ngIf="name1.touched && !name1.valid ">Required</span>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="name2">  Name2:</label>
+        <div class="col-sm-10">
+          <input style="width:50%" type="text" class="form-control" width="50%" id="name2" placeholder="Enter first name"
+            name="name2" name2 required [(ngModel)]='objemp.name2' #name2="ngModel">
+          <span class="help-bpx" *ngIf="name2.touched && !name2.valid ">Required</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="name3">Name3:</label>
+        <div class="col-sm-10">
+          <input style="width:50%" required type="text" class="form-control" width="50%" id="name3" placeholder="Enter Last Name"
+            name="name3" name3 required [(ngModel)]='objemp.name3' #name3="ngModel">
+          <span class="help-bpx" *ngIf="name3.touched && !name3.valid ">Required</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+    <button style="display:none" type="button" #closeBtn class="btn btn-default" data-dismiss="modal">Close</button>
+  
