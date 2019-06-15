@@ -19,7 +19,8 @@ import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
 import { StatutComponent } from './statut/statut.component'; 
 import { TripComponent } from './trip/trip.component'; 
 import { ProductComponent } from './stock/product/product.component';
-import { ClientsComponent } from './clients/clients.component';
+import { ClientComponent } from './client/client.component';
+import { DeliveryComponent } from './delivery/delivery.component';
 
 const routes: Routes = [
 
@@ -31,7 +32,7 @@ const routes: Routes = [
   {path:'Home',component:EmployeesComponent}, 
   {path:'tva',component:VatComponent},
   {path:'commande',component:CommandeComponent},
-  {path:'client',component:ClientsComponent},
+  {path:'client',component:ClientComponent},
   {path:'bank',component:BankComponent},
   {path:'home',component:HomeComponent},
   {path:'contact',component:HomeComponent},
@@ -40,6 +41,7 @@ const routes: Routes = [
   {path:'upload',component:UploadfilesComponent},
   {path:'statut',component:StatutComponent},
   {path:'trip',component:TripComponent},
+  {path:'delivery',component:DeliveryComponent},
     // {
     // path: 'stock', component: ProductComponent,
     //   children: [{

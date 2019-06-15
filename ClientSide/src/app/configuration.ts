@@ -85,15 +85,13 @@ export const configuration = {
         developerlink: 'http://gmsoft.ma',
     },
     socialsites: [
-        {title: 'Facebook', target: '_blank', username: 'jagmohan', icon: 'facebook'},
-        {title: 'Google+', target: '_blank', username: '+jagmohan', icon: 'google-plus'},
+        {title: 'Facebook', target: '_blank', username: 'jagmohan', icon: 'facebook'}, 
         {title: 'Twitter', target: '_blank', username: 'jagmohan', icon: 'twitter'},
         {title: 'Instagram', target: '_blank', username: 'jagmohan', icon: 'instagram'},
         {title: 'Behance', target: '_blank', username: 'jagmohan', icon: 'behance'},
     ],
     blog: {
         tagline: 'MY BLOG',
-        title: 'Thoughts become things..'
-        
+        title: 'Thoughts become things..' 
     }
 };

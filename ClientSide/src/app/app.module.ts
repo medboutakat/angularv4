@@ -27,7 +27,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { FooterComponent } from './footer/footer.component';
 import { SocialComponent } from './social/social.component';
 import { HeaderComponent } from './header/header.component';
-import { ClientsComponent } from './clients/clients.component';
+import { ClientComponent } from './client/client.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { NotfoundComponent } from './notfound/notfound.component';
@@ -46,7 +46,12 @@ import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
 import { StatutComponent } from './statut/statut.component';
 import { TripComponent } from './trip/trip.component';  
 import { AgGridModule } from 'ag-grid-angular';
-import { StockModule } from './stock/stock.module'; 
+import { StockModule } from './stock/stock.module';
+import { DeliveryComponent } from './delivery/delivery.component'; 
+import { DeliveryEditComponent } from './delivery-edit/delivery-edit.component'; 
+import { DeliveryDataService } from './DataService/DeliveryDataService';
+import { ClientEditComponent } from './client-edit/client-edit.component';
+import { ClientDataService } from './DataService/ClientDataService';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +71,7 @@ import { StockModule } from './stock/stock.module';
     FooterComponent ,
     SocialComponent,
     HeaderComponent,
-    ClientsComponent,
+    ClientComponent,
     BankComponent,
     TestimonialComponent,
     PricingComponent,
@@ -80,7 +85,10 @@ import { StockModule } from './stock/stock.module';
     MapsComponent,
     UploadfilesComponent,
     StatutComponent,
-    TripComponent, 
+    TripComponent,
+    DeliveryComponent, 
+    DeliveryEditComponent, 
+    ClientEditComponent, 
   ],
   imports: [
     BrowserModule, 
@@ -95,8 +103,10 @@ import { StockModule } from './stock/stock.module';
   ],
   providers: [
     EmployeeDataService,
+    DeliveryDataService,
     VatDataService,
     AuthenticationService,
+    ClientDataService,
     IDataService,
     RoutegaurdService,  
     ConfigService,
