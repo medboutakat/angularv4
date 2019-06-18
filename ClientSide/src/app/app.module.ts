@@ -51,7 +51,9 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { DeliveryEditComponent } from './delivery-edit/delivery-edit.component'; 
 import { DeliveryDataService } from './DataService/DeliveryDataService';
 import { ClientEditComponent } from './client-edit/client-edit.component';
-import { ClientDataService } from './DataService/ClientDataService';
+import { ClientDataService } from './DataService/ClientDataService'; 
+import { ClientCategoryDataService } from './DataService/ClientCategoryDataService';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,6 +109,7 @@ import { ClientDataService } from './DataService/ClientDataService';
     VatDataService,
     AuthenticationService,
     ClientDataService,
+    ClientCategoryDataService,
     IDataService,
     RoutegaurdService,  
     ConfigService,

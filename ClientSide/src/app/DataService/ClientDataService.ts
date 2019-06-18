@@ -21,7 +21,7 @@ export class ClientDataService {
     const headers = new HttpHeaders().set('content-type', 'application/json');
   
     var body = {
-      name1: emp.name1, name2: emp.name2,name3: emp.name3
+      name1: emp.name1, name2: emp.name2,name3: emp.name3 ,clientCategorieId:emp.categorieId
     }
     
     console.log(ROOT_URL);
@@ -34,19 +34,19 @@ export class ClientDataService {
     const params = new HttpParams().set('ID', emp.id);
     const headers = new HttpHeaders().set('content-type', 'application/json');
     var body = {
-      name1: emp.name1, name2: emp.name2,   name3: emp.name3
+      name1: emp.name1, name2: emp.name2,   name3: emp.name3, clientCategorieId:emp.categorieId ,id:emp.id
     }
     
-    return this.http.put<Client>(ROOT_URL + this.endPoint+'/' + emp.id, body, { headers, params })
+    return this.http.put<Client>(ROOT_URL + this.endPoints+'/' + emp.id, body, { headers, params })
 
   }
   DeleteClient(emp: Client) {
     const params = new HttpParams().set('ID', emp.id);
     const headers = new HttpHeaders().set('content-type', 'application/json');
     var body = {
-      name1: emp.name1, name2: emp.name2,   name3: emp.name3
+      name1: emp.name1, name2: emp.name2,   name3: emp.name3, clientCategorieId:emp.categorieId
     }
-    return this.http.delete<Client>(ROOT_URL + this.endPoints+'/' + emp.id)
+    return this.http.delete<Client>(ROOT_URL + this.endPoint+'/' + emp.id)
 
   }
 

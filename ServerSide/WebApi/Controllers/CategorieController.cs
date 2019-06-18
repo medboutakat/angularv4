@@ -9,62 +9,61 @@ using WebApi;
 using Microsoft.AspNetCore.Cors;
 using WebApi.Models;
 
-
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [DisableCors]
-    public class BankAccountsController : ControllerBase
+    public class ClientCategoriesController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public BankAccountsController(AppDbContext context)
+        public ClientCategoriesController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/BankAccounts
+        // GET: api/Categories
         [HttpGet]
-        public IEnumerable<BankAccount> GetBankAccounts()
+        public IEnumerable<ClientCategory> GetClientCategories()
         { 
-           return _context.BankAccounts;
+           return _context.ClientCategories;
         }
 
-        // GET: api/BankAccounts/5
+        // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBankAccount([FromRoute] int id)
+        public async Task<IActionResult> GetClientCategory([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var BankAccount = await _context.BankAccounts.FindAsync(id);
+            var categorie = await _context.ClientCategories.FindAsync(id);
 
-            if (BankAccount == null)
+            if (categorie == null)
             {
                 return NotFound();
             }
 
-            return Ok(BankAccount);
+            return Ok(categorie);
         }
 
-        // PUT: api/BankAccounts/5
+        // PUT: api/Categories/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBankAccount([FromRoute] int id, [FromBody] BankAccount BankAccount)
+        public async Task<IActionResult> PutGetClientCategory([FromRoute] int id, [FromBody] ClientCategory categorie)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != BankAccount.ID)
+            if (id != categorie.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(BankAccount).State = EntityState.Modified;
+            _context.Entry(categorie).State = EntityState.Modified;
 
             try
             {
@@ -72,7 +71,7 @@ namespace WebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!Exists(id))
+                if (!CategorieExists(id))
                 {
                     return NotFound();
                 }
@@ -85,47 +84,46 @@ namespace WebApi.Controllers
             return NoContent();
         }
 
-        // POST: api/BankAccounts
+        // POST: api/Categories
         [HttpPost]
-        public async Task<IActionResult> PostBankAccount([FromBody] BankAccount BankAccount)
+        public async Task<IActionResult> PostGetClientCategory([FromBody] ClientCategory categorie)
         {
-
-
+ 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.BankAccounts.Add(BankAccount);
+            _context.ClientCategories.Add(categorie);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBankAccounts", new { id = BankAccount.ID }, BankAccount);
+            return CreatedAtAction("GetGetClientCategory", new { id = categorie.ID }, categorie);
         }
 
-        // DELETE: api/BankAccounts/5
+        // DELETE: api/Categories/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBankAccount([FromRoute] int id)
+        public async Task<IActionResult> DeleteGetClientCategory([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var BankAccount = await _context.BankAccounts.FindAsync(id);
-            if (BankAccount == null)
+            var categorie = await _context.ClientCategories.FindAsync(id);
+            if (categorie == null)
             {
                 return NotFound();
             }
 
-            _context.BankAccounts.Remove(BankAccount);
+            _context.ClientCategories.Remove(categorie);
             await _context.SaveChangesAsync();
 
-            return Ok(BankAccount);
+            return Ok(categorie);
         }
 
-        private bool  Exists(int id)
+        private bool  CategorieExists(int id)
         {
-            return _context.BankAccounts.Any(e => e.ID == id);
+            return _context.ClientCategories.Any(e => e.ID == id);
         }
     }
 }

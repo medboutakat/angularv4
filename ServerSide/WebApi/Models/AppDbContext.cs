@@ -30,9 +30,10 @@ namespace WebApi.Models
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategorie> ProductCategories { get; set; }
+        public DbSet<ClientCategory> ClientCategories { get; set; }
         public DbSet<Statut> Statuts { get; set; }
         public DbSet<StoreProduct> StoreProducts { get; set; }
-        public DbSet<Delivery> Deliveries { get; set; }  
+        public DbSet<Delivery> Deliveries { get; set; }    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -13,7 +13,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [DisableCors]
+    // [DisableCors]
     public class InvoiceHeadersController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -27,7 +27,8 @@ namespace WebApi.Controllers
         [HttpGet]
         public IEnumerable<InvoiceHeader> GetInvoiceHeaders()
         { 
-           return _context.InvoiceHeaders.Include(navigationPropertyPath: c =>c.InvoiceDetails);
+             return _context.InvoiceHeaders.Include(c =>c.InvoiceDetails);
+        // //    return _context.InvoiceHeaders.Include(navigationPropertyPath: c =>c.InvoiceDetails);
         }
 
         // GET: api/Vats/5
@@ -51,19 +52,19 @@ namespace WebApi.Controllers
 
         // PUT: api/Vats/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutVat([FromRoute] int id, [FromBody] InvoiceHeader Vat)
+        public async Task<IActionResult> PutInvoiceHeader([FromRoute] int id, [FromBody] InvoiceHeader invoice)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != Vat.ID)
+            if (id != invoice.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(Vat).State = EntityState.Modified;
+            _context.Entry(invoice).State = EntityState.Modified;
 
             try
             {
@@ -86,7 +87,7 @@ namespace WebApi.Controllers
 
         // POST: api/InvoiceHeaders
         [HttpPost]
-        public async Task<IActionResult> PostInvoiceHeader([FromBody] InvoiceHeader Vat)
+        public async Task<IActionResult> PostInvoiceHeader([FromBody] InvoiceHeader invoice)
         {
 
 
@@ -95,10 +96,10 @@ namespace WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.InvoiceHeaders.Add(Vat);
+            _context.InvoiceHeaders.Add(invoice);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInvoiceHeaders", new { id = Vat.ID }, Vat);
+            return CreatedAtAction("GetInvoiceHeaders", new { id = invoice.ID }, invoice);
         }
 
         // DELETE: api/InvoiceHeaders/5

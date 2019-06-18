@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Client } from 'src/Models/Client'; 
-import { ClientDataService } from '../DataService/ClientDataService';
+import { ClientDataService } from '../DataService/ClientDataService'; 
+
 import { Router } from '@angular/router';
 import { ClientEditComponent } from '../Client-edit/Client-edit.component';
 
@@ -20,7 +21,8 @@ export class ClientComponent implements OnInit {
     sizeRight:number=4;
     sizeLeft:number=8;
     
-    constructor(private dataservce: ClientDataService, private route: Router) {
+    constructor( 
+      private dataservce: ClientDataService, private route: Router) {
     
     }
   
@@ -76,8 +78,9 @@ export class ClientComponent implements OnInit {
       mainObject.patent= "" ;
       mainObject.adresse = "" ;
       mainObject.rc   ="" ;
+      mainObject.CategorieId="";
     }
-    loadnewForm(_id:string,_code:string,_name1:string,_name2:string,_name3:string,_patent:string,_adresse:string,_rc:string) { 
+    loadnewForm(_id:string,_code:string,_name1:string,_name2:string,_name3:string,_patent:string,_adresse:string,_rc:string,_CategorieId:string) { 
       this.action="Edit Client";
       this.editcomponent.IsNew=false;
       var mainObject=this.editcomponent.objemp;
@@ -89,6 +92,7 @@ export class ClientComponent implements OnInit {
       mainObject.patent=_patent ;
       mainObject.adresse = _adresse ;
       mainObject.rc   =_rc ;
+      mainObject.CategorieId=_CategorieId;
       console.log(mainObject);
     }
  

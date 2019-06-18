@@ -14,4 +14,3 @@
         date: Date;
         invoiceDetails: InvoiceDetail[];
     }
- 

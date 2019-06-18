@@ -62,7 +62,7 @@ namespace WebApi.Controllers
             {
                 return BadRequest();
             }
-
+            
             _context.Entry(Bank).State = EntityState.Modified;
 
             try

@@ -6,6 +6,7 @@ export class  Client{
     name2:string;
     name3:string;
     patent:string;
-   adresse:string; 
+    adresse:string; 
     rc:string;   
+    categorieId:string;
 }
