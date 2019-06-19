@@ -78,7 +78,7 @@ export class ClientComponent implements OnInit {
       mainObject.patent= "" ;
       mainObject.adresse = "" ;
       mainObject.rc   ="" ;
-      mainObject.CategorieId="";
+      mainObject.categorieId="";
     }
     loadnewForm(_id:string,_code:string,_name1:string,_name2:string,_name3:string,_patent:string,_adresse:string,_rc:string,_CategorieId:string) { 
       this.action="Edit Client";
@@ -92,7 +92,7 @@ export class ClientComponent implements OnInit {
       mainObject.patent=_patent ;
       mainObject.adresse = _adresse ;
       mainObject.rc   =_rc ;
-      mainObject.CategorieId=_CategorieId;
+      mainObject.categorieId=_CategorieId;
       console.log(mainObject);
     }
  

@@ -2,7 +2,7 @@
     export class InvoiceDetail {
         id: string;
         pCode: string;
-        pname: string;
+        pName: string;
         qte: string;
         prix: string;
         invoiceHeaderID:string;

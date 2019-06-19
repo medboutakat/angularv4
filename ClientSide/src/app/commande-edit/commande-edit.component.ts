@@ -1,65 +1,64 @@
-import { Component, OnInit, ViewChild, Input, EventEmitter, Output, ElementRef } from '@angular/core'; 
+import { Component, OnInit, ViewChild, Input, EventEmitter, Output, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';  
-import { InvoiceHeader } from 'src/Models/Commande';
-// import { InvoiceHeader } from 'src/Models/Commande';
-import { IDataService } from '../DataService/IDataService'; 
-
-
+import { NgForm } from '@angular/forms'; 
+import { CommandeDataService } from '../DataService/CommandeDataService';
+import { Delivery } from 'src/Models/Delivery';
+import { InvoiceDetail, InvoiceHeader } from 'src/Models/Commande';
+  
 @Component({
-  selector: 'app-commande-edit',
-  templateUrl: './commande-edit.component.html',
-  styleUrls: ['./commande-edit.component.sass']
+  selector: 'app-Commande-edit',
+  templateUrl: './Commande-edit.component.html',
+  styleUrls: ['./Commande-edit.component.sass']
 })
+
 export class CommandeEditComponent implements OnInit {
 
-  constructor(private dataservice: IDataService<InvoiceHeader>, private route: Router) {
+  constructor(private dataservice: CommandeDataService, private route: Router) {
 
   }
-
+  
   @Output() nameEvent = new EventEmitter<string>();
   @ViewChild('closeBtn') cb: ElementRef;
   ngOnInit() { 
   }
 
   @Input() reset: boolean = false;
-  @ViewChild('editview') myForm: NgForm;
+  @ViewChild('editCommande') myForm: NgForm;
   @Input() isReset: boolean = false;
   @Input() IsNew: boolean = false;
 
   
-  objView: InvoiceHeader;
-  @Input() objemp: InvoiceHeader = new InvoiceHeader();
+  objtemp: InvoiceHeader;
+  @Input() objView: InvoiceHeader = new InvoiceHeader();
 
+
+  // Add or Edit
   EditMainObject(regForm: NgForm) {
- 
-    alert("Opration "+this.IsNew);
-
     if(!this.IsNew){
-      this.dataservice.EditEmployee(this.objemp).subscribe(res => {
+      this.dataservice.EditInvoiceHeader(this.objView).subscribe(res => {
         alert("Employee updated successfully");
         this.nameEvent.emit("ccc");
         this.cb.nativeElement.click(); 
-      });
-    }else{ 
+      }); 
+    }else{
+         
         this.objView=new InvoiceHeader();
         this.objView.code=regForm.value.code;
-        this.objView.date=regForm.value.date;   
-
-        this.dataservice.AddObject(this.objView).subscribe(res=>{
-          alert("Vat Added successfully");
+        this.objView.date=regForm.value.date;    
+        this.objView.invoiceDetails=regForm.value.invoiceDetails;  
+        this.dataservice.AddInvoiceHeader(this.objtemp).subscribe(res=>{
+          alert("Delivery Added successfully");
             this.TakeHome();
           }
         )
     }
-   
   }
   
   TakeHome(){
     this.nameEvent.emit("ccc");
     this.cb.nativeElement.click();
-    this.route.navigateByUrl('commande');
+    this.route.navigateByUrl('delivery'); 
   }
 
-}
 
+}

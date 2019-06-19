@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild, Input, EventEmitter, Output, ElementRef } from '@angular/core';
-import { EmployeeDataService } from '../DataService/EmployeeDataService';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms'; 
+import { ClientCategory } from 'src/Models/ClientCategory'; 
 import { ClientDataService } from '../DataService/ClientDataService';
+import { ClientCategoryDataService } from '../DataService/ClientCategoryDataService';
 import { Client } from 'src/Models/Client';
+
 @Component({
   selector: 'app-Client-edit',
   templateUrl: './Client-edit.component.html',
@@ -11,14 +13,19 @@ import { Client } from 'src/Models/Client';
 })
 
 export class ClientEditComponent implements OnInit {
+catList:ClientCategory[];
 
-  constructor(private dataservice: ClientDataService, private route: Router) {
+  constructor(
+    private cateService:ClientCategoryDataService, 
+    private dataservice: ClientDataService,private route: Router) {
 
   }
   @Output() nameEvent = new EventEmitter<string>();
   @ViewChild('closeBtn') cb: ElementRef;
   ngOnInit() { 
+    this.LoadData();
   }
+
 
   @Input() reset: boolean = false;
   @ViewChild('editMainObject') myForm: NgForm;
@@ -28,11 +35,22 @@ export class ClientEditComponent implements OnInit {
   
   objtempemp: Client;
   @Input() objemp: Client = new Client();
+  LoadData() { 
+    this.cateService.getCategory().subscribe((tempdate) => {
+      this.catList = tempdate;
+      console.log(this.catList);
+     
+    }
+    )
+      , err => {
+        console.log(err);
+      }
+  }
 
   EditMainObject(regForm: NgForm) {
     if(!this.IsNew){
       this.dataservice.EditClient(this.objemp).subscribe(res => {
-        alert("Employee updated successfully");
+        alert("Client updated successfully");
         this.nameEvent.emit("ccc");
         this.cb.nativeElement.click(); 
       });
@@ -41,7 +59,10 @@ export class ClientEditComponent implements OnInit {
         this.objtempemp=new Client();
         var objForm=regForm.value;
         this.objtempemp.name1=objForm.name1;
-        this.objtempemp.name2=objForm.value;    
+        this.objtempemp.name2=objForm.name2;  
+        this.objtempemp.categorieId=objForm.categorieId;   
+        console.log(this.objtempemp);
+        
         this.dataservice.AddClient(this.objtempemp).subscribe(res=>{
           alert("Client Added successfully");
             this.TakeHome();

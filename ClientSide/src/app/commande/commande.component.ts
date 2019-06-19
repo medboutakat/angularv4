@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { InvoiceHeader, InvoiceDetail } from 'src/Models/Commande';
 // import { IDataService } from '../DataService/IDataService';
 import { Router } from '@angular/router'; 
 import { IDataService } from '../DataService/IDataService';
 import { Observable } from 'rxjs';
+import { NgForm } from '@angular/forms'; 
 import { CommandeEditComponent } from '../commande-edit/commande-edit.component';
 
 @Component({
@@ -16,7 +17,9 @@ export class CommandeComponent implements OnInit {
     objlist: any;
     dataavailbale: Boolean = false;
     action:string;
-    tempemp: InvoiceHeader;
+    tempemp: InvoiceHeader; 
+    @Input() details: InvoiceDetail; 
+    invoiceDetails: InvoiceDetail[]=[];
   
 
     
@@ -58,7 +61,7 @@ export class CommandeComponent implements OnInit {
       if (confirm("Are you sure you want to delete this ?")) {
         this.tempemp = new InvoiceHeader();
         this.tempemp.id = id;
-        this.dataserv.DeleteObject(this.tempemp).subscribe(res => {
+        this.dataserv.DeleteObject(this.tempemp).subscribe(_res => {
           alert("Deleted successfully !!!");
           this.LoadData();
         })
@@ -66,7 +69,24 @@ export class CommandeComponent implements OnInit {
     }
 
  
+    
+    AddMore(_regForm: NgForm) {
   
+      // this.invoiceDetails=[];
+      console.log("this.invoiceDetails",this.invoiceDetails);
+      this.tempemp = new InvoiceHeader();
+      var details=new InvoiceDetail(); 
+
+      details.pCode=_regForm.value.pCode;
+      details.pName=_regForm.value.pName;    
+
+      this.invoiceDetails.push(details);
+
+      console.log(details);
+
+    //  this.tempemp.invoiceDetails.push(details);
+    }
+
     loadAddnew() {
       this.action="Nouvelle commande"; 
       this.editview.objView.code = ""

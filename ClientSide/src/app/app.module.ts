@@ -53,6 +53,7 @@ import { DeliveryDataService } from './DataService/DeliveryDataService';
 import { ClientEditComponent } from './client-edit/client-edit.component';
 import { ClientDataService } from './DataService/ClientDataService'; 
 import { ClientCategoryDataService } from './DataService/ClientCategoryDataService';
+import { CommandeDataService } from './DataService/CommandeDataService';
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ import { ClientCategoryDataService } from './DataService/ClientCategoryDataServi
     VatDataService,
     AuthenticationService,
     ClientDataService,
+    CommandeDataService,
     ClientCategoryDataService,
     IDataService,
     RoutegaurdService,  
