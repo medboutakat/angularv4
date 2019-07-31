@@ -61,6 +61,7 @@ namespace WebApi
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
+            
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
@@ -68,7 +69,7 @@ namespace WebApi
             });
             
             
-        services.AddCors(options =>
+            services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder//.AllowAnyOrigin()

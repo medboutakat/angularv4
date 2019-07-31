@@ -25,10 +25,11 @@ namespace WebApi
             //  Console.WriteLine("Stock update for {0} new price {1}", stock.Symbol, stock.Price));
             // await hubConnection.Start();
         }
+
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:42333/");
+                .UseUrls("http://192.168.0.20:42333/");
 
          public static void CreateWebHost1(string[]args)
          {
@@ -55,7 +56,5 @@ namespace WebApi
 
             webHost.Run();
          }
-
-
     }
 }

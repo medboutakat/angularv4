@@ -18,12 +18,12 @@ export class CommandeEditComponent implements OnInit {
   }
   
   @Output() nameEvent = new EventEmitter<string>();
-  @ViewChild('closeBtn') cb: ElementRef;
+  @ViewChild('closeBtn', { static: false, }) cb: ElementRef;
   ngOnInit() { 
   }
 
   @Input() reset: boolean = false;
-  @ViewChild('editCommande') myForm: NgForm;
+  @ViewChild('editCommande', { static: false, }) myForm: NgForm;
   @Input() isReset: boolean = false;
   @Input() IsNew: boolean = false;
 

@@ -41,7 +41,9 @@ const routes: Routes = [
   {path:'upload',component:UploadfilesComponent},
   {path:'statut',component:StatutComponent},
   {path:'trip',component:TripComponent},
-  {path:'delivery',component:DeliveryComponent},
+  {path:'delivery',component:DeliveryComponent}, 
+  {path:'route',component:VatComponent},
+  
     // {
     // path: 'stock', component: ProductComponent,
     //   children: [{
@@ -52,7 +54,7 @@ const routes: Routes = [
     //     component: ProductComponent
     //   }]
     //   },
-    { path: 'stock', loadChildren: './stock/stock.module#StockModule' }
+    { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) }
   // {path:'Edit',component:EmployeeupdateComponent},
   // {path:'Add',component:EmployeeAddComponent},
   // {path:'Home',component:AngularCRUDComponent}

@@ -20,9 +20,17 @@ namespace WebApi.Models
         public string Patent { get; set; } 
         public string Adresse { get; set; } 
         public string Rc { get; set; }    
-        public int ClientCategorieID { get; set; } 
-        [ForeignKey("ClientID")] 
-        public ICollection<Contract> Contracts { get; set; }
         
+        public int ClientCategorieID { get; set; } 
+
+
+        [ForeignKey("ClientID")] 
+        public ICollection<Contract> Contracts { get; set; } 
+
+
+        public int? ClientLocationID { get; set; }  
+        
+        [ForeignKey("ClientLocationID")]
+        public virtual ClientLocation ClientLocation{ get; set; }
     }
 }

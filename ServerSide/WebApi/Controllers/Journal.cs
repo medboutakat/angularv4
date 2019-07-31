@@ -14,72 +14,56 @@ namespace WebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [DisableCors]
-    public class ContractsController : ControllerBase
+    public class JournalController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public ContractsController(AppDbContext context)
+        public JournalController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Contracts
+        // GET: api/journals
         [HttpGet]
-        public IEnumerable<Contract> GetContracts()
+        public IEnumerable<Journal> GetJournals()
         { 
-           return _context.Contracts;
+           return _context.Journals;
         }
 
-        // GET: api/Contracts/5
+        // GET: api/journals/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetContract([FromRoute] int id)
+        public async Task<IActionResult> GetJournal([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var contract = await _context.Contracts.FindAsync(id); 
-            if (contract == null)
+            var journal = await _context.Journals.FindAsync(id);
+
+            if (journal == null)
             {
                 return NotFound();
             }
 
-            return Ok(contract);
+            return Ok(journal);
         }
-        // GET: api/ContractsByClientID/5
-        [HttpGet("ContractsByClientID/{clientId}")]
-        public IActionResult GetContractsByClientId([FromRoute] int clientId)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            var contract = _context.Contracts.Where(c=>c.ClientID==clientId);
-
-            if (contract == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(contract);
-        }
-        // PUT: api/Contracts/5
+        // PUT: api/journals/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutContract([FromRoute] int id, [FromBody] Contract Contract)
+        public async Task<IActionResult> PutJournal([FromRoute] int id, [FromBody] Journal journal)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != Contract.ID)
+            if (id != journal.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(Contract).State = EntityState.Modified;
+            _context.Entry(journal).State = EntityState.Modified;
 
             try
             {
@@ -100,9 +84,9 @@ namespace WebApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Contracts
+        // POST: api/journals
         [HttpPost]
-        public async Task<IActionResult> PostContract([FromBody] Contract Contract)
+        public async Task<IActionResult> Postjournal([FromBody] Journal journal)
         {
 
 
@@ -111,36 +95,36 @@ namespace WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Contracts.Add(Contract);
+            _context.Journals.Add(journal);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetContracts", new { id = Contract.ID }, Contract);
+            return CreatedAtAction("Getjournals", new { id = journal.ID }, journal);
         }
 
-        // DELETE: api/Contracts/5
+        // DELETE: api/journals/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteContract([FromRoute] int id)
+        public async Task<IActionResult> Deletejournal([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var Contract = await _context.Contracts.FindAsync(id);
-            if (Contract == null)
+            var journal = await _context.Journals.FindAsync(id);
+            if (journal == null)
             {
                 return NotFound();
             }
 
-            _context.Contracts.Remove(Contract);
+            _context.Journals.Remove(journal);
             await _context.SaveChangesAsync();
 
-            return Ok(Contract);
+            return Ok(journal);
         }
 
         private bool  Exists(int id)
         {
-            return _context.Contracts.Any(e => e.ID == id);
+            return _context.Journals.Any(e => e.ID == id);
         }
     }
 }

@@ -63,7 +63,7 @@ export class ClientComponent implements OnInit {
     }
 
  
-    @ViewChild('editMainObject') editcomponent: ClientEditComponent;
+    @ViewChild('editMainObject', {static: false}) editcomponent: ClientEditComponent;
   
  
     loadAddnew() { 

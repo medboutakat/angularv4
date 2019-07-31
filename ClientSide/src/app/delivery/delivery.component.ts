@@ -7,7 +7,7 @@ import { DeliveryEditComponent } from '../Delivery-edit/Delivery-edit.component'
 @Component({
   selector: 'app-Delivery',
   templateUrl: './Delivery.component.html',
-  styleUrls: ['./Delivery.component.sass']
+  styleUrls: ['./Delivery.component.css']
 })
 export class DeliveryComponent implements OnInit {
  
@@ -55,7 +55,7 @@ export class DeliveryComponent implements OnInit {
 
     // @ViewChild('empadd') addcomponent: DeliveryAddComponent
 
-    @ViewChild('editDelivery') editcomponent: DeliveryEditComponent
+    @ViewChild('editDelivery', { static: false, }) editcomponent: DeliveryEditComponent
   
   
   

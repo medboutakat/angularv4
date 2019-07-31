@@ -21,14 +21,15 @@ catList:ClientCategory[];
 
   }
   @Output() nameEvent = new EventEmitter<string>();
-  @ViewChild('closeBtn') cb: ElementRef;
+  @ViewChild('closeBtn', { static: false, }) cb: ElementRef; 
+
   ngOnInit() { 
     this.LoadData();
   }
 
 
   @Input() reset: boolean = false;
-  @ViewChild('editMainObject') myForm: NgForm;
+  @ViewChild('editMainObject', { static: false, }) myForm: NgForm;
   @Input() isReset: boolean = false;
   @Input() IsNew: boolean = false;
 

@@ -14,7 +14,9 @@ namespace WebApi.Models
         {
 
         }
+
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Journal> Journals { get; set; }
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Segment> Segments { get; set; }
         public DbSet<Vat> Vats { get; set; }
@@ -31,6 +33,7 @@ namespace WebApi.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategorie> ProductCategories { get; set; }
         public DbSet<ClientCategory> ClientCategories { get; set; }
+        public DbSet<ClientLocation> ClientLocations { get; set; }
         public DbSet<Statut> Statuts { get; set; }
         public DbSet<StoreProduct> StoreProducts { get; set; }
         public DbSet<Delivery> Deliveries { get; set; }    

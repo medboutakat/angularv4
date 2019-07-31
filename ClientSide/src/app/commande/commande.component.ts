@@ -34,7 +34,7 @@ export class CommandeComponent implements OnInit {
       return typeof(this); 
     } 
 
-    @ViewChild('editview') editview:CommandeEditComponent;
+    @ViewChild('editview', {static: false}) editview:CommandeEditComponent;
 
     ngOnInit() { 
       // this.editcomponent=this.getNameEdit();
