@@ -23,9 +23,10 @@ namespace WebApi
 {
     public class Startup
     {
-        private readonly ILogger _logger;
-
+        private readonly ILogger _logger; 
         private char[] securityKey;
+        public static string IpAdress { get; set; }
+
         public Startup(IConfiguration configuration, ILogger<Startup> logger)
         {
             Configuration = configuration;
@@ -59,7 +60,7 @@ namespace WebApi
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "GM-Soft Service", Version = "v1" });
             });
             
             services.Configure<CookiePolicyOptions>(options =>
@@ -101,6 +102,7 @@ namespace WebApi
                         IssuerSigningKey = symmetricSecurityKey
                     };
                 });
+ 
 
             //.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -109,7 +111,7 @@ namespace WebApi
             // services.AddMvc()
 
         }
-
+   
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
@@ -141,7 +143,11 @@ namespace WebApi
                 routes.MapHub<ChartHub>("/chart");
                 routes.MapHub<DeviceHub>("/device");
             });
-            app.UseMvc();            
+            app.UseMvc();     
+
+
+
+  
         }   
     }
 }

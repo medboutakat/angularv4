@@ -55,7 +55,7 @@ export class VatComponent implements OnInit {
 
     // @ViewChild('empadd') addcomponent: VatAddComponent
 
-    @ViewChild('editvat') editcomponent: VatEditComponent
+    @ViewChild('editvat', { static: false, }) editcomponent: VatEditComponent
   
   
   

@@ -7,13 +7,21 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.SignalR; 
+using System.Net;
+
 namespace WebApi
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+            
+            
+ 
+            IPHostEntry heserver = Dns.GetHostEntry(Dns.GetHostName());
+            Startup.IpAdress = heserver.AddressList[1].ToString(); 
+
             CreateWebHostBuilder(args).Build().Run();
         }
 
@@ -29,7 +37,7 @@ namespace WebApi
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://192.168.0.20:42333/");
+                .UseUrls("http://"+Startup.IpAdress+":42333/");
 
          public static void CreateWebHost1(string[]args)
          {

@@ -17,6 +17,7 @@ export class ClientDataService {
   getClient() {
     return this.http.get<Client[]>(ROOT_URL +this.endPoints);
   }
+  
   AddClient(emp: Client) {
     const headers = new HttpHeaders().set('content-type', 'application/json');
   
