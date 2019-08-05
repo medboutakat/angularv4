@@ -41,7 +41,6 @@ export class DeliveryComponent implements OnInit {
         }
     }
     deleteconfirmation(id: string) {
-  
       if (confirm("Are you sure you want to delete this ?")) {
         this.tempemp = new Delivery();
         this.tempemp.id = id;

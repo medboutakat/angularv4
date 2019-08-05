@@ -16,7 +16,7 @@ namespace WebApi.Models
         public string Name1 { get; set; }
         public string Name2 { get; set; }
         public string Name3 { get; set; }
-         
+        
         public string Patent { get; set; } 
         public string Adresse { get; set; } 
         public string Rc { get; set; }    

@@ -1,6 +1,7 @@
  
     export class InvoiceDetail {
         id: string;
+        no: number;
         pCode: string;
         pName: string;
         qte: string;

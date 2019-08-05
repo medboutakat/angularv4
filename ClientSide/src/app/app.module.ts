@@ -54,6 +54,7 @@ import { ClientEditComponent } from './client-edit/client-edit.component';
 import { ClientDataService } from './DataService/ClientDataService'; 
 import { ClientCategoryDataService } from './DataService/ClientCategoryDataService';
 import { CommandeDataService } from './DataService/CommandeDataService';
+import { SalesModule } from './sales/sales.module';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,7 @@ import { CommandeDataService } from './DataService/CommandeDataService';
     TripComponent,
     DeliveryComponent, 
     DeliveryEditComponent, 
-    ClientEditComponent, 
+    ClientEditComponent,  
   ],
   imports: [
     BrowserModule, 
@@ -116,7 +117,8 @@ import { CommandeDataService } from './DataService/CommandeDataService';
     RoutegaurdService,  
     ConfigService,
     SignalRService, 
-    StockModule,
+    StockModule, 
+    SalesModule,
 ],
   bootstrap: [AppComponent]
 })

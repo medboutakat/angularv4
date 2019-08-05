@@ -10,6 +10,7 @@ namespace WebApi.Models
     {
         [Key] 
         public int ID { get; set; }
+        public int No { get; set; }
         public string PCode { get; set; }
         public string Pname { get; set; }
         public string Qte { get; set; }

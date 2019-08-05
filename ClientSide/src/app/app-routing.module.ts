@@ -45,7 +45,7 @@ const routes: Routes = [
   {path:'route',component:VatComponent},
   
     // {
-    // path: 'stock', component: ProductComponent,
+    // path: 'sales', component: ProductComponent,
     //   children: [{
     //     path: 'legacy',
     //     redirectTo: 'user/'
@@ -54,7 +54,8 @@ const routes: Routes = [
     //     component: ProductComponent
     //   }]
     //   },
-    { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) }
+    { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) },
+    { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) }
   // {path:'Edit',component:EmployeeupdateComponent},
   // {path:'Add',component:EmployeeAddComponent},
   // {path:'Home',component:AngularCRUDComponent}

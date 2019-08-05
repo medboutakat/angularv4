@@ -48,14 +48,12 @@
                   </a> 
                   <a routerLink="route" [class.activated]="currentUrl == '/route'">
                     <i class="material-icons">route</i>
-                  </a> 
-
-                  
+                  </a>  
               </ul>
           </li>
           <li>
               <a href="#">About</a>
-              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Ghizlane</a>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">stock</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
                   <li><a href="#">Page 1</a></li>
                   <li>
@@ -70,12 +68,31 @@
                </li>
               </ul>
           </li>
-          <li>
-              <a href="#">Portfolio</a>
-          </li>
-          <li>
-              <a href="#">Contact</a>
-          </li>
+
+          <li> 
+            <a href="#sales" data-toggle="collapse" aria-expanded="false">Sales</a>
+            <ul class="collapse list-unstyled" id="sales"> 
+                <li>
+                      <a routerLink="sales" [class.activated]="currentUrl == 'sales'">
+                          <i class="material-icons">invoice</i>
+                      </a> 
+              </li> 
+            </ul>
+          </li> 
+
+
+          <li> 
+            <a href="#Paiements" data-toggle="collapse" aria-expanded="false">Paiements</a>
+            <ul class="collapse list-unstyled" id="Paiements"> 
+                <li>
+                      <a routerLink="Paiements" [class.activated]="currentUrl == 'Paiements'">
+                          <i class="material-icons">Paiements</i>
+                      </a> 
+              </li> 
+            </ul>
+          </li> 
+
+
       </ul>
 
       <ul class="list-unstyled CTAs">

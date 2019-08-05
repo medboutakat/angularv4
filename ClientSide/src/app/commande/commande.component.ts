@@ -20,9 +20,7 @@ export class CommandeComponent implements OnInit {
     tempemp: InvoiceHeader; 
     @Input() details: InvoiceDetail; 
     invoiceDetails: InvoiceDetail[]=[];
-  
-
-    
+   
     constructor(private dataserv:IDataService<InvoiceHeader>, private route: Router) {
       
     }

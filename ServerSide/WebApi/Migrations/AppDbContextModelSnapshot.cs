@@ -205,6 +205,8 @@ namespace WebApi.Migrations
 
                     b.Property<int>("InvoiceHeaderID");
 
+                    b.Property<int>("No");
+
                     b.Property<string>("PCode");
 
                     b.Property<string>("Pname");
@@ -319,23 +321,6 @@ namespace WebApi.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Lessors");
-                });
-
-            modelBuilder.Entity("WebApi.Models.Notification", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Info");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Remark");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("WebApi.Models.Payment", b =>

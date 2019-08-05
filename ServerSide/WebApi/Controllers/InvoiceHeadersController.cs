@@ -33,21 +33,23 @@ namespace WebApi.Controllers
 
         // GET: api/Vats/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetVat([FromRoute] int id)
+        public async Task<IActionResult> GetInvoiceHeaders([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var Vat = await _context.InvoiceHeaders.FindAsync(id);
-
-            if (Vat == null)
+            var invoiceHeader = await _context.InvoiceHeaders.Include(c =>c.InvoiceDetails)
+            .FirstOrDefaultAsync(m => m.ID == id);
+            
+            if (invoiceHeader == null)
             {
                 return NotFound();
             }
 
-            return Ok(Vat);
+
+            return Ok(invoiceHeader);
         }
 
         // PUT: api/Vats/5
