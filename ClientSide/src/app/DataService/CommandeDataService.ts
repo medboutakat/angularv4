@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class CommandeDataService {
 
-  endPoints:String="commandes";  
-  endPoint:String="commande";
+  endPoints:String="invoiceheaders";  
+  endPoint:String="invoiceheader";
   commandes: Observable<InvoiceHeader[]>;
   newcommande: InvoiceHeader;
   constructor(private http: HttpClient) {

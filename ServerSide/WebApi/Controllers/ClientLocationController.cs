@@ -23,12 +23,12 @@ namespace WebApi.Controllers
             _context = context;
         }
 
-        // GET: api/Categories
-        // [HttpGet]
-        // public IEnumerable<ClientLocation> GetClientLocation()
-        // { 
-        //    return _context.ClientLocation.;
-        // }
+        // GET: api/Location
+        [HttpGet]
+        public IEnumerable<ClientLocation> GetClientLocations()
+        { 
+           return _context.ClientLocations;
+        }
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
@@ -84,21 +84,21 @@ namespace WebApi.Controllers
         //     return NoContent();
         // }
 
-        // // POST: api/Categories
-        // [HttpPost]
-        // public async Task<IActionResult> PostGetClientCategory([FromBody] ClientCategory categorie)
-        // {
+        // POST: api/Location
+        [HttpPost]
+        public async Task<IActionResult> ClientLocations([FromBody] ClientLocation location)
+        {
  
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return BadRequest(ModelState);
-        //     }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //     _context.ClientCategories.Add(categorie);
-        //     await _context.SaveChangesAsync();
+            _context.ClientLocations.Add(location);
+            await _context.SaveChangesAsync();
 
-        //     return CreatedAtAction("GetGetClientCategory", new { id = categorie.ID }, categorie);
-        // }
+            return CreatedAtAction("GetClientLocation", new { id = location.ID }, location);
+        }
 
         // // DELETE: api/Categories/5
         // [HttpDelete("{id}")]
