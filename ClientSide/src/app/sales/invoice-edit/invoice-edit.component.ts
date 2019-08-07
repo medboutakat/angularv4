@@ -17,37 +17,36 @@ export class InvoiceEditComponent implements OnInit {
   constructor(private service: InvoiceService, private route: Router) {
 
   }
-  
-  @Output() nameEvent = new EventEmitter<string>();
-  @ViewChild('closeBtn', { static: false, }) cb: ElementRef;
   ngOnInit() { 
   }
 
+ 
 
 
+  objTemp: InvoiceHeader = new InvoiceHeader();
+  objID:InvoiceDetail=new InvoiceDetail();
+  objDetail:InvoiceDetail=new InvoiceDetail();
+  tempemp:InvoiceDetail;
+  objDetails:InvoiceDetail[]=[];
+
+
+  @Output() nameEvent = new EventEmitter<string>();
+  @ViewChild('closeBtn', { static: false, }) cb: ElementRef; 
   @Input() reset: boolean = false;
   @ViewChild('EditForm', { static: false, }) myForm: NgForm;
   @Input() isReset: boolean = false;
   @Input() IsNew: boolean = false;
 
   
-  objTemp: InvoiceHeader = new InvoiceHeader();
-  objID:InvoiceDetail=new InvoiceDetail();
-  objDetail:InvoiceDetail=new InvoiceDetail();
-  tempemp:InvoiceDetail;
-  objDetails:InvoiceDetail[]=[];
   
   @Input() objView: InvoiceHeader = new InvoiceHeader();
 
  
 
-  AddDetails(obj:InvoiceDetail ) {   
+  AddDetails(obj:InvoiceDetail ) {  
 
-    
-    console.log("(obj.no+'')  : ", (obj.no+'') );
-
-    var details=new InvoiceDetail(); 
-
+    console.log("(obj.no+'')  : ", (obj.no+'') ); 
+    var details=new InvoiceDetail();  
 
     if((obj.no+'') != 'undefined')
     {
@@ -85,6 +84,7 @@ export class InvoiceEditComponent implements OnInit {
     this.objDetail.pCode="";
     this.objDetail.pName="";
   }
+
   EditDetails(objDetail:InvoiceDetail){
     var obj = this.objDetails.filter(function(obj) {
       return obj.no == objDetail.no;
@@ -123,7 +123,7 @@ export class InvoiceEditComponent implements OnInit {
   TakeHome(){
     this.nameEvent.emit("ccc");
     this.cb.nativeElement.click();
-    this.route.navigateByUrl(''); 
+    // this.route.navigateByUrl('/Sales'); 
   }
 
 

@@ -21,17 +21,19 @@
             </div>
 
            
-            <table class="table"  >
+            <table class="table"  border="1">
               <thead>
                 <tr>
                   <th scope="col">Sr.No   </th>
-                  <th scope="col"> <input type="hidden" name="no" date required [(ngModel)]='objDetail.no' #pName="ngModel"> </th>
-                  <th scope="col">Code <input  type="text" class="form-control" width="50%" id="pcode" placeholder="Enter code"
+                   <th scope="col">Code <input  type="text" class="form-control" width="50%" id="pcode" placeholder="Enter code"
                     name="pcode" code required [(ngModel)]='objDetail.pCode' #pCode="ngModel"> </th>
-                    <th scope="col">Name  <input  required type="text" class="form-control" width="50%" id="pName" placeholder="Enter Name"
+                  <th scope="col">Name  <input  required type="text" class="form-control" width="50%" id="pName" placeholder="Enter Name"
                       name="pName" date required [(ngModel)]='objDetail.pName' #pName="ngModel"></th>  
-                      <th scope="col"><input type="button" (click)="AddDetails(objDetail)" class="btn btn-primary" value="Save" /></th>  
-                   </tr>
+                   <th scope="col"       width="100%" >
+                   <input type="button" (click)="AddDetails(objDetail)" class="btn btn-primary" value="Save" />
+                  <input type="button"  class="btn btn-primary" value="New" />
+                   </th>  
+                </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let e of objDetails">
@@ -42,9 +44,7 @@
                   <td scope="col">
                     <button type="button" class="btn btn-default btn-primary" (click)="DeleteDetails(e)">
                     <span class="glyphicon glyphicon-edit"></span> Delete
-                  </button>
-                </td>
-                  |<td>
+                  </button> 
                   <button type="button" class="btn btn-default btn-danger" (click)="EditDetails(e)">
                     <span class="glyphicon glyphicon-trash"></span> Edit
                   </button>
@@ -52,11 +52,7 @@
                 </tr>
               </tbody>
             </table>
-
-
-
-
-
+  
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -64,4 +60,6 @@
             </div>
           </form>
         </div>
+
+        
 <button style="display:none" type="button" #closeBtn class="btn btn-default" data-dismiss="modal">Close</button>

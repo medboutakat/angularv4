@@ -40,17 +40,7 @@ export class InvoiceComponent implements OnInit {
         console.log(err);
       }
   }
-  GetCurrent(id : string) {  
-    this.service.Find(id).subscribe((data) => {
-      this.objTemp= data;
-      console.log(this.objlist); 
-    }
-    )
-      , err => {
-        console.log(err);
-      }
-  }
-
+ 
 
   deleteconfirmation(id: string) {
     if (confirm("Are you sure you want to delete this ?")) {
@@ -75,15 +65,24 @@ export class InvoiceComponent implements OnInit {
     this.editcomponent.objTemp.id = "" 
     this.editcomponent.objTemp.code = ""
     this.editcomponent.objTemp.date = new Date()  
-    this.editcomponent.objTemp.invoiceDetails=[];
+    this.editcomponent.objTemp.invoiceDetails=[]; 
   }
 
-  loadEditForm(id: string) { 
-    this.GetCurrent(id);
-    this.editcomponent.IsNew=false;
-    this.action="Edit Delivery : "+this.objTemp .code+"id "+id;
-    console.log(this.objTemp ); 
-    this.editcomponent.objTemp  = this.objTemp  
+ 
+
+  loadEditForm(id: string) {  
+    
+        this.service.Find(id).subscribe((data) => {
+        this.objTemp= data; 
+        this.editcomponent.IsNew=false;
+        this.action="Edit Delivery : "+this.objTemp.code+"id "+id; 
+        this.editcomponent.objTemp  = this.objTemp   
+        this.editcomponent.objDetails=this.objTemp.invoiceDetails;
+
+       } ) , err => {
+        console.log(err);
+      } 
+    
   }
 
   RefreshData() {
