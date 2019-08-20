@@ -82,6 +82,9 @@ import {
 import { ClientsComponent, DialogOverviewExampleDialog } from './clients/clients.component';
 import { EmployeeService } from './DataService/emp.service';
 import { ApptestModule } from './apptest/apptest.module';
+import { ProductsComponent } from './products/products.component';
+import { ProductsService } from './DataService/products.service';
+import { StoreModule } from './store/store.module';
 
 @NgModule({
   declarations: [
@@ -120,7 +123,8 @@ import { ApptestModule } from './apptest/apptest.module';
     DeliveryComponent,
     DeliveryEditComponent,
     ClientEditComponent, NavBarComponent, TestComponent, ClientsComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    ProductsComponent
     ],
   imports: [
     BrowserModule,
@@ -168,7 +172,9 @@ import { ApptestModule } from './apptest/apptest.module';
     SignalRService,
     StockModule,
     SalesModule,
-    ApptestModule
+    ApptestModule,
+    ProductsService,
+    StoreModule
   ],
   bootstrap: [AppComponent]
 })

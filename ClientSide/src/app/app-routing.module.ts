@@ -24,6 +24,7 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TestComponent } from './test/test.component';
 import { ClientsComponent } from './clients/clients.component';
+import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [
 
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'delivery', component: DeliveryComponent },
   { path: 'route', component: VatComponent },
   { path: 'test', component: TestComponent },
+  // { path: 'products', component:ProductsComponent},
 
   // {
   // path: 'sales', component: ProductComponent,
@@ -63,7 +65,8 @@ const routes: Routes = [
   //   },
   { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) },
   { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) },
-  { path: 'apptest', loadChildren: () => import('./apptest/apptest.module').then(m => m.ApptestModule) }
+  { path: 'apptest', loadChildren: () => import('./apptest/apptest.module').then(m => m.ApptestModule) },
+  { path: 'stores', loadChildren: () => import('./store/store.module').then(m => m.StoreModule) },
   // {path:'Edit',component:EmployeeupdateComponent},
   // {path:'Add',component:EmployeeAddComponent},
   // {path:'Home',component:AngularCRUDComponent}
