@@ -7,7 +7,7 @@ import { InvoiceEditComponent } from '../invoice-edit/invoice-edit.component';
 @Component({
   selector: 'app-invoice',
   templateUrl: './invoice.component.html',
-  styleUrls: ['./invoice.component.sass']
+  styleUrls: ['./invoice.component.css']
 })
 export class InvoiceComponent implements OnInit {
 
@@ -15,7 +15,7 @@ export class InvoiceComponent implements OnInit {
   dataavailbale: Boolean = false;
   action:string
   objTemp: InvoiceHeader
-   
+  
 
   constructor(private service: InvoiceService, private route: Router) {
      
@@ -56,11 +56,13 @@ export class InvoiceComponent implements OnInit {
    
   @ViewChild('editView', { static: false, }) editcomponent: InvoiceEditComponent
 
-
-
+ 
   loadAddnew() {
+    
     this.editcomponent.IsNew=true;
-    this.action="add Invoice"; 
+    this.editcomponent.objDetails.splice(0, this.editcomponent.objDetails.length);
+    console.log(this.editcomponent.objDetails);
+    this.action="Add new invoice"; 
     this.editcomponent.objTemp= new InvoiceHeader();
     this.editcomponent.objTemp.id = "" 
     this.editcomponent.objTemp.code = ""
@@ -78,7 +80,7 @@ export class InvoiceComponent implements OnInit {
         this.action="Edit Delivery : "+this.objTemp.code+"id "+id; 
         this.editcomponent.objTemp  = this.objTemp   
         this.editcomponent.objDetails=this.objTemp.invoiceDetails;
-
+        console.log(this.editcomponent.objDetails);
        } ) , err => {
         console.log(err);
       } 

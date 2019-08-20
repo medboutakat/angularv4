@@ -1,65 +1,78 @@
-<h6>Invoice edit<h6>
-    <div class="container" style="border:thin"> 
-        <h1> {{IsNew}}</h1>  
-          <form #EditForm='ngForm' name="editform" (ngSubmit)="EditMainObject(EditForm)" class="form-horizontal" style="width:50%">
-             
-            <div class="form-group">
-              <label class="control-label col-sm-2" for="fname">Code:</label>
-              <div class="col-sm-10">
-                <input style="width:50%" type="text" class="form-control" width="50%" id="code" placeholder="Enter code"
-                  name="code" code required [(ngModel)]='objTemp.code' #code="ngModel">
-                <span class="help-bpx" *ngIf="code.touched && !code.valid ">Required</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-sm-2" for="email">Date:</label>
-              <div class="col-sm-10">
-                <input style="width:50%" required type="text" class="form-control" width="50%" id="date" placeholder="Enter Date"
-                  name="date" date required [(ngModel)]='objTemp.date' #date="ngModel">
-                <span class="help-bpx" *ngIf="date.touched && !date.valid ">Required</span>
-              </div>
-            </div>
+<h6>Invoice edit
+    <h6>
 
-           
-            <table class="table"  border="1">
-              <thead>
-                <tr>
-                  <th scope="col">Sr.No   </th>
-                   <th scope="col">Code <input  type="text" class="form-control" width="50%" id="pcode" placeholder="Enter code"
-                    name="pcode" code required [(ngModel)]='objDetail.pCode' #pCode="ngModel"> </th>
-                  <th scope="col">Name  <input  required type="text" class="form-control" width="50%" id="pName" placeholder="Enter Name"
-                      name="pName" date required [(ngModel)]='objDetail.pName' #pName="ngModel"></th>  
-                   <th scope="col"       width="100%" >
-                   <input type="button" (click)="AddDetails(objDetail)" class="btn btn-primary" value="Save" />
-                  <input type="button"  class="btn btn-primary" value="New" />
-                   </th>  
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let e of objDetails">
-                  <td scope="col">{{e.no}}</td>
-                  <td scope="col">{{e.pCode}}</td>
-                  <td scope="col">{{e.pName}}</td>  
-                  <td style="display:none">{{e.id}}</td>
-                  <td scope="col">
-                    <button type="button" class="btn btn-default btn-primary" (click)="DeleteDetails(e)">
-                    <span class="glyphicon glyphicon-edit"></span> Delete
-                  </button> 
-                  <button type="button" class="btn btn-default btn-danger" (click)="EditDetails(e)">
-                    <span class="glyphicon glyphicon-trash"></span> Edit
-                  </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-  
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </div>
-          </form>
+        <div class="container" style="border:thin">
+            <form #EditForm='ngForm' name="editform" (ngSubmit)="EditMainObject(EditForm)" class="form-horizontal" style="width:50%">
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <label>code</label>
+                        <mat-form-field>
+                            <input matInput disabled type="text" width="50%" id="code" name="code" code required value="objDetail.code">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                        <input matInput type="text" width="50%" id="code" placeholder="Enter code" name="code" code required [(ngModel)]='objTemp.code' #code="ngModel">
+                        <mat-error *ngIf="code.touched && !code.valid ">Code is <strong>Required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <label class="control-label col-sm-2" for="email">Date:</label>
+                    <div class="col-sm-10">
+                        <input style="width:50%" required type="text" class="form-control" width="50%" id="date" placeholder="Enter Date" name="date" date required [(ngModel)]='objTemp.date' #date="ngModel">
+                        <span class="help-bpx" *ngIf="date.touched && !date.valid ">Required</span>
+                    </div>
+                </div>
+
+
+                <table class="table" border="1">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr.No </th>
+                            <th scope="col">Code
+
+                                <input type="text" class="form-control" width="50%" id="pcode" placeholder="Enter code" name="pcode" code required [(ngModel)]='objDetail.pCode' #pCode="ngModel">
+                            </th>
+                            <th scope="col">Name <input required type="text" class="form-control" width="50%" id="pName" placeholder="Enter Name" name="pName" date required [(ngModel)]='objDetail.pname' #pName="ngModel">
+                            </th>
+                            <th scope="col" width="100%">
+                                <button type="button" (click)="AddDetails(objDetail)" class="btn btn-primary" value="Save"><i class="far fa-save"></i>
+                                Save
+                            </button>
+
+                                <button type="button" class="btn btn-primary" (click)="newDetail()" value="new"> <i
+                                    class="fas fa-plus"></i>
+                                  New
+                                 </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let e of objDetails">
+                            <td scope="col">{{e.no}}</td>
+                            <td scope="col">{{e.pCode}}</td>
+                            <td scope="col">{{e.pname}}</td>
+                            <td style="display:none">{{e.id}}</td>
+                            <td scope="col">
+                                <button type="button" class="btn btn-default btn-primary" (click)="DeleteDetails(e)">
+                  <span class="glyphicon glyphicon-trash"></span> Delete
+                </button>
+                                <button type="button" class="btn btn-default btn-danger" (click)="EditDetails(e)">
+                  <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
 
-        
-<button style="display:none" type="button" #closeBtn class="btn btn-default" data-dismiss="modal">Close</button>
+
+        <button style="display:none" type="button" #closeBtn class="btn btn-default" data-dismiss="modal">Close</button>

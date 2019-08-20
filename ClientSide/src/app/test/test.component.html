@@ -1,0 +1,41 @@
+<br>
+<div class="corral">
+    <div class="contentContainer  contentContainerBordered">
+        <header>
+            <img src="../../assets/logo.png" class="smartpay-logo" style="border-radius: 5px">
+        </header>
+        <br>
+        <form>
+            <div class="notifications" *ngIf="error">
+                <p class="notification notification-critical" role="alert">Vérifiez votre saisie et réessayez.</p>
+            </div>
+            <div class="input">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Nom d'utilisateur" [formControl]="UsernameFormControl" [errorStateMatcher]="matcher">
+                    <mat-error *ngIf="UsernameFormControl.hasError('required')">
+                        Email est
+                        <strong>requis</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div class="input">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Mote de passe " [type]="hide ? 'password' : 'text'" [formControl]="PasswordFormControl" [errorStateMatcher]="matcher">
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    <mat-error *ngIf="PasswordFormControl.hasError('required')">
+                        Mot de passe est
+                        <strong>requis</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <br>
+
+            <mat-progress-bar mode="indeterminate" *ngIf="charg"></mat-progress-bar>
+            <button mat-raised-button color="primary" class="mybtn" (click)="logIn()">Se connecter</button>
+            <div class="forgotLink"><a>Mot de passe oublié ?</a></div>
+
+        </form>
+    </div>
+</div>

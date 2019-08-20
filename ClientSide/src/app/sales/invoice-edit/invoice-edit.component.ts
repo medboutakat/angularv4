@@ -7,7 +7,7 @@ import { InvoiceHeader, InvoiceDetail } from 'src/Models/Commande';
 @Component({
   selector: 'app-invoice-edit',
   templateUrl: './invoice-edit.component.html',
-  styleUrls: ['./invoice-edit.component.sass']
+  styleUrls: ['./invoice-edit.component.css']
 })
 export class InvoiceEditComponent implements OnInit {
   objectFromDetail: any;
@@ -18,6 +18,7 @@ export class InvoiceEditComponent implements OnInit {
 
   }
   ngOnInit() { 
+    
   }
 
  
@@ -44,8 +45,8 @@ export class InvoiceEditComponent implements OnInit {
  
 
   AddDetails(obj:InvoiceDetail ) {  
-
-    console.log("(obj.no+'')  : ", (obj.no+'') ); 
+    console.log(obj);
+    console.log("obj.no "+obj.no); 
     var details=new InvoiceDetail();  
 
     if((obj.no+'') != 'undefined')
@@ -56,13 +57,13 @@ export class InvoiceEditComponent implements OnInit {
       });  
       console.log("Add : ",  obj1[0]);
       obj1[0].pCode=obj.pCode;
-      obj1[0].pName=obj.pName;
+      obj1[0].pname=obj.pname;
     }
     else
     {
       details.no= this.objDetails.length+1;
       details.pCode= obj.pCode;
-      details.pName=obj.pName;
+      details.pname=obj.pname;
       details.qte="0";
       details.prix="0";  
       this.objView=new InvoiceHeader(); 
@@ -70,6 +71,10 @@ export class InvoiceEditComponent implements OnInit {
     }
   
     console.log("Details : ",this.objDetails);
+  }
+  newDetail(){
+    this.objDetail = new InvoiceDetail();
+    console.log(this.objDetail);
   }
 
   DeleteDetails(objDetail:InvoiceDetail){
@@ -82,15 +87,16 @@ export class InvoiceEditComponent implements OnInit {
       this.objDetails.push(objectFromDetail[i])
     } 
     this.objDetail.pCode="";
-    this.objDetail.pName="";
+    this.objDetail.pname="";
   }
 
   EditDetails(objDetail:InvoiceDetail){
+    
     var obj = this.objDetails.filter(function(obj) {
       return obj.no == objDetail.no;
     });  
     this.objDetail.pCode=obj[0].pCode;
-    this.objDetail.pName=obj[0].pName;
+    this.objDetail.pname=obj[0].pname;
     this.objDetail.no=obj[0].no;
   }
  
@@ -98,7 +104,7 @@ export class InvoiceEditComponent implements OnInit {
 
   // Add or Edit
   EditMainObject(regForm: NgForm) {
-
+console.log("saving...............");
     this.objView=new InvoiceHeader();
  
     this.objView.code=regForm.value.code;

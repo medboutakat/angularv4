@@ -76,7 +76,7 @@ export class CommandeComponent implements OnInit {
       var details=new InvoiceDetail(); 
 
       details.pCode=_regForm.value.pCode;
-      details.pName=_regForm.value.pName;    
+      details.pname=_regForm.value.pName;    
 
       this.invoiceDetails.push(details);
 

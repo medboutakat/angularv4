@@ -1,0 +1,252 @@
+<div class="wrapper">
+
+    <!-- Sidebar Holder -->
+    <nav id="sidebar" style="z-index: 10000;">
+        <div id="dismiss">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header">
+            <img src="../../assets/logo.png" alt="">
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>GM-SOFT</p>
+            <!--<li [ngClass]="{'active':url=='home'}">
+      [routerLink]="['/home']"
+      -->
+            <li>
+                <a href="#homeSubmenu">
+                    <i class="glyphicon glyphicon-home"></i> Home
+                </a>
+
+            </li>
+            <!--
+       <li  [ngClass]="{'active':url=='employes'}">
+        <a [routerLink]="['/employes']">Employee</a>
+        [ngClass]="{'active':url=='conges'}"
+      -->
+            <li>
+                <a>Employee</a>
+            </li>
+            <li>
+
+                <a href="#congesSubmenu" data-toggle="collapse" aria-expanded="false">Conges</a>
+                <ul class="collapse list-unstyled" id="congesSubmenu">
+                    <li>
+                        <a>Demander Congé</a>
+                    </li>
+                    <li>
+                        <a>Mes demandes</a>
+                    </li>
+                    <li>
+                        <a>Calendrier</a>
+                    </li>
+                    <li>
+                        <a>Listes des demandes</a>
+                    </li>
+                </ul>
+
+            </li>
+            <li>
+
+                <a href="#absenceSubmenu" data-toggle="collapse" aria-expanded="false">Absence</a>
+                <ul class="collapse list-unstyled" id="absenceSubmenu">
+                    <li>
+                        <a class="drop">Calendrier d'absence</a>
+                    </li>
+                    <li>
+                        <a class="drop">Verification d'absence</a>
+                    </li>
+                    <li>
+                        <a class="drop">Justifier absence</a>
+                    </li>
+                </ul>
+
+            </li>
+            <li>
+
+                <a href="#pointageSubmenu" data-toggle="collapse" aria-expanded="false">Pointage</a>
+                <ul class="collapse list-unstyled" id="pointageSubmenu">
+                    <li>
+                        <a class="drop">Pointage Employe</a>
+                    </li>
+                    <li>
+                        <a class="drop">Pointage Visiteur</a>
+                    </li>
+                    <li>
+                        <a class="drop">Importer pointage</a>
+                    </li>
+                </ul>
+
+            </li>
+            <li>
+
+                <a href="#stagaireSubmenu" data-toggle="collapse" aria-expanded="false">Stagaire</a>
+                <ul class="collapse list-unstyled" id="stagaireSubmenu">
+                    <li>
+                        <a class="drop">Stagaire RH</a>
+                    </li>
+                    <li>
+                        <a class="drop">Pointage Visiteur</a>
+                    </li>
+                    <li>
+                        <a class="drop">Importer pointage</a>
+                    </li>
+                </ul>
+
+            </li>
+
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+            <li>
+                <a class="download">Mes information</a>
+            </li>
+            <li>
+                <a class="article">Déconnexion</a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+
+    <!--  ========== NAVBAR =========== -->
+    <nav class="navbar">
+        <div class="container">
+
+            <!-- Navbar Header [collects both toggle button and navbar brand] -->
+            <div class="navbar-header">
+                <!-- Toggle Button [handles opening navbar menu on mobile screens]-->
+                <button type="button" id="sidebarCollapse1" class="navbar-toggle collapsed">
+          <i class="fas fa-bars fa-2x"></i>
+
+        </button>
+
+                <!-- Navbar Brand -->
+                <a routerLink="/home" class="navbar-brand">
+                    <img class="logo-navbar" src="../../assets/logo.png" alt="">
+                </a>
+            </div>
+
+
+            <!-- Navbar Collapse [collect navbar components such as navbar links and forms ] -->
+            <div class="collapse navbar-collapse" id="exampleNavComponents">
+
+                <!-- Navbar Links -->
+                <ul class="nav navbar-nav navbar-left" style="    height: 10px;">
+                    <li>
+                        <a [routerLink]="['/home']" routerLinkActive="selected">
+
+                            <i class="fas fa-home fa-lg"></i> Accueil
+
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/clients']" routerLinkActive="selected"><i
+                class="fas fa-users fa-lg"></i>
+              Clients</a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="Zdropdown" aria-expanded="true">Sales</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="background: #025b96">
+                            <li>
+                                <a class="drop" [routerLink]="['/sales']">Action 1</a>
+                            </li>
+                            <li>
+                                <a class="drop">Action 2</a>
+                            </li>
+                            <li>
+                                <a class="drop">Action 3</a>
+                            </li>
+                            <li role="separator" class="divider" style="margin-top: 0px"></li>
+                            <li>
+                                <a class="drop">Action 4</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right ">
+                    <ul style="width: 0px;height: 0px">
+                        <!--
+            <button mat-icon-button class="nav-link text-light"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-top: 6px;">
+              <i class="fa fa-bell-o fa-lg"  matBadgeColor="accent" *ngIf="Notif!=0"></i>
+              <i class="fa fa-bell-o fa-lg" matBadgeColor="accent" *ngIf="Notif==0"></i>
+            </button>
+            -->
+                    </ul>
+                </ul>
+                <button id="sidebarCollapse" type="button" class="btn navbar-btn navbar-right"><i class="fas fa-bars fa-lg"></i>
+          Menu
+        </button>
+                <button type="button" class="btn navbar-btn navbar-right" style="border-right: 0.2px solid;" [routerLink]="['/test']">Connexion</button>
+
+                <ul class="nav navbar-nav navbar-right ">
+                    <li>
+                        <button type="button" class="btn navbar-btn navbar-right" style="border-right: 0.2px solid;" data-toggle="dropdown"><i class="far fa-user fa-lg"></i> ZAKARYA</button>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="navbar-content">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <img src="../../assets/logo.JPG" alt="Alternate Text" class="img-responsive" />
+                                        </div>
+                                        <div class="col-md-7">
+                                            <span>ZAKARYA ROUZKI</span>
+                                            <div class="divider"></div>
+                                            <small>Privilieges : ADMIN</small>
+                                            <button type="button" class="btn navbar-btn" matTooltip="Voir et modifier votre informations"> Mes
+                        informations </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="navbar-footer">
+                                    <div class="navbar-footer-content">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <button type="button" matTooltip="changer votre mot de passe" class="btn navbar-btn">
+                          Changer</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn navbar-btn">Déconnexion</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+
+
+
+
+                <!-- Navbar Button -->
+
+            </div>
+        </div>
+
+    </nav>
+
+    <div class="menu">
+
+        <div class="dropdown">
+            <ul>
+                <li>
+                    <a style="padding: 10px;
+    font-size: 1.1em;
+    display: block;"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="overlay"></div>

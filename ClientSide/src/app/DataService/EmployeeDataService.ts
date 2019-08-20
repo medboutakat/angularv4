@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class EmployeeDataService {
 
-  
+
   employees: Observable<Employee[]>;
   newemployee: Employee;
   constructor(private http: HttpClient) {
@@ -18,11 +18,11 @@ export class EmployeeDataService {
   }
   AddEmployee(emp: Employee) {
     const headers = new HttpHeaders().set('content-type', 'application/json');
-  
+
     var body = {
-      Fname: emp.firstname, Lname: emp.lastname, Email: emp.email,gender: emp.gender
+      Fname: emp.firstname, Lname: emp.lastname, Email: emp.email, gender: emp.gender
     }
-    
+
     console.log(ROOT_URL);
     return this.http.post<Employee>(ROOT_URL + 'Employees/', body, { headers })
   }
@@ -36,7 +36,7 @@ export class EmployeeDataService {
       Fname: emp.firstname, Lname: emp.lastname, Email: emp.email, ID: emp.id
       , gender: emp.gender
     }
-    
+
     return this.http.put<Employee>(ROOT_URL + 'Employees/' + emp.id, body, { headers, params })
 
   }

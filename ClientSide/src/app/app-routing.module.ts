@@ -16,46 +16,54 @@ import { HomeComponent } from './home/home.component';
 import { ChartComponent } from './chart/chart.component';
 import { MapsComponent } from './maps/maps.component';
 import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
-import { StatutComponent } from './statut/statut.component'; 
-import { TripComponent } from './trip/trip.component'; 
+import { StatutComponent } from './statut/statut.component';
+import { TripComponent } from './trip/trip.component';
 import { ProductComponent } from './stock/product/product.component';
 import { ClientComponent } from './client/client.component';
 import { DeliveryComponent } from './delivery/delivery.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { TestComponent } from './test/test.component';
+import { ClientsComponent } from './clients/clients.component';
 
 const routes: Routes = [
 
-  {path:'',component:EmployeesComponent},
-  {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent},
-  {path:'Edit',component:EmployeeupdateComponent},
-  {path:'Add',component:EmployeeAddComponent},
-  {path:'Home',component:EmployeesComponent}, 
-  {path:'tva',component:VatComponent},
-  {path:'commande',component:CommandeComponent},
-  {path:'client',component:ClientComponent},
-  {path:'bank',component:BankComponent},
-  {path:'home',component:HomeComponent},
-  {path:'contact',component:HomeComponent},
-  {path:'chart',component:ChartComponent},
-  {path:'maps',component:MapsComponent},
-  {path:'upload',component:UploadfilesComponent},
-  {path:'statut',component:StatutComponent},
-  {path:'trip',component:TripComponent},
-  {path:'delivery',component:DeliveryComponent}, 
-  {path:'route',component:VatComponent},
-  
-    // {
-    // path: 'sales', component: ProductComponent,
-    //   children: [{
-    //     path: 'legacy',
-    //     redirectTo: 'user/'
-    //   }, {
-    //     path: 'user/:name',
-    //     component: ProductComponent
-    //   }]
-    //   },
-    { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) },
-    { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) }
+  { path: '', component: HomeComponent },
+  { path: 'employee', component: EmployeesComponent },
+  { path: 'clients', component: ClientsComponent },
+  { path: 'navbar', component: NavBarComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'Edit', component: EmployeeupdateComponent },
+  { path: 'Add', component: EmployeeAddComponent },
+  { path: 'Home', component: EmployeesComponent },
+  { path: 'tva', component: VatComponent },
+  { path: 'commande', component: CommandeComponent },
+  { path: 'client', component: ClientComponent },
+  { path: 'bank', component: BankComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'contact', component: HomeComponent },
+  { path: 'chart', component: ChartComponent },
+  { path: 'maps', component: MapsComponent },
+  { path: 'upload', component: UploadfilesComponent },
+  { path: 'statut', component: StatutComponent },
+  { path: 'trip', component: TripComponent },
+  { path: 'delivery', component: DeliveryComponent },
+  { path: 'route', component: VatComponent },
+  { path: 'test', component: TestComponent },
+
+  // {
+  // path: 'sales', component: ProductComponent,
+  //   children: [{
+  //     path: 'legacy',
+  //     redirectTo: 'user/'
+  //   }, {
+  //     path: 'user/:name',
+  //     component: ProductComponent
+  //   }]
+  //   },
+  { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) },
+  { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) },
+  { path: 'apptest', loadChildren: () => import('./apptest/apptest.module').then(m => m.ApptestModule) }
   // {path:'Edit',component:EmployeeupdateComponent},
   // {path:'Add',component:EmployeeAddComponent},
   // {path:'Home',component:AngularCRUDComponent}

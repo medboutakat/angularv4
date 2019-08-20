@@ -1,85 +1,84 @@
 <div class="container">
-  <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal" value="Create New">
-  <hr>
-  <div *ngIf="!dataavailbale">  
-    <h4> No Employee Data is present Click Add new to add Data.</h4>
-  </div>
+    <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal" value="Create New">
+    <hr>
+    <div *ngIf="!dataavailbale">
+        <h4> No Employee Data is present Click Add new to add Data.</h4>
+    </div>
 
 
-  <table class="table" *ngIf="dataavailbale">
-    <thead>
-      <tr>
-        <th scope="col">Sr.No</th>
-        <th scope="col">Code</th>
-        <th scope="col">Date</th> 
-        <th scope="col" style="align-content: center">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let e of objlist let i = index ">
-        <td scope="col">{{i+1}}</td>
-        <td scope="col">{{e.code}}</td>
-        <td scope="col">{{e.date}}</td> 
-        <td style="display:none">{{e.id}}</td>
-        <td scope="col">
-          <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm(e.id,e.code,e.date)"
-            data-toggle="modal" data-target="#myModal">
+    <table class="table" *ngIf="dataavailbale">
+        <thead>
+            <tr>
+                <th scope="col">Sr.No</th>
+                <th scope="col">Code</th>
+                <th scope="col">Date</th>
+                <th scope="col" style="align-content: center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of objlist let i = index ">
+                <td scope="col">{{i+1}}</td>
+                <td scope="col">{{e.code}}</td>
+                <td scope="col">{{e.date}}</td>
+                <td style="display:none">{{e.id}}</td>
+                <td scope="col">
+                    <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm(e.id,e.code,e.date)" data-toggle="modal" data-target="#myModal">
             <span class="glyphicon glyphicon-edit"></span> Edit
-          </button>
-          |
-          <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(e.id)">
+          </button> |
+                    <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(e.id)">
             <span class="glyphicon glyphicon-trash"></span> Delete
           </button>
 
-        </td>
-      </tr>
-    </tbody>
-  </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-primary" style="background-color: chartreuse;">{{action}}</h4>
-          <!-- <h3>  {{IsNew ? 'Nouvelle commande':'Commande'}} </h3> -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-primary" style="background-color: chartreuse;">{{action}}</h4>
+                    <!-- <h3>  {{IsNew ? 'Nouvelle commande':'Commande'}} </h3> -->
+                </div>
+                <div class="modal-body">
+                    <app-Commande-edit #editview (nameEvent)="RefreshData($event)"></app-Commande-edit>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body"> 
-        <app-Commande-edit #editview (nameEvent)="RefreshData($event)"></app-Commande-edit> 
-        </div>
-        <div class="modal-footer">
-          <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-      </div>
     </div>
-  </div>
-  <head>  
-      <title>Invoice Test</title>  
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
- </head>  
- <body>  
-      <div class="container">   
+    <head>
+        <title>Invoice Test</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 
-          Code :   <input type="text" name="code" placeholder="Code" class="form-control name_list" />
-          Date :    <input type="text" name="qty" placeholder="QTY" class="form-control name_list" /> 
-          Client <input type="text" name="Price" placeholder="Price" class="form-control name_list" />  
-              
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </head>
 
-           <h2>Details</h2>  
-           <div class="form-group">  
-                <table class="table table-bordered" id="dynamic_field">  
-                                <tr *ngFor="let d of invoiceDetails let i = index ">
-                                    <td scope="col">{{i+1}}</td>
-                                    <td scope="col">{{d.pCode}}</td>
-                                    <td scope="col">{{d.pName}}</td> 
-                                    <td style="display:none">{{d.id}}</td>
-                                    <td scope="col">
+    <body>
+        <div class="container">
 
-                                      <!-- <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm(e.id,e.code,e.date)"
+            Code : <input type="text" name="code" placeholder="Code" class="form-control name_list" /> Date : <input type="text" name="qty" placeholder="QTY" class="form-control name_list" /> Client <input type="text" name="Price" placeholder="Price"
+                class="form-control name_list" />
+
+
+            <h2>Details</h2>
+            <div class="form-group">
+                <table class="table table-bordered" id="dynamic_field">
+                    <tr *ngFor="let d of invoiceDetails let i = index ">
+                        <td scope="col">{{i+1}}</td>
+                        <td scope="col">{{d.pCode}}</td>
+                        <td scope="col">{{d.pname}}</td>
+                        <td style="display:none">{{d.id}}</td>
+                        <td scope="col">
+
+                            <!-- <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm(e.id,e.code,e.date)"
                                         data-toggle="modal" data-target="#myModal">
                                         <span class="glyphicon glyphicon-edit"></span> Edit
                                       </button>
@@ -87,12 +86,12 @@
                                       <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(e.id)">
                                         <span class="glyphicon glyphicon-trash"></span> Delete
                                       </button> -->
-                            
-                                    </td>
-                                  </tr>
-                                </table> 
-                          <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />  
-                
-                        </div>   
-      </div>  
- </body>  
+
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" name="submit" id="submit" class="btn btn-info" value="Submit" />
+
+            </div>
+        </div>
+    </body>

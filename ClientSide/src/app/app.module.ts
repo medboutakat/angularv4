@@ -7,9 +7,9 @@ import { EmployeesComponent } from './employees/EmployeesComponent';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeeupdateComponent } from './employeeupdate/employeeupdate.component';
 
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {EmployeeDataService} from '../app/DataService/EmployeeDataService';
+import { EmployeeDataService } from '../app/DataService/EmployeeDataService';
 import { LayoutComponent } from './layout/layout.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FixedtopbarComponent } from './fixedtopbar/fixedtopbar.component';
@@ -44,17 +44,44 @@ import { SignalRService } from './DataService/signal-r.service';
 import { MapsComponent } from './maps/maps.component';
 import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
 import { StatutComponent } from './statut/statut.component';
-import { TripComponent } from './trip/trip.component';  
+import { TripComponent } from './trip/trip.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { StockModule } from './stock/stock.module';
-import { DeliveryComponent } from './delivery/delivery.component'; 
-import { DeliveryEditComponent } from './delivery-edit/delivery-edit.component'; 
+import { DeliveryComponent } from './delivery/delivery.component';
+import { DeliveryEditComponent } from './delivery-edit/delivery-edit.component';
 import { DeliveryDataService } from './DataService/DeliveryDataService';
 import { ClientEditComponent } from './client-edit/client-edit.component';
-import { ClientDataService } from './DataService/ClientDataService'; 
+import { ClientDataService } from './DataService/ClientDataService';
 import { ClientCategoryDataService } from './DataService/ClientCategoryDataService';
 import { CommandeDataService } from './DataService/CommandeDataService';
 import { SalesModule } from './sales/sales.module';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { TestComponent } from './test/test.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatStepperModule,
+  MatSelectModule,
+  MatTabsModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatError,
+  MatBadgeModule,
+  MatSidenavModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatDialogModule,
+  MatProgressBarModule,
+  MatRadioButton, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatSnackBarModule
+} from '@angular/material';
+import { ClientsComponent, DialogOverviewExampleDialog } from './clients/clients.component';
+import { EmployeeService } from './DataService/emp.service';
+import { ApptestModule } from './apptest/apptest.module';
 
 @NgModule({
   declarations: [
@@ -72,14 +99,14 @@ import { SalesModule } from './sales/sales.module';
     CommandeComponent,
     CommandeEditComponent,
     ContactusComponent,
-    FooterComponent ,
+    FooterComponent,
     SocialComponent,
     HeaderComponent,
     ClientComponent,
     BankComponent,
     TestimonialComponent,
     PricingComponent,
-    NotfoundComponent, 
+    NotfoundComponent,
     NavigationComponent,
     NavmenuComponent,
     BankComponent,
@@ -90,20 +117,41 @@ import { SalesModule } from './sales/sales.module';
     UploadfilesComponent,
     StatutComponent,
     TripComponent,
-    DeliveryComponent, 
-    DeliveryEditComponent, 
-    ClientEditComponent,  
-  ],
+    DeliveryComponent,
+    DeliveryEditComponent,
+    ClientEditComponent, NavBarComponent, TestComponent, ClientsComponent,
+    DialogOverviewExampleDialog
+    ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
+    BrowserAnimationsModule,
     AgGridModule.withComponents([]),
-    AppRoutingModule, 
-
+    AppRoutingModule,
+    MatStepperModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ChartsModule, 
-    
+    ChartsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatBadgeModule,
+    MatSidenavModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
+    MatProgressBarModule,
+    MatRadioModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
+
   ],
   providers: [
     EmployeeDataService,
@@ -114,12 +162,14 @@ import { SalesModule } from './sales/sales.module';
     CommandeDataService,
     ClientCategoryDataService,
     IDataService,
-    RoutegaurdService,  
+    RoutegaurdService,
+    EmployeeService,
     ConfigService,
-    SignalRService, 
-    StockModule, 
+    SignalRService,
+    StockModule,
     SalesModule,
-],
+    ApptestModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

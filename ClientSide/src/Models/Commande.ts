@@ -3,7 +3,7 @@
         id: string;
         no: number;
         pCode: string;
-        pName: string;
+        pname: string;
         qte: string;
         prix: string;
         invoiceHeaderID:string;

@@ -43,9 +43,9 @@ export class EmployeesComponent implements OnInit {
       });
     }
   }
-  @ViewChild('empadd', {static: false})
+  @ViewChild('empadd', { static: false })
   addcomponent: EmployeeAddComponent;
-  @ViewChild('regForm', {static: false})
+  @ViewChild('regForm', { static: false })
   editcomponent: EmployeeupdateComponent;
   loadAddnew() {
     this.addcomponent.objemp.email = "";

@@ -6,6 +6,26 @@ import { SalesRoutingModule } from './sales-routing.module';
 import { InvoiceEditComponent } from './invoice-edit/invoice-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatStepperModule,
+  MatSelectModule,
+  MatTabsModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatError,
+  MatBadgeModule,
+  MatSidenavModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatDialogModule,
+  MatProgressBarModule,
+  MatRadioButton, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatSnackBarModule
+} from '@angular/material';
 
 
 @NgModule({
@@ -18,6 +38,9 @@ import { BrowserModule } from '@angular/platform-browser';
     SalesRoutingModule,  
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ], 
   providers: [
     InvoiceService

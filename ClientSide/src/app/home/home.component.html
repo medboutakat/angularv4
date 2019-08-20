@@ -1,34 +1,109 @@
-<div *ngIf="!group" class="form from-start">
-  <div class="container">
-      <div class="form-group">
-          <label>Email</label>
-          <input type="email" class="form-control" name="email" [(ngModel)]="email" placeholder="Email">
-      </div>
-      <div class="form-group">
-          <label>Group</label>
-          <input type="text" class="form-control" name="key" [(ngModel)]="groupKey" placeholder="Group">
-      </div>
-      <button (click)="createOrJoin()" class="btn btn-primary">Create or Join Group</button>
-  </div>
+<div class="container1">
+
+    <div style="height: 170px;">
+
+        <section class="ss-style-triangles">
+            <div class="column">
+                <header>
+                    <h1 style="color: white;">GM-SOFT Application</h1>
+                    <p style="color: white; ">Application programmé et designé par Zakarya </p>
+                </header>
+            </div>
+        </section>
+    </div>
+
+    <section class="col-3 color">
+        <!-- <div class="column col-md-6 col-xs-12">
+         <div class="col-xs-2">
+           <img height="64px" src="../../assets/todo.png" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+         </div>
+         <div class="col-xs-10" style="text-align: left;" >Gestion des demandes congés : utilisateur peut effectuer une demande et suivi cette demande.</div>
+   </div>
+     <div class="column col-md-6 col-xs-12">
+         <div class="col-xs-2">
+           <img height="64px" src="../../assets/todo.png" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+         </div>
+         <div class="col-xs-10" style="text-align: left;" >Gestion des demandes congés : utilisateur peut effectuer une demande et suivi cette demande.</div>
+     </div>
+     <div class="column col-md-6 col-xs-12">
+       <div class="col-xs-2">
+         <img height="64px" src="../../assets/todo.png" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+       </div>
+       <div class="col-xs-10" style="text-align: left;" >Gestion des demandes congés : utilisateur peut effectuer une demande et suivi cette demande.</div>
+     </div>
+     <div class="column col-md-6 col-xs-12">
+       <div class="col-xs-2">
+         <img height="64px" src="../../assets/todo.png" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+       </div>
+       <div class="col-xs-10" style="text-align: left;" >Gestion des demandes congés : utilisateur peut effectuer une demande et suivi cette demande.</div>
+     </div>-->
+        <div class="column">
+            <img height="64px" src="../../assets/todo.png" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+            <p style="text-align: center;color: white">ʻʻ Tache Numero 1 ʼʼ<br><small class="small-text">Description de la tache ici.</small></p>
+        </div>
+        <div class="column">
+            <img height="64px" src="../../assets/pencil.svg" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+            <p style="text-align: center;color: white">ʻʻ Tache Numero 2 ʼʼ<br><small class="small-text">Description de la tache ici. .</small></p>
+        </div>
+        <div class="column">
+            <img height="64px" src="../../assets/untitled.svg" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+            <p style="text-align: center;color: white">ʻʻ Tache Numero 3 ʼʼ<br><small class="small-text"> Description de la tache ici.</small></p>
+        </div>
+        <div class="column">
+            <img height="64px" src="../../assets/todo.png" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+            <p style="text-align: center;color: white">ʻʻ Tache Numero 4 ʼʼ<br><small class="small-text"> Description de la tache ici.</small></p>
+        </div>
+        <div class="column">
+            <img height="64px" src="../../assets/users.svg" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+            <p style="text-align: center;color: white">ʻʻ Tache Numero 5 ʼʼ<br><small class="small-text">Description de la tache ici.</small></p>
+        </div>
+        <div class="column">
+            <img height="64px" src="../../assets/todo.png" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+            <p style="text-align: center;color: white">ʻʻ Tache Numero 6ʼʼ<br><small class="small-text">Description de la tache ici.</small></p>
+        </div>
+    </section>
+    <div style="height: 54px;">
+        <section class="col-3 ss-style-doublediagonal">
+
+        </section>
+    </div>
+
 </div>
-<div *ngIf="group">
-  <div class="glass" *ngFor="let glass of group.glasses">
-      <div class="beer-container">
-          <!-- <img src="/images/glass.png" /> -->
-          <div class="beer" [style.height]="glass.value+'%'"></div>
-          <img [src]="getGravatarByEmail(glass.email)" alt="#" width="44" height="44" class="gravatar">
+<!-- /container -->
+
+
+<!--
+
+<div class="items-home">
+  <div class="col-md-12">
+    <div class="col-md-6 col-xs-12">
+      <div class="col-xs-2">
+        <img height="64px" src="../../assets/todo.png" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
       </div>
+      <div class="col-xs-10" style="text-align: left;" >Gestion des demandes congés : utilisateur peut effectuer une demande et suivi cette demande.</div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <div class="col-xs-2">
+        <img height="64px" src="../../assets/import.png" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+      </div>
+      <div class="col-xs-10 " style="text-align: left;" >Gestion d'absence des employee : system permet de importer ,traiter et sauvgarder les presences des employees .</div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <div class="col-xs-2">
+        <img height="64px" src="../../assets/import.png" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+      </div>
+      <div class="col-xs-10 " style="text-align: left;" >Gestion des stagaire : suivi simple des stagaires ; les demandes ,les collaborateur ainsi que la periode de chaque stagaire .</div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <div class="col-xs-2">
+        <img height="64px" src="../../assets/import.png" style="border: 1px solid #0f4b9f; border-radius: 50%" width="64px">
+      </div>
+      <div class="col-xs-10 " style="text-align: left;" >Messagerie : environement simple de messagerie et de notification entre les membre associer dans l'application .</div>
+    </div>
+
   </div>
 
-  <div class="main-button" *ngIf="group.hasStarted && !group.hasFinished">
-      <button (click)="drink()">Drink</button>
-  </div>
-  <div class="main-button" *ngIf="!group.hasStarted && _hubConnection.connection.connectionId == group.owner">
-      <button (click)="start()">Start</button>
-  </div>
-  <div class="main-button" *ngIf="group.hasFinished">
-      Drinking is over!!! Winner is
-      <b>{{group.winnerEmail}}</b>. Click
-      <a (click)="clear()">here</a> to start over.
-  </div>
 </div>
+
+
+-->

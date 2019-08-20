@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Client } from 'src/Models/Client'; 
+import { Client, client } from 'src/Models/Client'; 
 import { ClientDataService } from '../DataService/ClientDataService'; 
 
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ export class ClientComponent implements OnInit {
   
   
  
-    objlist: Client[];
+    objlist: client[];
     dataavailbale: Boolean = false;
     action:string
     tempemp: Client
