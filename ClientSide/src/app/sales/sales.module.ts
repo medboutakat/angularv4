@@ -38,11 +38,10 @@ import {
     SalesRoutingModule,  
     FormsModule,
     ReactiveFormsModule,
-    //****Material design*/
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
-    /****** */
+    MatInputModule,
+    MatDatepickerModule
   ], 
   providers: [
     InvoiceService

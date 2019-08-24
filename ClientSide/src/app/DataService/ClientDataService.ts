@@ -2,7 +2,9 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Client, client } from 'src/Models/client';
 import { ROOT_URL } from 'src/Models/Config'
+
 import { Observable } from 'rxjs';
+
 @Injectable()
 export class ClientDataService {
 
@@ -14,8 +16,15 @@ export class ClientDataService {
 
   }
   //http://localhost:42333/api/clients
-  getClient() {
+  getClient(): Observable<client[]> {
     return this.http.get<client[]>(ROOT_URL + this.endPoints);
+  }
+
+  findAll(): Observable<client[]> {
+    return this.http.get<client[]>("http://localhost:4200/assets/clients.json");
+  }
+  getOne(id:string): Observable<client>{
+    return this.http.get<client>(ROOT_URL + this.endPoints+"/"+id);
   }
 
   AddClient(emp: Client) {

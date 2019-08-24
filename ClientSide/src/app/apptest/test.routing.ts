@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChildComponent } from './child/child.component';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
-  { path: 'test', component: ChildComponent }
+  { path: '', component: ChildComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  declarations: [],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes)
+  ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppTestRoutingModule { }

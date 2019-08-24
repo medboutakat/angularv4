@@ -1,0 +1,26 @@
+<div class="header-tool">
+    <br>
+    <div>
+        <div class="col-md-3" style="text-align: right">
+            <img src="../../assets/users.svg" style="height: 80px;
+    width: 100px;">
+        </div>
+        <div class="col-md-9">
+            <h4>Gestion des clients</h4>
+            <p>This interface descrption </p>
+        </div>
+
+    </div>
+    <hr class="separator">
+</div>
+<br>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham" (gridReady)="onGridReady($event)" [treeData]="true" (cellValueChanged)="onCellValueChanged($event)" [columnDefs]="columnDefs" [rowData]="rowData">
+            </ag-grid-angular>
+            <br/>
+            <button class="btn btn-primary" (click)="saveModifiedRows()">Save</button>
+        </div>
+    </div>
+</div>

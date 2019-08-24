@@ -1,1 +1,67 @@
-<p>child works!</p>
+<div>
+    <div class="header-tool">
+        <br>
+        <div>
+            <div class="col-md-3" style="text-align: right">
+                <img src="../../assets/users.svg" style="height: 80px;
+    width: 100px;">
+            </div>
+            <div class="col-md-9">
+                <h4>Invoice management</h4>
+                <p>This interface descrption </p>
+            </div>
+
+        </div>
+        <hr class="separator">
+    </div>
+    <br>
+    <div class="container">
+        <div class="panel panel-primary">
+            <table class="table table-hover table-striped table-bordered nowrap" style="margin-top: 10px;width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">#Matricule</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Patent</th>
+                        <th scope="col">RC</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of clients">
+                        <td data-title="#Matricule">{{c.id}}</td>
+                        <td data-title="Nom">{{c.name1}}</td>
+                        <td data-title="Prenom">{{c.name2}}</td>
+                        <td data-title="code">{{c.code}}</td>
+                        <td data-title="Patent">{{c.patent}}</td>
+                        <td data-title="RC">{{c.rc}}</td>
+                        <td data-title="Action">
+                            <a>
+                                <i class="far fa-trash-alt fa-lg" style="cursor: pointer;color: red"></i></a>
+                            <a><i class="fas fa-user-edit fa-lg"
+                       style="cursor: pointer;color: #035b96;margin-left: 40px" (click)="loadEditForm(c.id)"
+                       data-toggle="modal" data-target="#myModal"></i></a> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-primary"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <app-childedit #editView (nameEvent)="RefreshData($event)"></app-childedit>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

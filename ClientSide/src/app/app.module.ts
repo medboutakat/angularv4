@@ -45,7 +45,6 @@ import { MapsComponent } from './maps/maps.component';
 import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
 import { StatutComponent } from './statut/statut.component';
 import { TripComponent } from './trip/trip.component';
-import { AgGridModule } from 'ag-grid-angular';
 import { StockModule } from './stock/stock.module';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { DeliveryEditComponent } from './delivery-edit/delivery-edit.component';
@@ -82,9 +81,8 @@ import {
 import { ClientsComponent, DialogOverviewExampleDialog } from './clients/clients.component';
 import { EmployeeService } from './DataService/emp.service';
 import { ApptestModule } from './apptest/apptest.module';
-import { ProductsComponent } from './products/products.component';
-import { ProductsService } from './DataService/products.service';
-import { StoreModule } from './store/store.module';
+import {  AgGridModule } from 'ag-grid-angular';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -124,7 +122,7 @@ import { StoreModule } from './store/store.module';
     DeliveryEditComponent,
     ClientEditComponent, NavBarComponent, TestComponent, ClientsComponent,
     DialogOverviewExampleDialog,
-    ProductsComponent
+    InvoiceComponent
     ],
   imports: [
     BrowserModule,
@@ -172,9 +170,7 @@ import { StoreModule } from './store/store.module';
     SignalRService,
     StockModule,
     SalesModule,
-    ApptestModule,
-    ProductsService,
-    StoreModule
+    ApptestModule
   ],
   bootstrap: [AppComponent]
 })

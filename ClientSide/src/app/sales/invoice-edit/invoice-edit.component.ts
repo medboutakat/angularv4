@@ -11,6 +11,7 @@ import { InvoiceHeader, InvoiceDetail } from 'src/Models/Commande';
 })
 export class InvoiceEditComponent implements OnInit {
   objectFromDetail: any;
+  
  
    
 

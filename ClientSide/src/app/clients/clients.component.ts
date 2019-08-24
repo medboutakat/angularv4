@@ -12,9 +12,8 @@ import {
   MatSnackBar
 } from '@angular/material';
 
-import {
-  HttpClientModule
-} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+
 import {
   FormBuilder,
   FormControl,
@@ -33,7 +32,7 @@ import {
 import { EmployeeService } from '../DataService/emp.service';
 import { ClientDataService } from '../DataService/ClientDataService';
 import { client } from 'src/Models/Client';
-
+import { ColDef, ColumnApi, GridApi } from 'ag-grid-community';
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
@@ -41,11 +40,24 @@ import { client } from 'src/Models/Client';
 })
 export class ClientsComponent implements OnInit {
 
+/************************* */
+  // row data and column definitions
+  private rowData: client[];
+  private columnDefs: ColDef[];
+
+  // gridApi and columnApi
+  private api: GridApi;
+  private columnApi: ColumnApi;
+
+
+
+  /**************************************** */
   date: any;
   clients:client[]=new Array();
   pageEmployes: employee[];
   motCle: string = '';
   size: number = 5;
+
   page: number = 0;
   pages: Array<number>;
   ArrayS: number;
@@ -57,13 +69,74 @@ export class ClientsComponent implements OnInit {
   //ajouter employee
   secondFormGroup: FormGroup;
   animate;
+  private createColumnDefs() {
+    return [
+      { headerName: 'Nom', field: 'name1', editable: true },
+      { headerName: 'Prenom', field: 'name2', editable: true },
+      { headerName: 'code', field: 'code', editable: true }
+    ]
+  }
+  // columnDefs = [
+  //   { headerName: 'Nom', field: 'name1' ,editable:true},
+  //   { headerName: 'Prenom', field: 'name2', editable:true},
+  //   { headerName: 'code', field: 'code', editable: true }
+  // ];
+  
 
-  constructor(private http: HttpClientModule,public serv:ClientDataService, public SerEmployes: EmployeeService, public dialog: MatDialog,
+  constructor(private http: HttpClient,public serv:ClientDataService, public SerEmployes: EmployeeService, public dialog: MatDialog,
     private _formBuilder: FormBuilder, private titleService: Title, public snackBar: MatSnackBar, private router: Router) {
+    this.columnDefs = this.createColumnDefs();
 
   }
+  onGridReady(params): void {
+    this.api = params.api;
+    this.columnApi = params.columnApi;
 
+    this.api.sizeColumnsToFit();
+    console.log(params);
+  }
 
+  ngOnInit() {
+    this.CurrentEmp = JSON.parse(localStorage.getItem('currentUser'));
+    if (!this.CurrentEmp) {
+      //this.router.navigate(['login']);
+    }
+    console.log(this.CurrentEmp);
+    setTimeout(() => this.animate = 'start', 1000);
+    // this.http.get('http://localhost:4200/assets/clients.json').subscribe(resp=>{
+    //   resp
+    // })
+
+    this.serv.getClient().subscribe(
+      response => {
+        this.rowData = response
+      },
+      error => {
+        console.log(error);
+      }
+    )
+    this.firstFormGroup = this._formBuilder.group({
+      nom: ['', [Validators.required, Validators.minLength(4)]],
+      prenom: ['', [Validators.required, Validators.minLength(4)]],
+      sexe: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      tele: ['', [Validators.required, Validators.pattern('(^[6]+[0-9]{8}$)')]],
+      ville: ['',],
+      Lnaissance: ['',],
+      adresse: ['', Validators.required],
+      cin: ['', Validators.required]
+
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      DateDebut: ['', Validators.required],
+      DateFin: ['',],
+      Niveau: ['', Validators.required],
+      service: ['', Validators.required],
+    });
+
+    this.titleService.setTitle('Gestion des Employes - Cosumar');
+
+  }
 
   get nom(): any {
     return this.firstFormGroup.get('nom');
@@ -113,19 +186,42 @@ export class ClientsComponent implements OnInit {
 
   /*   * Recupération de la liste des clients  */
   getClients() {
-    this.serv.getClient().subscribe(resp => {
+    this.SerEmployes.getEmployes().subscribe(resp => {
       console.log(resp);
-      this.clients= <client[]>resp;
-      
+      this.clients= resp['data'];
+      console.log(this.clients);
+
     })
   }
 
+ /*
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+    console.log(params);
+  }
+*/
+  onCellValueChanged(event) {
 
+    console.log(event); ///to test it
+    event.data.modified = true;
+    console.log(event);
+    this.openSnackBar(" Data Changed ", "Edit");
+
+  }
+
+  saveModifiedRows() {
+
+    const modifiedRows = this.rowData.filter(row =>row['modified']);
+    console.log(modifiedRows);
+
+  }
 
   chercher() {
+    /*
     this.serv.getClient().subscribe(resp => {
       let listClient: client[] = new Array();
-      listClient = <client[]>resp;
+      listClient = <client[]>resp['data'];
       console.log("filtring");
       let listFinded: client[] = new Array();
       listClient.forEach(element => {
@@ -135,12 +231,12 @@ export class ClientsComponent implements OnInit {
 
       });
       this.clients = listFinded;
-    });
+    });*/
   }
 
   chercherService() {
 
-    this.SerEmployes.getEmployes("", 1, 3).subscribe(resp => {
+    this.SerEmployes.getEmployes().subscribe(resp => {
       let listEmp: employee[] = new Array();
       listEmp = <employee[]>resp['data'];
       console.log("filtring");
@@ -209,36 +305,7 @@ export class ClientsComponent implements OnInit {
 
 
   CurrentEmp: employee;
-  ngOnInit() {
-    this.CurrentEmp = JSON.parse(localStorage.getItem('currentUser'));
-    if (!this.CurrentEmp) {
-      //this.router.navigate(['login']);
-    }
-    console.log(this.CurrentEmp);
-    setTimeout(() => this.animate = 'start', 1000);
-    this.getClients();
-    this.firstFormGroup = this._formBuilder.group({
-      nom: ['', [Validators.required, Validators.minLength(4)]],
-      prenom: ['', [Validators.required, Validators.minLength(4)]],
-      sexe: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      tele: ['', [Validators.required, Validators.pattern('(^[6]+[0-9]{8}$)')]],
-      ville: ['',],
-      Lnaissance: ['',],
-      adresse: ['', Validators.required],
-      cin: ['', Validators.required]
-
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      DateDebut: ['', Validators.required],
-      DateFin: ['',],
-      Niveau: ['', Validators.required],
-      service: ['', Validators.required],
-    });
-
-    this.titleService.setTitle('Gestion des Employes - Cosumar');
-
-  }
+  
 
   setValue() {
 

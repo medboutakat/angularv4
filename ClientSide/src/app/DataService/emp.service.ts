@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { employee } from 'src/Models/Employee';
 import { Observable } from 'rxjs';
 import { ReturnStatement } from '@angular/compiler';
+import { client } from 'src/Models/Client';
 
 
 
@@ -16,13 +17,13 @@ export class EmployeeService {
 
     }
 
-    getEmployes(motCle: String, page: number, size: number): Observable<any> {
-        return this.http.get('http://localhost:4200/assets/clients.json');
+    getEmployes(): Observable<client[]> {
+        return this.http.get<client[]>('http://localhost:4200/assets/clients.json');
     }
     getEmployesService(service: String): any {
         console.log(service);
 
-        this.getEmployes("", 1, 3).subscribe(resp => {
+        this.getEmployes().subscribe(resp => {
             let listEmp: employee[] = new Array();
             console.log(resp);
             listEmp = <employee[]>resp['data'];

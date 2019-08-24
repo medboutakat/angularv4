@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { client } from 'src/Models/Client';
+import { ClientDataService } from 'src/app/DataService/ClientDataService';
+import { ChildeditComponent } from '../childedit/childedit.component';
 
 @Component({
   selector: 'app-child',
@@ -7,9 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChildComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:ClientDataService) { }
 
+  clients:client[]=new Array();
+  
   ngOnInit() {
+    this.LoadData();
+
+  }
+  LoadData(){
+    this.service.getClient().subscribe((resp) => {
+      this.clients = resp;
+      console.log(this.clients);
+    })
+  }
+  @ViewChild('editView', { static: false, }) editcomponent: ChildeditComponent
+  objTemp:client;
+  loadEditForm(id: string) {
+
+    this.service.getOne(id).subscribe((data) => {
+      this.objTemp = data;
+      console.log(data);
+      /*
+      this.editcomponent.IsNew = false;
+      this.editcomponent.objTemp = this.objTemp
+      this.editcomponent.objDetails = this.objTemp.invoiceDetails;
+      console.log(this.editcomponent.objDetails);
+      */
+    }), err => {
+      console.log(err);
+    }
+
+  }
+  RefreshData() {
+    this.LoadData();
   }
 
 }
