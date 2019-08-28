@@ -1,0 +1,284 @@
+<div>
+
+    <br>
+    <br>
+    <!-- Panel d'affichage des employés -->
+    <div class="container" *ngIf="mode==0">
+        <div class="panel panel-default">
+
+            <!--Panel d'affichage -->
+            <div class="panel panel-default">
+
+
+                <div class="panel-body">
+
+
+                    <div class="row">
+                        <div class="col-md-5" style="text-align: left">
+                            <mat-checkbox [(ngModel)]="OnlySelected">Only selected items </mat-checkbox>
+                            <button mat-raised-button color="primary" style="margin-left: 10px" (click)="exportCSV()">
+                                <i class="fas fa-file-excel"></i> Export CSV
+                            </button>
+                        </div>
+                        <div class="col-md-7" style="text-align: right">
+                            <button mat-raised-button color="primary" (click)="edit()" [disabled]="IsMultiple" *ngIf="IsRowSelected">
+                                <i class="fas fa-user-edit"></i> Edit
+                            </button>
+                            <button mat-raised-button color="warn" (click)="delete()" style="margin-left: 5px;" *ngIf="IsRowSelected">
+                                <i class="far fa-trash-alt"></i> Delete
+                            </button>
+                            <button mat-raised-button color="primary" (click)="add()" style="margin-left: 5px;"><i
+                                    class="fas fa-user-plus"></i> Add
+                            </button>
+
+
+                        </div>
+
+                    </div>
+                    <br>
+                    <!------------------- AG GRID COMPONENT ------------- -->
+                    <ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham" (gridReady)="onGridReady($event)" (cellValueChanged)="onCellValueChanged($event)" [columnDefs]="columnDefs" [rowData]="rowData" [rowSelection]="rowSelection" [paginationAutoPageSize]="true"
+                        (selectionChanged)="onSelectionChanged($event)" [pagination]="true">
+
+                    </ag-grid-angular>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container" *ngIf="mode==1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Modify client
+            </div>
+            <div class="panel-body">
+
+                <mat-vertical-stepper [linear]="true" #stepper style="font-family: PayPal-Sans;">
+                    <mat-step [stepControl]="firstFormGroup" [editable]="true">
+                        <ng-template matStepLabel>Modify informations</ng-template>
+                        <div style="text-align: center">
+
+
+                            <form [formGroup]="firstFormGroup">
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <input matInput placeholder="Name1" formControlName="name1" required>
+                                            <button mat-button *ngIf="name1.value" matSuffix mat-icon-button aria-label="Clear" (click)="name1.reset()">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                            <mat-hint></mat-hint>
+                                            <mat-error *ngIf="name1.errors && !name1.hasError('required')">
+                                                Name1 is to short
+                                            </mat-error>
+                                            <mat-error *ngIf="name1.hasError('required')">
+                                                name1 is <strong>required</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <input matInput placeholder="Name2" formControlName="name2" required>
+                                            <button mat-button *ngIf="name2.value" matSuffix mat-icon-button aria-label="Clear" (click)="name2.reset()">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                            <mat-hint></mat-hint>
+                                            <mat-error *ngIf="name2.errors && !name2.hasError('required')">
+                                                Name2 is to short
+                                            </mat-error>
+                                            <mat-error *ngIf="name2.hasError('required')">
+                                                name2 is <strong>required</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <input matInput placeholder="code" formControlName="code" required>
+
+                                            <mat-error *ngIf="code.hasError('required')">
+                                                code is <strong> required. </strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <span matPrefix>+212 &nbsp;</span>
+                                            <input type="tel" matInput placeholder="Telephone" formControlName="tele" required>
+                                            <mat-icon matSuffix>phone</mat-icon>
+                                            <mat-error *ngIf="tele.errors && !tele.hasError('required')">
+                                                Téléphone saisi invalid
+                                            </mat-error>
+                                            <mat-error *ngIf="tele.hasError('required')">
+                                                Téléphone est <strong> required. </strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div> -->
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <input matInput placeholder="Email Adresse" formControlName="email" required>
+                                            <mat-hint></mat-hint>
+                                            <mat-error *ngIf="email.errors && !email.hasError('required')">
+                                                Email is invalid
+                                            </mat-error>
+                                            <mat-error *ngIf="email.hasError('required')">
+                                                Email is <strong>required</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <input matInput placeholder="patent" formControlName="patent" required>
+                                            <mat-hint></mat-hint>
+
+                                            <mat-error *ngIf="patent.hasError('required')">
+                                                patent est <strong> required. </strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <mat-select placeholder="gender" formControlName="gender" required>
+                                                <mat-option>--</mat-option>
+                                                <mat-option value="male"> Male</mat-option>
+                                                <mat-option value="female"> Female</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="gender.hasError('required')">gender is
+                                                <strong>required</strong></mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field" required>
+                                            <textarea matInput placeholder="Address" formControlName="adresse"></textarea>
+                                            <mat-error *ngIf="adresse.hasError('required')">
+                                                adresse is <strong> required. </strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <input matInput placeholder="RC" formControlName="rc" required>
+
+                                            <mat-error *ngIf="rc.hasError('required')">
+                                                RC is <strong> required. </strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button mat-raised-button color="primary" (click)="setValue()" matStepperNext>Suivant</button>
+                                </div>
+                            </form>
+                            <!-- <form [formGroup]="secondFormGroup">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <mat-select placeholder="Service" formControlName="service" required>
+                                                <mat-option>--</mat-option>
+                                                <mat-option value="Service Informatique">Service Informatique
+                                                </mat-option>
+                                                <mat-option value="Service Stock">Service Stock</mat-option>
+                                                <mat-option value="Service Agronomie">Service Agronomie</mat-option>
+                                                <mat-option value="Service Comptabilité">Service Comptabilité
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="">Service est <strong> required. </strong></mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+
+                              
+
+                            </form> -->
+                        </div>
+
+                    </mat-step>
+
+                    <mat-step>
+                        <ng-template matStepLabel>Summary</ng-template>
+                        <h3> Last step : confirmation ! </h3>
+                        <div style="text-align: center">
+
+                            <div class="form-group">
+
+                                <div class="col-md-6">
+                                    First name : <strong>{{client.name1}}</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    Second name : <strong>{{client.name2}}</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    Gender : <strong>{{client.gender}}</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    ID card : <strong>{{client.patent}}</strong>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    Email Adress : <strong>{{client.mail}}</strong>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    Adress : <strong>{{client.adresse}}</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center">
+                            <button mat-raised-button matStepperPrevious class="spacer">Previous</button>
+                            <button mat-raised-button (click)="stepper.reset()" class="spacer">Reset inputs</button>
+                            <button mat-raised-button color="primary" (click)="send()" class="spacer">Confirm</button>
+                        </div>
+                    </mat-step>
+                </mat-vertical-stepper>
+                <div style="text-align: right">
+                    <button mat-raised-button (click)="annuler()" style="text-align: right">
+                        Annuler
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
