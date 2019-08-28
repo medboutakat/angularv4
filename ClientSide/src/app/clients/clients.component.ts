@@ -33,6 +33,7 @@ import { EmployeeService } from '../DataService/emp.service';
 import { ClientDataService } from '../DataService/ClientDataService';
 import { client } from 'src/Models/Client';
 import { ColDef, ColumnApi, GridApi } from 'ag-grid-community';
+import { ButtonRendererComponent } from './button-render.component';
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
@@ -40,7 +41,7 @@ import { ColDef, ColumnApi, GridApi } from 'ag-grid-community';
 })
 export class ClientsComponent implements OnInit {
 
-/************************* */
+  /************************* */
   // row data and column definitions
   private rowData: client[];
   private columnDefs: ColDef[];
@@ -53,7 +54,7 @@ export class ClientsComponent implements OnInit {
 
   /**************************************** */
   date: any;
-  clients:client[]=new Array();
+  clients: client[] = new Array();
   pageEmployes: employee[];
   motCle: string = '';
   size: number = 5;
@@ -69,24 +70,47 @@ export class ClientsComponent implements OnInit {
   //ajouter employee
   secondFormGroup: FormGroup;
   animate;
+
+    rowDataClicked1:any;
+  frameworkComponents: any;
+  codeColumn = { headerName: 'code', field: 'code', editable: true, checkboxSelection: true, filter: true };
   private createColumnDefs() {
     return [
+  this.codeColumn    ,
       { headerName: 'Nom', field: 'name1', editable: true },
       { headerName: 'Prenom', field: 'name2', editable: true },
-      { headerName: 'code', field: 'code', editable: true }
+      {
+        headerName: 'Button Col 1',
+        cellRenderer: 'buttonRenderer',
+        cellRendererParams: {
+          onClick: this.onBtnClick1.bind(this),
+          label: 'Click 1'
+        }
+      }
     ]
+  }
+  onBtnClick1(e) {
+    console.log(e);
+    this.rowDataClicked1 = e.rowData;
   }
   // columnDefs = [
   //   { headerName: 'Nom', field: 'name1' ,editable:true},
   //   { headerName: 'Prenom', field: 'name2', editable:true},
   //   { headerName: 'code', field: 'code', editable: true }
   // ];
-  
+  editing:boolean=false;
+  SelectedItem:any;
+onSelectionChanged(event){
+  this.editing=true;
+  console.log(event);
+}
 
-  constructor(private http: HttpClient,public serv:ClientDataService, public SerEmployes: EmployeeService, public dialog: MatDialog,
+  constructor(private http: HttpClient, public serv: ClientDataService, public SerEmployes: EmployeeService, public dialog: MatDialog,
     private _formBuilder: FormBuilder, private titleService: Title, public snackBar: MatSnackBar, private router: Router) {
     this.columnDefs = this.createColumnDefs();
-
+    this.frameworkComponents = {
+      buttonRenderer: ButtonRendererComponent,
+    }
   }
   onGridReady(params): void {
     this.api = params.api;
@@ -188,19 +212,19 @@ export class ClientsComponent implements OnInit {
   getClients() {
     this.SerEmployes.getEmployes().subscribe(resp => {
       console.log(resp);
-      this.clients= resp['data'];
+      this.clients = resp['data'];
       console.log(this.clients);
 
     })
   }
 
- /*
-  onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    console.log(params);
-  }
-*/
+  /*
+   onGridReady(params) {
+     this.gridApi = params.api;
+     this.gridColumnApi = params.columnApi;
+     console.log(params);
+   }
+ */
   onCellValueChanged(event) {
 
     console.log(event); ///to test it
@@ -212,7 +236,7 @@ export class ClientsComponent implements OnInit {
 
   saveModifiedRows() {
 
-    const modifiedRows = this.rowData.filter(row =>row['modified']);
+    const modifiedRows = this.rowData.filter(row => row['modified']);
     console.log(modifiedRows);
 
   }
@@ -305,7 +329,7 @@ export class ClientsComponent implements OnInit {
 
 
   CurrentEmp: employee;
-  
+
 
   setValue() {
 
