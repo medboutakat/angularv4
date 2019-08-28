@@ -18,10 +18,6 @@ export class InvoiceService {
 
   }
 
-
-  get(){
-    return this.http.get<InvoiceHeader[]>("http://localhost:4200/assets/invoice.json");
-  }
   Get() {
     return this.http.get<InvoiceHeader[]>(ROOT_URL +this.endPoints);
   }

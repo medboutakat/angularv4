@@ -17,19 +17,19 @@
                         <div class="col-md-5" style="text-align: left">
                             <mat-checkbox [(ngModel)]="OnlySelected">Only selected items </mat-checkbox>
                             <button mat-raised-button color="primary" style="margin-left: 10px" (click)="exportCSV()">
-                <i class="fas fa-file-excel"></i> Export CSV
-              </button>
+                                <i class="fas fa-file-excel"></i> Export CSV
+                            </button>
                         </div>
                         <div class="col-md-7" style="text-align: right">
                             <button mat-raised-button color="primary" (click)="edit()" [disabled]="IsMultiple" *ngIf="IsRowSelected">
-                <i class="fas fa-user-edit"></i> Edit
-              </button>
+                                <i class="fas fa-user-edit"></i> Edit
+                            </button>
                             <button mat-raised-button color="warn" (click)="delete()" style="margin-left: 5px;" *ngIf="IsRowSelected">
-                <i class="far fa-trash-alt"></i> Delete
-              </button>
+                                <i class="far fa-trash-alt"></i> Delete
+                            </button>
                             <button mat-raised-button color="primary" (click)="add()" style="margin-left: 5px;"><i
-                  class="fas fa-user-plus"></i> Add
-              </button>
+                                    class="fas fa-user-plus"></i> Add
+                            </button>
 
 
                         </div>
@@ -58,7 +58,7 @@
             <div class="panel-body">
 
                 <mat-vertical-stepper [linear]="true" #stepper style="font-family: PayPal-Sans;">
-                    <mat-step [stepControl]="firstFormGroup && secondFormGroup" [editable]="true">
+                    <mat-step [stepControl]="firstFormGroup" [editable]="true">
                         <ng-template matStepLabel>Modify informations</ng-template>
                         <div style="text-align: center">
 
@@ -68,16 +68,16 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <mat-form-field class="example-form-field">
-                                            <input matInput placeholder="Nom" formControlName="nom" required>
-                                            <button mat-button *ngIf="nom.value" matSuffix mat-icon-button aria-label="Clear" (click)="nom.reset()">
-                        <mat-icon>close</mat-icon>
-                      </button>
+                                            <input matInput placeholder="Name1" formControlName="name1" required>
+                                            <button mat-button *ngIf="name1.value" matSuffix mat-icon-button aria-label="Clear" (click)="name1.reset()">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
                                             <mat-hint></mat-hint>
-                                            <mat-error *ngIf="nom.errors && !nom.hasError('required')">
-                                                nom trés court
+                                            <mat-error *ngIf="name1.errors && !name1.hasError('required')">
+                                                Name1 is to short
                                             </mat-error>
-                                            <mat-error *ngIf="nom.hasError('required')">
-                                                nom est <strong>requis</strong>
+                                            <mat-error *ngIf="name1.hasError('required')">
+                                                name1 is <strong>required</strong>
                                             </mat-error>
                                         </mat-form-field>
                                     </div>
@@ -86,22 +86,33 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <mat-form-field class="example-form-field">
-                                            <input matInput placeholder="Prenom" formControlName="prenom" required>
-                                            <button mat-button *ngIf="prenom.value" matSuffix mat-icon-button aria-label="Clear" (click)="prenom.reset()">
-                        <mat-icon>close</mat-icon>
-                      </button>
+                                            <input matInput placeholder="Name2" formControlName="name2" required>
+                                            <button mat-button *ngIf="name2.value" matSuffix mat-icon-button aria-label="Clear" (click)="name2.reset()">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
                                             <mat-hint></mat-hint>
-                                            <mat-error *ngIf="prenom.errors && !prenom.hasError('required')">
-                                                prenom trés court
+                                            <mat-error *ngIf="name2.errors && !name2.hasError('required')">
+                                                Name2 is to short
                                             </mat-error>
-                                            <mat-error *ngIf="prenom.hasError('required')">
-                                                prenom est <strong>requis</strong>
+                                            <mat-error *ngIf="name2.hasError('required')">
+                                                name2 is <strong>required</strong>
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <input matInput placeholder="code" formControlName="code" required>
+
+                                            <mat-error *ngIf="code.hasError('required')">
+                                                code is <strong> required. </strong>
                                             </mat-error>
                                         </mat-form-field>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <div class="col-md-6">
                                         <mat-form-field class="example-form-field">
                                             <span matPrefix>+212 &nbsp;</span>
@@ -111,11 +122,11 @@
                                                 Téléphone saisi invalid
                                             </mat-error>
                                             <mat-error *ngIf="tele.hasError('required')">
-                                                Téléphone est <strong>requis</strong>
+                                                Téléphone est <strong> required. </strong>
                                             </mat-error>
                                         </mat-form-field>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
                                     <div class="col-md-6">
@@ -123,10 +134,10 @@
                                             <input matInput placeholder="Email Adresse" formControlName="email" required>
                                             <mat-hint></mat-hint>
                                             <mat-error *ngIf="email.errors && !email.hasError('required')">
-                                                Email saisi invalid
+                                                Email is invalid
                                             </mat-error>
                                             <mat-error *ngIf="email.hasError('required')">
-                                                Email est <strong>requis</strong>
+                                                Email is <strong>required</strong>
                                             </mat-error>
                                         </mat-form-field>
                                     </div>
@@ -134,11 +145,11 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <mat-form-field class="example-form-field">
-                                            <input matInput placeholder="CIN" formControlName="cin" required>
+                                            <input matInput placeholder="patent" formControlName="patent" required>
                                             <mat-hint></mat-hint>
 
-                                            <mat-error *ngIf="cin.hasError('required')">
-                                                CIN est <strong>requis</strong>
+                                            <mat-error *ngIf="patent.hasError('required')">
+                                                patent est <strong> required. </strong>
                                             </mat-error>
                                         </mat-form-field>
                                     </div>
@@ -147,88 +158,37 @@
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <mat-form-field class="example-form-field">
-                                            <mat-select placeholder="Sexe" formControlName="sexe" required>
+                                            <mat-select placeholder="gender" formControlName="gender" required>
                                                 <mat-option>--</mat-option>
-                                                <mat-option value="homme"> Homme</mat-option>
-                                                <mat-option value="femme"> Femme</mat-option>
+                                                <mat-option value="male"> Male</mat-option>
+                                                <mat-option value="female"> Female</mat-option>
                                             </mat-select>
-                                            <mat-error *ngIf="sexe.hasError('required')">sexe est <strong>requis</strong></mat-error>
+                                            <mat-error *ngIf="gender.hasError('required')">gender is
+                                                <strong>required</strong></mat-error>
 
                                         </mat-form-field>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <mat-form-field class="example-form-field">
-                                            <input matInput placeholder="Ville" formControlName="ville">
-                                        </mat-form-field>
-                                    </div>
 
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <mat-form-field class="example-form-field">
-                                            <input matInput [matDatepicker]="picker" formControlName="Lnaissance" placeholder="Date Naissance">
-                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                            <mat-datepicker #picker></mat-datepicker>
-                                        </mat-form-field>
-                                    </div>
 
-                                </div>
 
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <mat-form-field class="example-form-field" required>
                                             <textarea matInput placeholder="Address" formControlName="adresse"></textarea>
                                             <mat-error *ngIf="adresse.hasError('required')">
-                                                adresse est <strong>requis</strong>
+                                                adresse is <strong> required. </strong>
                                             </mat-error>
                                         </mat-form-field>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <input matInput placeholder="RC" formControlName="rc" required>
 
-                            </form>
-                            <form [formGroup]="secondFormGroup">
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <mat-form-field class="example-form-field">
-                                            <mat-select placeholder="Service" formControlName="service" required>
-                                                <mat-option>--</mat-option>
-                                                <mat-option value="Service Informatique">Service Informatique</mat-option>
-                                                <mat-option value="Service Stock">Service Stock</mat-option>
-                                                <mat-option value="Service Agronomie">Service Agronomie</mat-option>
-                                                <mat-option value="Service Comptabilité">Service Comptabilité</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="">Service est <strong>Requis</strong></mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <mat-form-field class="example-form-field">
-                                            <input matInput [matDatepicker]="picker1" formControlName="DateDebut" placeholder="Date Début">
-                                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                            <mat-datepicker #picker1></mat-datepicker>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <mat-form-field class="example-form-field">
-                                            <input matInput [matDatepicker]="picker2" formControlName="DateFin" placeholder="Date fin">
-                                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                                            <mat-datepicker #picker2></mat-datepicker>
-
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <mat-form-field class="example-form-field">
-                                            <input matInput placeholder="Niveau d'etude" formControlName="Niveau" required>
-
-                                            <mat-error *ngIf="Niveau.hasError('required')">
-                                                Le niveau d'étude est <strong>requis</strong>
+                                            <mat-error *ngIf="rc.hasError('required')">
+                                                RC is <strong> required. </strong>
                                             </mat-error>
                                         </mat-form-field>
                                     </div>
@@ -237,8 +197,30 @@
                                 <div class="col-md-6 col-md-offset-3">
                                     <button mat-raised-button color="primary" (click)="setValue()" matStepperNext>Suivant</button>
                                 </div>
-
                             </form>
+                            <!-- <form [formGroup]="secondFormGroup">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="example-form-field">
+                                            <mat-select placeholder="Service" formControlName="service" required>
+                                                <mat-option>--</mat-option>
+                                                <mat-option value="Service Informatique">Service Informatique
+                                                </mat-option>
+                                                <mat-option value="Service Stock">Service Stock</mat-option>
+                                                <mat-option value="Service Agronomie">Service Agronomie</mat-option>
+                                                <mat-option value="Service Comptabilité">Service Comptabilité
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="">Service est <strong> required. </strong></mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+
+                              
+
+                            </form> -->
                         </div>
 
                     </mat-step>
@@ -251,62 +233,33 @@
                             <div class="form-group">
 
                                 <div class="col-md-6">
-                                    First name : <strong>{{employee.nom}}</strong>
+                                    First name : <strong>{{client.name1}}</strong>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    Second name : <strong>{{employee.prenom}}</strong>
+                                    Second name : <strong>{{client.name2}}</strong>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    Gender : <strong>{{employee.sexe}}</strong>
+                                    Gender : <strong>{{client.gender}}</strong>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    ID card : <strong>{{employee.cin}}</strong>
+                                    ID card : <strong>{{client.patent}}</strong>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    Email Adress : <strong>{{employee.email}}</strong>
+                                    Email Adress : <strong>{{client.mail}}</strong>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    Service : <strong>{{employee.service}}</strong>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    Phone : <strong>{{employee.tele}}</strong>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    City : <strong>{{employee.ville}}</strong>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    Date of start : <strong>{{employee.dateDeb}}</strong>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    Date of end : <strong>{{employee.dateFin}}</strong>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    Date of birth : <strong>{{employee.dateNaissance}}</strong>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    Adress : <strong>{{employee.adresse}}</strong>
+                                    Adress : <strong>{{client.adresse}}</strong>
                                 </div>
                             </div>
                         </div>
@@ -320,8 +273,8 @@
                 </mat-vertical-stepper>
                 <div style="text-align: right">
                     <button mat-raised-button (click)="annuler()" style="text-align: right">
-            Annuler
-          </button>
+                        Annuler
+                    </button>
                 </div>
             </div>
 

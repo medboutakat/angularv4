@@ -1,7 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {
-  employee, Employee
-} from '../../../Models/Employee';
+
 import {
   Title
 } from '@angular/platform-browser';
@@ -31,7 +29,7 @@ import {
 } from '@angular/router';
 import { EmployeeService } from '../../DataService/emp.service';
 import { ClientDataService } from '../../DataService/ClientDataService';
-import { client } from 'src/Models/Client';
+import { Client, client } from 'src/Models/Client';
 import { ColDef, ColumnApi, GridApi } from 'ag-grid-community';
 @Component({
   selector: 'app-customers',
@@ -57,32 +55,30 @@ export class CustomersComponent implements OnInit {
   /**************************************** */
   date: any;
   clients: client[] = new Array();
-  pageEmployes: employee[];
+  pageEmployes: client[];
   motCle: string = '';
   size: number = 5;
 
   page: number = 0;
   pages: Array<number>;
   ArrayS: number;
-  employee: employee = new employee();
+  client: client = new client();
   mode: number = 0;
   photo: string;
   firstFormGroup: FormGroup;
   service: string;
-  //ajouter employee
-  secondFormGroup: FormGroup;
   animate;
   private createColumnDefs() {
     return [
       { headerName: 'code', field: 'code', editable: true, filter: true, sortable: true, checkboxSelection: true },
       { headerName: 'Nom', field: 'name1', editable: true, filter: true, sortable: true },
-      { headerName: 'Prenom', field: 'name2', editable: true, filter: true, sortable: true }
+      { headerName: 'name2', field: 'name2', editable: true, filter: true, sortable: true }
 
     ]
   }
   // columnDefs = [
   //   { headerName: 'Nom', field: 'name1' ,editable:true},
-  //   { headerName: 'Prenom', field: 'name2', editable:true},
+  //   { headerName: 'name2', field: 'name2', editable:true},
   //   { headerName: 'code', field: 'code', editable: true }
   // ];
 
@@ -136,28 +132,26 @@ export class CustomersComponent implements OnInit {
     console.log("editiiiiiiing");
     this.SelectedClient = this.api.getSelectedRows()[0];
     this.mode = 1;
-    this.firstFormGroup.controls['nom'].setValue(this.SelectedClient.name1);
+    this.firstFormGroup.controls['name1'].setValue(this.SelectedClient.name1);
     this.firstFormGroup.controls['email'].setValue("mail@mail.com");
     this.firstFormGroup.controls['adresse'].setValue(this.SelectedClient.adresse);
-    this.firstFormGroup.controls['cin'].setValue("CIN");
-    this.firstFormGroup.controls['tele'].setValue("tele");
-    this.firstFormGroup.controls['ville'].setValue(this.SelectedClient.name3);
+    this.firstFormGroup.controls['patent'].setValue("patent");
+    this.firstFormGroup.controls['code'].setValue(this.SelectedClient.name3);
     this.firstFormGroup.controls['Lnaissance'].setValue("25/10/1997");
-    this.firstFormGroup.controls['prenom'].setValue(this.SelectedClient.name2);
-    this.firstFormGroup.controls['sexe'].setValue("Homme");
+    this.firstFormGroup.controls['name2'].setValue(this.SelectedClient.name2);
+    this.firstFormGroup.controls['gender'].setValue("Homme");
 
-    // this.secondFormGroup.controls['Niveau'].setValue(emp.niveauEtude);
+    // this.secondFormGroup.controls['rc'].setValue(emp.rcEtude);
     // this.secondFormGroup.controls['service'].setValue(emp.service);
     // this.secondFormGroup.controls['DateDebut'].setValue(emp.dateDeb);
     // this.secondFormGroup.controls['DateFin'].setValue(emp.dateFin);
-    // this.employee.photo = emp.photo;
-    // this.employee.matricule = emp.matricule;
+    // this.client.photo = emp.photo;
+    // this.client.matricule = emp.matricule;
   }
   add() {
     this.mode = 1;
     this.IsNew = true;
     this.firstFormGroup.reset();
-    this.secondFormGroup.reset();
   }
   delete() {
     this.openDialog(this.api.getSelectedRows());
@@ -175,72 +169,51 @@ export class CustomersComponent implements OnInit {
 
     this.LoadData();
     this.firstFormGroup = this._formBuilder.group({
-      nom: ['', [Validators.required, Validators.minLength(4)]],
-      prenom: ['', [Validators.required, Validators.minLength(4)]],
-      sexe: ['', Validators.required],
+      name1: ['', [Validators.required, Validators.minLength(4)]],
+      name2: ['', [Validators.required, Validators.minLength(4)]],
+      gender: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      tele: ['', [Validators.required, Validators.pattern('(^[6]+[0-9]{8}$)')]],
-      ville: ['',],
-      Lnaissance: ['',],
+      code: ['',],
+      rc: ['',],
       adresse: ['', Validators.required],
-      cin: ['', Validators.required]
+      patent: ['', Validators.required]
 
     });
-    this.secondFormGroup = this._formBuilder.group({
-      DateDebut: ['', Validators.required],
-      DateFin: ['',],
-      Niveau: ['', Validators.required],
-      service: ['', Validators.required],
-    });
+
 
     this.titleService.setTitle('Gestion des Employes - Cosumar');
 
   }
 
-  get nom(): any {
-    return this.firstFormGroup.get('nom');
+  get name1(): any {
+    return this.firstFormGroup.get('name1');
   }
 
-  get prenom(): any {
-    return this.firstFormGroup.get('prenom');
+  get name2(): any {
+    return this.firstFormGroup.get('name2');
   }
 
-  get sexe(): any {
-    return this.firstFormGroup.get('sexe');
+  get gender(): any {
+    return this.firstFormGroup.get('gender');
   }
 
   get email(): any {
     return this.firstFormGroup.get('email');
   }
-  set nom1(value: any) {
-    this.firstFormGroup.controls['nom'].setValue(value);
+
+
+  get code(): any {
+    return this.firstFormGroup.get('code');
   }
-  get tele(): any {
-    return this.firstFormGroup.get('tele');
-  }
-  get ville(): any {
-    return this.firstFormGroup.get('ville');
-  }
-  get Lnaissance(): any {
-    return this.firstFormGroup.get('Lnaissance');
+  get rc(): any {
+    return this.firstFormGroup.get('rc');
   }
   get adresse(): any {
     return this.firstFormGroup.get('adresse');
   }
-  get DateDebut(): any {
-    return this.secondFormGroup.get('DateDebut');
-  }
-  get DateFin(): any {
-    return this.secondFormGroup.get('DateFin');
-  }
-  get Niveau(): any {
-    return this.secondFormGroup.get('Niveau');
-  }
-  get Service(): any {
-    return this.secondFormGroup.get('service');
-  }
-  get cin(): any {
-    return this.firstFormGroup.get('cin');
+
+  get patent(): any {
+    return this.firstFormGroup.get('patent');
   }
 
   /*   * Recupération de la liste des clients  */
@@ -289,10 +262,10 @@ export class CustomersComponent implements OnInit {
   // chercherService() {
 
   //   this.SerEmployes.getEmployes().subscribe(resp => {
-  //     let listEmp: employee[] = new Array();
-  //     listEmp = <employee[]>resp['data'];
+  //     let listEmp: client[] = new Array();
+  //     listEmp = <client[]>resp['data'];
   //     console.log("filtring");
-  //     let listFinded: employee[] = new Array();
+  //     let listFinded: client[] = new Array();
   //     listEmp.forEach(element => {
   //       if (element.service == this.service) {
   //         listFinded.push(element);
@@ -305,15 +278,14 @@ export class CustomersComponent implements OnInit {
 
 
 
-  onSubmit(): void {
-    this.employee.nom = this.nom.value;
-    this.employee = this.prenom.value;
-    console.log(this.employee);
+  // onSubmit(): void {
+  //   this.client.name1 = this.nom.value;
+  //   this.client = this.name2.value;
+  //   console.log(this.client);
 
-  }
+  // }
 
   annuler() {
-    this.secondFormGroup.reset();
     this.firstFormGroup.reset();
     this.mode = 0;
     this.api.deselectAll();
@@ -321,7 +293,12 @@ export class CustomersComponent implements OnInit {
   }
   send() {
     if (this.IsNew) {
+      console.log(this.client);
       // sending new client to api
+      this.serv.AddClient(this.client).subscribe(resp => {
+        console.log(resp);
+        this.openSnackBar("client added succesfly!", "add");
+      })
     } else {
       //editing client
 
@@ -338,8 +315,8 @@ export class CustomersComponent implements OnInit {
       alert("No rows is selected! select some rows or uncheck only selected rows checkbox.")
     else this.api.exportDataAsCsv(params);
   }
-  updateEmp() {
-    this.SerEmployes.modiEmployee(this.employee.matricule, this.employee).subscribe(value => {
+  update() {
+    this.serv.EditClient(this.client).subscribe(value => {
 
       console.log(value);
       this.annuler();
@@ -351,40 +328,36 @@ export class CustomersComponent implements OnInit {
   }
 
 
-  CurrentEmp: employee;
+  CurrentEmp: client;
 
 
   setValue() {
 
-    this.employee.email = this.email.value;
-    this.employee.adresse = this.adresse.value;
-    this.employee.cin = this.cin.value;
-    this.employee.tele = this.tele.value;
-    this.employee.ville = this.ville.value;
-    console.log(this.Lnaissance.value);
-    if (this.DateFin.value != null && this.DateFin.value != '') {
-      this.employee.dateFin = _moment(this.DateFin.value).format('YYYY-MM-DD');
-    }
-    if (this.DateDebut.value != null && this.DateDebut.value != '') {
-      this.employee.dateDeb = _moment(this.DateDebut.value).format('YYYY-MM-DD');
-    }
-    if (this.Lnaissance.value != null && this.Lnaissance.value != '') {
-      this.employee.dateNaissance = _moment(this.Lnaissance.value).format('YYYY-MM-DD');
-    }
-    this.employee.nom = this.nom.value;
-    this.employee.prenom = this.prenom.value;
-    this.employee.niveauEtude = this.Niveau.value;
-    this.employee.service = this.Service.value;
-    this.employee.sexe = this.sexe.value;
-    console.log(this.employee);
+    this.client.mail = this.email.value;
+    this.client.adresse = this.adresse.value;
+    this.client.patent = this.patent.value;
+    this.client.code = this.code.value;
+    // if (this.DateFin.value != null && this.DateFin.value != '') {
+    //   this.client.dateFin = _moment(this.DateFin.value).format('YYYY-MM-DD');
+    // }
+    // if (this.DateDebut.value != null && this.DateDebut.value != '') {
+    //   this.client.dateDeb = _moment(this.DateDebut.value).format('YYYY-MM-DD');
+    // }
+    // if (this.Lnaissance.value != null && this.Lnaissance.value != '') {
+    //   this.client.dateNaissance = _moment(this.Lnaissance.value).format('YYYY-MM-DD');
+    // }
+    this.client.name1 = this.name1.value;
+    this.client.name2 = this.name2.value;
+    this.client.rc = this.rc.value;
+    this.client.gender = this.gender.value;
+    console.log(this.client);
   }
 
   saveEmploye() {
-    this.SerEmployes.saveEmployes(this.employee).subscribe(value => {
-      this.progress.percentage = 0;
+    this.serv.AddClient(this.client).subscribe(value => {
       console.log(value);
       this.annuler();
-      this.openSnackBar("Employee ajouté avec succes", "Ajoute");
+      this.openSnackBar("client ajouté avec succes", "Ajoute");
       this.mode = 0;
     }, error1 => console.log(error1));
   }
@@ -423,37 +396,8 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  ///Upload file
 
 
-  selectedFiles: FileList;
-  currentFileUpload: File;
-  progress: {
-    percentage: number
-  } = {
-      percentage: 0
-    };
-
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
-  }
-
-  upload() {
-    this.progress.percentage = 0;
-
-    this.currentFileUpload = this.selectedFiles.item(0);
-    /*this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress) {
-        this.progress.percentage = Math.round(100 * event.loaded / event.total);
-      } else if (event instanceof HttpResponse) {
-        console.log('File is completely uploaded!');
-      }
-    });*/
-    this.employee.photo = this.selectedFiles.item(0).name;
-    this.photo = "http://localhost:8080/files/" + this.employee.photo;
-    this.selectedFiles = undefined;
-
-  }
 
 }
 
@@ -461,7 +405,7 @@ export class CustomersComponent implements OnInit {
   template: '<h1 mat-dialog-title>Supression </h1>\n' +
     '<div mat-dialog-content>\n' +
     ' \n' +
-    'Would you like to delete Customers with the above id\'s:<br><p *ngFor="let c of data" ><strong >{{c.code}}</strong></p> ' +
+    'Would you like to delete items with the above id\'s:<br><p *ngFor="let c of data" ><strong >{{c.id}}</strong></p> ' +
     '</div>\n' +
     '<div mat-dialog-actions>\n' +
     ' <button mat-button mat-dialog-close=\'\'>Annuler</button>\n' +

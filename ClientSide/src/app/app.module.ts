@@ -83,6 +83,7 @@ import { EmployeeService } from './DataService/emp.service';
 import { ApptestModule } from './apptest/apptest.module';
 import {  AgGridModule } from 'ag-grid-angular';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { ButtonRendererComponent } from './clients/button-render.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
     FixedtopbarComponent,
     VatComponent,
     VatEditComponent,
+    ButtonRendererComponent,
     LoginComponent,
     SignupComponent,
     CommandeComponent,
@@ -127,7 +129,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AgGridModule.withComponents([]),
+    AgGridModule.withComponents([ButtonRendererComponent]),
     AppRoutingModule,
     MatStepperModule,
     FormsModule,

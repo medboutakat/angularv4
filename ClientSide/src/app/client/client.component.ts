@@ -55,7 +55,7 @@ export class ClientComponent implements OnInit {
       if (confirm("Are you sure you want to delete this ?")) {
         this.tempemp = new Client();
         this.tempemp.id = id;
-        this.dataservce.DeleteClient(parseInt(this.tempemp.id)).subscribe(_res => {
+        this.dataservce.DeleteClient(this.tempemp).subscribe(_res => {
           alert("Deleted successfully !!!");
           this.LoadData();
         })
