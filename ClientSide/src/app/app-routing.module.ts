@@ -62,7 +62,8 @@ const routes: Routes = [
   //     path: 'user/:name',
   //     component: ProductComponent
   //   }]
-  //   },
+  // },
+  
   { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) },
   { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) },
   { path: 'apptest', loadChildren: () => import('./apptest/apptest.module').then(m => m.ApptestModule) }
