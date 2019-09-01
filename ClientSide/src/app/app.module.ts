@@ -84,6 +84,8 @@ import { ApptestModule } from './apptest/apptest.module';
 import {  AgGridModule } from 'ag-grid-angular';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { ButtonRendererComponent } from './clients/button-render.component';
+import { DemoComponent } from './demo/demo.component';
+import { DemoService } from './demo/demo.service';
 
 @NgModule({
   declarations: [
@@ -124,7 +126,8 @@ import { ButtonRendererComponent } from './clients/button-render.component';
     DeliveryEditComponent,
     ClientEditComponent, NavBarComponent, TestComponent, ClientsComponent,
     DialogOverviewExampleDialog,
-    InvoiceComponent
+    InvoiceComponent,
+    DemoComponent
     ],
   imports: [
     BrowserModule,
@@ -172,7 +175,8 @@ import { ButtonRendererComponent } from './clients/button-render.component';
     SignalRService,
     StockModule,
     SalesModule,
-    ApptestModule
+    ApptestModule,
+    DemoService
   ],
   bootstrap: [AppComponent]
 })

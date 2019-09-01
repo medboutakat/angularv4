@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ClientDataService {
 
-  endPoints: String = "clients";
-  endPoint: String = "client";
+  endPoints: String = "customers";
+  endPoint: String = "customer";
   clients: Observable<Client[]>;
   newclient: Client;
   constructor(private http: HttpClient) {
@@ -27,11 +27,11 @@ export class ClientDataService {
     return this.http.get<client>(ROOT_URL + this.endPoints+"/"+id);
   }
 
-  AddClient(emp: Client) {
+  AddClient(emp: client) {
     const headers = new HttpHeaders().set('content-type', 'application/json');
 
     var body = {
-      name1: emp.name1, name2: emp.name2, name3: emp.name3, clientCategorieId: emp.categorieId
+      name1: emp.name1, name2: emp.name2, name3: emp.name3, clientCategorieId: emp.clientCategorieID
     }
 
     console.log(ROOT_URL);
@@ -39,24 +39,22 @@ export class ClientDataService {
   }
 
   ///
-  EditClient(emp: Client) {
+  EditClient(emp: client) {
     console.log(emp);
-    const params = new HttpParams().set('ID', emp.id);
+    const params = new HttpParams().set('ID', emp.id+'');
     const headers = new HttpHeaders().set('content-type', 'application/json');
     var body = {
-      name1: emp.name1, name2: emp.name2, name3: emp.name3, clientCategorieId: emp.categorieId, id: emp.id
+      name1: emp.name1, name2: emp.name2, name3: emp.name3, clientCategorieId: emp.clientCategorieID, id: emp.id
     }
 
     return this.http.put<Client>(ROOT_URL + this.endPoints + '/' + emp.id, body, { headers, params })
 
   }
-  DeleteClient(emp: Client) {
-    const params = new HttpParams().set('ID', emp.id);
+  DeleteClient(id:number) {
+    const params = new HttpParams().set('ID',id+'');
     const headers = new HttpHeaders().set('content-type', 'application/json');
-    var body = {
-      name1: emp.name1, name2: emp.name2, name3: emp.name3, clientCategorieId: emp.categorieId
-    }
-    return this.http.delete<Client>(ROOT_URL + this.endPoint + '/' + emp.id)
+    
+    return this.http.delete<Client>(ROOT_URL + this.endPoint + '/' + id)
 
   }
 

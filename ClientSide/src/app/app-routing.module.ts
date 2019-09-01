@@ -25,6 +25,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TestComponent } from './test/test.component';
 import { ClientsComponent } from './clients/clients.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { DemoComponent } from './demo/demo.component';
 
 const routes: Routes = [
 
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'route', component: VatComponent },
   { path: 'test', component: TestComponent },
   { path: 'invoice', component: InvoiceComponent },
+  { path: 'demo', component: DemoComponent },
 
   // {
   // path: 'sales', component: ProductComponent,

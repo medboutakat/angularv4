@@ -26,7 +26,7 @@
     "@aspnet/signalr": "^1.1.0",
     "ag-grid-angular": "^20.2.0",
     "ag-grid-community": "^20.2.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
     "jquery": "^3.3.1",

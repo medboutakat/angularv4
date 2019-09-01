@@ -100,7 +100,7 @@ export class CustomersComponent implements OnInit {
     this.serv.getClient().subscribe(
       response => {
         this.rowData = response
-        console.log(this.rowData);
+        console.log("row data",this.rowData);
       },
       error => {
         console.log(error);
@@ -333,7 +333,7 @@ export class CustomersComponent implements OnInit {
 
   setValue() {
 
-    this.client.mail = this.email.value;
+    this.client.email = this.email.value;
     this.client.adresse = this.adresse.value;
     this.client.patent = this.patent.value;
     this.client.code = this.code.value;

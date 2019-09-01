@@ -1,5 +1,5 @@
 
-export interface client {
+export class client {
     id:                number;
     code:              string;
     name1:             string;
@@ -7,6 +7,8 @@ export interface client {
     name3:             string;
     patent:            string;
     adresse:           string;
+    gender: string;
+email:string;
     rc:                string;
     clientCategorieID: number;
     contracts:         Contract[];

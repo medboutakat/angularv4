@@ -17,7 +17,7 @@ export class ClientComponent implements OnInit {
     objlist: client[];
     dataavailbale: Boolean = false;
     action:string
-    tempemp: Client
+    tempemp: client
     sizeRight:number=4;
     sizeLeft:number=8;
     
@@ -53,9 +53,9 @@ export class ClientComponent implements OnInit {
     }
     deleteconfirmation(id: string) { 
       if (confirm("Are you sure you want to delete this ?")) {
-        this.tempemp = new Client();
-        this.tempemp.id = id;
-        this.dataservce.DeleteClient(this.tempemp).subscribe(_res => {
+        this.tempemp = new client();
+        this.tempemp.id = parseInt(id);
+        this.dataservce.DeleteClient(this.tempemp.id).subscribe(_res => {
           alert("Deleted successfully !!!");
           this.LoadData();
         })
@@ -70,7 +70,7 @@ export class ClientComponent implements OnInit {
       this.action="add Client";
       this.editcomponent.IsNew=true;
       var mainObject=this.editcomponent.objemp;
-      mainObject.id = "" ;
+      mainObject.id = 0 ;
       mainObject.code= "" ;
       mainObject.name1= "" ;
       mainObject.name2= "" ;
@@ -78,13 +78,13 @@ export class ClientComponent implements OnInit {
       mainObject.patent= "" ;
       mainObject.adresse = "" ;
       mainObject.rc   ="" ;
-      mainObject.categorieId="";
+      mainObject.clientCategorieID=0;
     }
     loadnewForm(_id:string,_code:string,_name1:string,_name2:string,_name3:string,_patent:string,_adresse:string,_rc:string,_CategorieId:string) { 
       this.action="Edit Client";
       this.editcomponent.IsNew=false;
       var mainObject=this.editcomponent.objemp;
-      mainObject.id = _id;
+      mainObject.id = parseInt(_id);
       mainObject.code=_code ;
       mainObject.name1=_name1 ;
       mainObject.name2= _name2;
@@ -92,7 +92,7 @@ export class ClientComponent implements OnInit {
       mainObject.patent=_patent ;
       mainObject.adresse = _adresse ;
       mainObject.rc   =_rc ;
-      mainObject.categorieId=_CategorieId;
+      mainObject.clientCategorieID=parseInt(_CategorieId);
       console.log(mainObject);
     }
  

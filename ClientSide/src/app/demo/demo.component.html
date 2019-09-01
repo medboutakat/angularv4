@@ -1,0 +1,31 @@
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+    <div class="panel panel-primary">
+
+        <div class="col-md-6" *ngFor="let c of data">
+            <img src="../../assets/logo.png"/>
+            <p> image {{c.id}}  </p> 
+            <p> date : {{c.date}}</p>
+        </div>
+       <!-- <table class="table">
+           <thead>
+               <th>id</th>
+               <th>code</th>
+               <th>date</th>
+           </thead>
+           <tbody>
+               <tr *ngFor="let c of data">
+                   <td>
+                       {{c.id}}
+                   </td>
+                   <td> {{c.code}}</td>
+                   <td>{{c.date}}</td>
+
+               </tr>
+           </tbody>
+       </table>  -->
+    </div>
+</div>

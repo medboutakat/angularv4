@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { ClientCategory } from 'src/Models/ClientCategory'; 
 import { ClientDataService } from '../DataService/ClientDataService';
 import { ClientCategoryDataService } from '../DataService/ClientCategoryDataService';
-import { Client } from 'src/Models/Client';
+import { Client,client } from 'src/Models/Client';
 
 @Component({
   selector: 'app-Client-edit',
@@ -34,8 +34,8 @@ catList:ClientCategory[];
   @Input() IsNew: boolean = false;
 
   
-  objtempemp: Client;
-  @Input() objemp: Client = new Client();
+  objtempemp: client;
+  @Input() objemp: client = new client();
   LoadData() { 
     this.cateService.getCategory().subscribe((tempdate) => {
       this.catList = tempdate;
@@ -57,11 +57,11 @@ catList:ClientCategory[];
       });
     }else{
          
-        this.objtempemp=new Client();
+        this.objtempemp=new client();
         var objForm=regForm.value;
         this.objtempemp.name1=objForm.name1;
         this.objtempemp.name2=objForm.name2;  
-        this.objtempemp.categorieId=objForm.categorieId;   
+        this.objtempemp.clientCategorieID=objForm.categorieId;   
         console.log(this.objtempemp);
         
         this.dataservice.AddClient(this.objtempemp).subscribe(res=>{
