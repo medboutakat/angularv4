@@ -9,12 +9,13 @@ import { InvoiceEditComponent } from '../invoice-edit/invoice-edit.component';
   templateUrl: './invoice.component.html',
   styleUrls: ['./invoice.component.css']
 })
+
 export class InvoiceComponent implements OnInit {
 
   objlist: InvoiceHeader[];
   dataavailbale: Boolean = false;
-  action:string
-  objTemp: InvoiceHeader
+  action:string;
+  objTemp: InvoiceHeader;
   
 
   constructor(private service: InvoiceService, private route: Router) {
@@ -24,6 +25,7 @@ export class InvoiceComponent implements OnInit {
   ngOnInit() {
     this.LoadData(); 
   }
+  
   LoadData() { 
     this.service.Get().subscribe((tempdate) => {
       this.objlist = tempdate;
@@ -58,7 +60,7 @@ export class InvoiceComponent implements OnInit {
 
  
   loadAddnew() {
-    
+        
     this.editcomponent.IsNew=true;
     this.editcomponent.objDetails.splice(0, this.editcomponent.objDetails.length);
     console.log(this.editcomponent.objDetails);

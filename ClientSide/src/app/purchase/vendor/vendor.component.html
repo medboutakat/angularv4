@@ -1,0 +1,11 @@
+<h1> this is vendor component</h1>
+ 
+
+
+
+<ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham"
+ (gridReady)="onGridReady($event)" (cellValueChanged)="onCellValueChanged($event)"
+  [columnDefs]="columnDefs" [rowData]="rowData" [rowSelection]="rowSelection" [paginationAutoPageSize]="true"
+(selectionChanged)="onSelectionChanged($event)" [pagination]="true">
+
+</ag-grid-angular>

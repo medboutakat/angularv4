@@ -8,7 +8,7 @@ export class client {
     patent:            string;
     adresse:           string;
     gender: string;
-email:string;
+    email:string;
     rc:                string;
     clientCategorieID: number;
     contracts:         Contract[];

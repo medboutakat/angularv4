@@ -7,6 +7,7 @@ import { EmployeesComponent } from './employees/EmployeesComponent';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeeupdateComponent } from './employeeupdate/employeeupdate.component';
 
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeDataService } from '../app/DataService/EmployeeDataService';
@@ -86,6 +87,9 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { ButtonRendererComponent } from './clients/button-render.component';
 import { DemoComponent } from './demo/demo.component';
 import { DemoService } from './demo/demo.service';
+import { PurchaseModule } from './purchase/purchase.module';
+
+//import { Grid } from 'ag-grid-community';
 
 @NgModule({
   declarations: [
@@ -128,6 +132,7 @@ import { DemoService } from './demo/demo.service';
     DialogOverviewExampleDialog,
     InvoiceComponent,
     DemoComponent
+    
     ],
   imports: [
     BrowserModule,
@@ -157,7 +162,9 @@ import { DemoService } from './demo/demo.service';
     MatProgressBarModule,
     MatRadioModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    PurchaseModule
+    //Grid
 
   ],
   providers: [
