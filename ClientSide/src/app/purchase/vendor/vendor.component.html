@@ -1,11 +1,19 @@
 <h1> this is vendor component</h1>
  
+<hr/>
 
+<button  (click)="navigate('vendor-edit')" >Create New</button>
+<hr/>
 
-
-<ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham"
- (gridReady)="onGridReady($event)" (cellValueChanged)="onCellValueChanged($event)"
-  [columnDefs]="columnDefs" [rowData]="rowData" [rowSelection]="rowSelection" [paginationAutoPageSize]="true"
-(selectionChanged)="onSelectionChanged($event)" [pagination]="true">
+<div>
+  <button class="btn btn-primary" (click)="Edit('vendor-edit')">Edit vendor</button><button class="btn btn-danger" (click)="Delete()">Delete vendor</button>
+</div> 
+<hr/>
+<ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham" (gridReady)="onGridReady($event)"
+  [columnDefs]="columnDefs" [rowData]="rowData" (selectionChanged)="onSelectionChanged($event)">
 
 </ag-grid-angular>
+<!--  (gridReady)="onGridReady($event)" (cellValueChanged)="onCellValueChanged($event)" 
+      [rowSelection]="rowSelection" [paginationAutoPageSize]="true"
+      (selectionChanged)="onSelectionChanged($event)" [pagination]="true"
+ -->

@@ -45,7 +45,7 @@ export class CustomersComponent implements OnInit {
 
   // gridApi and columnApi
   private api: GridApi;
-  private columnApi: ColumnApi;
+  private columnApi: ColumnApi; 
 
   private rowSelection;
 
@@ -107,6 +107,7 @@ export class CustomersComponent implements OnInit {
       }
     )
   }
+  
   IsRowSelected: boolean = false;
   IsMultiple: boolean = false;
   IsNew: boolean;

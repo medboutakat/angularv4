@@ -7,8 +7,8 @@ export class client {
     name3:             string;
     patent:            string;
     adresse:           string;
-    gender: string;
-    email:string;
+    gender:            string;
+    email:             string;
     rc:                string;
     clientCategorieID: number;
     contracts:         Contract[];

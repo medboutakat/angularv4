@@ -1,6 +1,7 @@
 export class Vendor {            
         
-            id: 0;
+    
+            id: number;
             code: string;
             name1: string;
             name2 : string;
@@ -9,5 +10,6 @@ export class Vendor {
             phone: string;
             gsm: string;
             fax: string;
-            email: string;              
+            email: string;
+                    
 }

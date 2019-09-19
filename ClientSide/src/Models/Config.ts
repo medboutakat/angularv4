@@ -1,1 +1,1 @@
-export const ROOT_URL:string="http://192.168.0.30:42333/api/";  
+export const ROOT_URL:string="http://192.168.0.28:42333/api/";  
