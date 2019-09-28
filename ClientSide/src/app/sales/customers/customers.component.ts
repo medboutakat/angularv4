@@ -68,6 +68,7 @@ export class CustomersComponent implements OnInit {
   firstFormGroup: FormGroup;
   service: string;
   animate;
+
   private createColumnDefs() {
     return [
       { headerName: 'code', field: 'code', editable: true, filter: true, sortable: true, checkboxSelection: true },
@@ -76,12 +77,7 @@ export class CustomersComponent implements OnInit {
 
     ]
   }
-  // columnDefs = [
-  //   { headerName: 'Nom', field: 'name1' ,editable:true},
-  //   { headerName: 'name2', field: 'name2', editable:true},
-  //   { headerName: 'code', field: 'code', editable: true }
-  // ];
-
+  
 
   constructor(private http: HttpClient, public serv: ClientDataService, public SerEmployes: EmployeeService, public dialog: MatDialog,
     private _formBuilder: FormBuilder, private titleService: Title, public snackBar: MatSnackBar, private router: Router) {

@@ -167,55 +167,102 @@
 <div>
     <h1>vendor-edit works!</h1>
 
-    <form #myForm="ngForm" (ngSubmit)="onSubmit('url')">
+    <form [formGroup]="vendorEdit" (ngSubmit)="onSubmit()"  >
         <table>
             <tr>
-                <td>
+                <td >
+                    <input type="hidden" formControlName="id"  >
                     <label>code :</label>
-                    <input type="text" name="code" [(ngModel)]="vendor.code"/> 
+                    <input type="text" name="code" formControlName="code" />  
+                    <div *ngIf="f.code.invalid && (f.code.dirty || f.code.touched)" class="alert alert-danger">
+                        <div *ngIf="f.code.errors.required">
+                            code is required.
+                        </div> 
+                    </div>                                                                                                      
                 </td>
-                <td>
+                <td >
                     <label>name1 :</label>
-                    <input type="text" name="name1" [(ngModel)]="vendor.name1" > 
+                    <input type="text" formControlName="name1" /> 
+                    <div *ngIf="f.name1.invalid && (f.name1.dirty || f.name1.touched)" class="alert alert-danger">
+                        <div *ngIf="f.name1.errors.required">
+                            name1 is required.
+                        </div> 
+                    </div>                    
                 </td>
             </tr>
             <tr>
-                <td>
+                <td >
                     <label>name2 :</label>
-                    <input type="text" name="name2" [(ngModel)]="vendor.name2">
+                    <input type="text" formControlName="name2"   />
+                    <div *ngIf="f.name2.invalid && (f.name2.dirty || f.name2.touched)" class="alert alert-danger">
+                        <div *ngIf="f.name2.errors.required">
+                            name2 is required.
+                        </div> 
+                    </div>                   
                 </td>
-                <td>
+                <td >
                     <label>adress :</label>
-                    <input type="text" name="adress" [(ngModel)]="vendor.adress">
+                    <input type="text" formControlName="adress"  />
+                    <div *ngIf="f.adress.invalid && (f.adress.dirty || f.adress.touched)" class="alert alert-danger">
+                        <div *ngIf="f.adress.errors.required">
+                            adress is required.
+                        </div> 
+                    </div>                    
                 </td>
             </tr>
             <tr>
-                <td>
+                <td >
                     <label>city :</label>
-                    <input type="text" name="city" [(ngModel)]="vendor.city">
+                    <input type="text" formControlName="city" />
+                    <div *ngIf="f.city.invalid && (f.city.dirty || f.city.touched)" class="alert alert-danger">
+                        <div *ngIf="f.city.errors.required">
+                            city is required.
+                        </div> 
+                    </div>                    
                 </td>
-                <td>
+                <td >
                     <label>phone :</label>
-                    <input type="text" name="phone" [(ngModel)]="vendor.phone">
+                    <input type="text" formControlName="phone"  />
+                    <div *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)" class="alert alert-danger">
+                        <div *ngIf="f.phone.errors.required">
+                            phone is required.
+                        </div> 
+                    </div>                    
                 </td>
             </tr>
             <tr>
-                <td>
+                <td >
                     <label>gsm :</label>
-                    <input type="text" name="gsm" [(ngModel)]="vendor.gsm">
+                    <input type="text" formControlName="gsm" />
+                    <div *ngIf="f.gsm.invalid && (f.gsm.dirty || f.gsm.touched)" class="alert alert-danger">
+                        <div *ngIf="f.gsm.errors.required">
+                            gsm is required.
+                        </div> 
+                    </div>                    
                 </td>
-                <td>
+                <td >
                     <label>fax :</label>
-                    <input type="text" name="fax" [(ngModel)]="vendor.fax">
+                    <input type="text" formControlName="fax" />
+                    <div *ngIf="f.fax.invalid && (f.fax.dirty || f.fax.touched)" class="alert alert-danger">
+                        <div *ngIf="f.fax.errors.required">
+                            fax is required.
+                        </div> 
+                    </div>                    
                 </td>
             </tr>
             <tr>
-                <td>
+                <td >
                     <label>email :</label>
-                    <input type="text" name="email" [(ngModel)]="vendor.email">
+                    <input type="email" formControlName="email" />
+                    <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="alert alert-danger">
+                        <div *ngIf="f.email.errors.required">
+                            email is required.
+                        </div> 
+                    </div>                    
                 </td>
             </tr>    
         </table>
+        <p> form status : {{ vendorEdit.status }}</p>
         <br />
         <input type="submit" class="btn btn-" value="Send Data" />
 

@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { VendorService } from '../vendor.service';
 import { Vendor } from 'src/Models/vendor';
 import { ColDef, GridApi, ColumnApi } from 'ag-grid-community';
-import { Router, NavigationEnd } from '@angular/router';
-import { ROOT_URL } from 'src/Models/Config';
+import { Router } from '@angular/router';
+import { VendorEditComponent } from '../vendor-edit/vendor-edit.component';
+
 
 @Component({
   selector: 'app-vendor',
@@ -30,12 +31,12 @@ export class VendorComponent implements OnInit {
   }
 
   vendor : Vendor;
-  //hidden:boolean;
+  exist:boolean = false;
   
   // row data and column definitions
   private rowData: Vendor[];
   private columnDefs: ColDef[];
-
+  
   
   // gridApi and columnApi
   private api: GridApi;
@@ -46,12 +47,12 @@ export class VendorComponent implements OnInit {
   private IsMultple:boolean;
 
   private SelectedClient: Vendor;  
+  var:any;
+  
 
   constructor(private service: VendorService, private router:Router) { 
     this.columnDefs = this.createColumnDefs();
 //    this.hidden = true;
-
-
 
 }
 
@@ -69,31 +70,26 @@ export class VendorComponent implements OnInit {
   
   
   ngOnInit() {     
-    if(this.service.IsAffected == true){
-      this.service.IsAffected = false; 
-    }
+    
     console.log("rrrrrrrrrrr");
     this.LoadData();    
+        
+    console.log(this.var);
   }
-
-  // Send(){
-  //   this.service.Add(this.vendor).subscribe( resultat => {
-  //   this.LoadData();
-  //   } )
-  // }
-
   
-  public navigate(url) {    
-    var myurl = ROOT_URL + url;
-    this.router.navigateByUrl(url).then(e => {
-      if (e) {
-        console.log("Navigation is successful!");
-      } else {
-        console.log("Navigation has failed!");
-      }
-    });
 
-    this.LoadData();
+  ngAfterViewInit(){
+    
+    console.log(this.var);
+  }
+  
+  //@ViewChild('editView', { static: false, }) editcomponent: VendorEditComponent;
+  @ViewChild(VendorEditComponent,  {static: false, }) modifiervendeur : VendorEditComponent;
+
+  public navigate(url) {    
+    
+    this.service.show = true;
+    this.service.do = 1;
   }
 
   onGridReady(params): void {
@@ -123,30 +119,19 @@ export class VendorComponent implements OnInit {
   }
 
   Edit(url){
-    if(this.IsRowSelected ){
-            
+    
+    if(this.IsRowSelected ){                
       this.SelectedClient = this.api.getSelectedRows()[0];
       console.log(this.SelectedClient);
+      this.modifiervendeur.vendorEdit.setValue(this.SelectedClient);            
+      this.service.show = true;      
+      this.service.do = 2;
 
-      var myurl = ROOT_URL + url +"/" + this.SelectedClient.id;
-
-      this.router.navigate(['/vendor-edit', this.SelectedClient.id]);
-      this.LoadData();
-            
     }
 
   }
 
-  // Delete(){
-  //   if(this.IsRowSelected ){
-  //     this.SelectedClient = this.api.getSelectedRows()[0];
-  //     console.log( this.SelectedClient.id);
-  //     this.service.Delete(this.SelectedClient.id).subscribe( Result => {
-  //       this.LoadData();
-  //     });            
-
-  //   }
-  // }
+  
   Delete() {
     if(this.IsRowSelected ){
             
@@ -160,5 +145,23 @@ export class VendorComponent implements OnInit {
     }
   }
 
-  
+  outputExemple($event){
+    // this.rowData = $event;
+    // console.log("rowData : " , this.rowData);
+    this.vendor = $event;
+    console.log("my output exemple : $event :" + this.vendor.id + " code: " + this.vendor.code + " name1: " + this.vendor.name1);
+    this.rowData.forEach( (element, index) => {
+      if(element.id == this.vendor.id){
+        console.log("element 0 = " + element.id);
+        this.rowData[index] = this.vendor;
+        return;
+      }
+    });
+
+    this.rowData.push(this.vendor);
+
+    this.LoadData();
+    
+  }
+
 }

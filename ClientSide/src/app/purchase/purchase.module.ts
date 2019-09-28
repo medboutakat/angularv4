@@ -38,7 +38,8 @@ import { MatButtonModule, MatFormFieldModule, MatDatepickerModule, MatCardModule
     MatDialogModule,
     MatProgressBarModule,
     MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PurchaseModule { }
