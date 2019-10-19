@@ -1,19 +1,20 @@
-<div class="modal-dialog">
+<div class="modal-dialog" >
     <div class="modal-content">
-        <div class="modal-header">
+        <!-- <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-primary">{{action}}</h4>
-        </div>
-        <div class="modal-body">
+        </div> -->
+        
+        <!-- <div class="modal-body"> -->
             <!-- <app-invoice-edit #editView (nameEvent)="RefreshData($event)"></app-invoice-edit> -->
-            <app-customers-edit></app-customers-edit>
-        </div>
-        <div class="modal-footer">
+            <!-- <app-customers-edit></app-customers-edit> -->
+        <!-- </div> -->
+        <!-- <div class="modal-footer">
             <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
+        </div> -->
     </div>
 </div>
-<div>
+<div >
 
     <br />
     <br /> 
@@ -82,7 +83,8 @@
 
                                 <div class="form-group">
                                     <div class="col-md-6">
-                                        <mat-form-field class="example-form-field">
+                                            <input type="hidden" formControlName="id" >
+                                        <mat-form-field class="example-form-field">                                                
                                             <input matInput placeholder="Name1" formControlName="name1" required>
                                             <button mat-button *ngIf="name1.value" matSuffix mat-icon-button aria-label="Clear" (click)="name1.reset()">
                                                 <mat-icon>close</mat-icon>
@@ -92,8 +94,8 @@
                                                 Name1 is to short
                                             </mat-error>
                                             <mat-error *ngIf="name1.hasError('required')">
-                                                name1 is <strong>required</strong>
-                                            </mat-error>
+                                                    name1 is <strong>required</strong>
+                                                </mat-error>
                                         </mat-form-field>
                                     </div>
                                 </div>

@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { VendorService } from '../vendor.service';
 import { Vendor } from 'src/Models/vendor';
 import { ColDef, GridApi, ColumnApi } from 'ag-grid-community';
 import { Router } from '@angular/router';
 import { VendorEditComponent } from '../vendor-edit/vendor-edit.component';
+import { FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class VendorComponent implements OnInit {
     ]
   }
 
+  
   vendor : Vendor;
   exist:boolean = false;
   
@@ -45,10 +47,7 @@ export class VendorComponent implements OnInit {
   private rowSelection;
   private IsRowSelected:boolean;
   private IsMultple:boolean;
-
-  private SelectedClient: Vendor;  
-  var:any;
-  
+  private SelectedClient: Vendor;      
 
   constructor(private service: VendorService, private router:Router) { 
     this.columnDefs = this.createColumnDefs();
@@ -68,28 +67,36 @@ export class VendorComponent implements OnInit {
   }
 
   
-  
-  ngOnInit() {     
-    
+  ngOnInit() {         
     console.log("rrrrrrrrrrr");
-    this.LoadData();    
-        
-    console.log(this.var);
+    this.LoadData();      
   }
   
-
-  ngAfterViewInit(){
-    
-    console.log(this.var);
-  }
   
-  //@ViewChild('editView', { static: false, }) editcomponent: VendorEditComponent;
-  @ViewChild(VendorEditComponent,  {static: false, }) modifiervendeur : VendorEditComponent;
+  @ViewChild('editView',  {  static: true, }) editcomponent: VendorEditComponent; 
+  // @ViewChild(VendorEditComponent, { static: false, }) editcomponent: VendorEditComponent; 
 
-  public navigate(url) {    
+  SetValues(  obj : Vendor){
+
+      //this.editcomponent.vendor = obj;
+  }
+
+  // @ViewChildren(VendorEditComponent) childrenComponent: VendorEditComponent;
+
+  // public ngAfterViewInit(): void
+  // {
+  //   this.childrenComponent.changes.subscribe((comps: VendorEditComponent) =>
+  //   {
+      
+  //   });
+  // }
+
+  public navigate() {    
     
     this.service.show = true;
     this.service.do = 1;
+    this.editcomponent.any = "llllllllllllllllll";
+    //console.log(this.editcomponent.any && this.editcomponent.any);
   }
 
   onGridReady(params): void {
@@ -118,17 +125,36 @@ export class VendorComponent implements OnInit {
 
   }
 
-  Edit(url){
+  Edit(){
     
-    if(this.IsRowSelected ){                
-      this.SelectedClient = this.api.getSelectedRows()[0];
-      console.log(this.SelectedClient);
-      this.modifiervendeur.vendorEdit.setValue(this.SelectedClient);            
-      this.service.show = true;      
-      this.service.do = 2;
-
+    if(this.IsRowSelected ){ 
+      // this.editcomponent.action = "editing vendor!!!!!!!!!!!!!!!!!!!!!!!!!";
+    
+      console.log(this.editcomponent);
+      
+      // this.service.do = 2;
+      this.service.show = true;              
+      this.SelectedClient = this.api.getSelectedRows()[0]; 
+      this.editcomponent.vendorEdit.setValue(this.SelectedClient); 
+      // console.log("vendorEdit formgroup value : " + this.editcomponent.vendorEdit.value);
+      console.log(" this.SelectedClient",     this.SelectedClient);    
+      //this.editcomponent.vendor=new Vendor();
+      //this.editcomponent.vendor.code= this.SelectedClient.code;      
+      this.editcomponent.vendorEdit.setValue(this.SelectedClient);      
+      this.editcomponent.vendorEdit.controls["id"].setValue(this.SelectedClient.id);
+      this.editcomponent.vendorEdit.controls["code"].setValue(this.SelectedClient.code);
+      this.editcomponent.vendorEdit.controls["name1"].setValue(this.SelectedClient.name1);
+      this.editcomponent.vendorEdit.controls["name1"].setValue(this.SelectedClient.name2);
+      this.editcomponent.vendorEdit.controls["adress"].setValue(this.SelectedClient.adress);
+      this.editcomponent.vendorEdit.controls["city"].setValue(this.SelectedClient.city);
+      this.editcomponent.vendorEdit.controls["phone"].setValue(this.SelectedClient.phone);
+      this.editcomponent.vendorEdit.controls["gsm"].setValue(this.SelectedClient.gsm);
+      this.editcomponent.vendorEdit.controls["fax"].setValue(this.SelectedClient.fax);
+      this.editcomponent.vendorEdit.controls["email"].setValue(this.SelectedClient.email);
+      
+      //= this.SelectedClient;            
+      // console.log(" this.editcomponent.vendor", this.editcomponent.vendor)
     }
-
   }
 
   
@@ -161,7 +187,6 @@ export class VendorComponent implements OnInit {
     this.rowData.push(this.vendor);
 
     this.LoadData();
-    
   }
 
 }

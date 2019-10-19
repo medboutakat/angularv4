@@ -164,101 +164,101 @@
 
 
 
-<div>
+<div *ngIf="service.show">
     <h1>vendor-edit works!</h1>
-
-    <form [formGroup]="vendorEdit" (ngSubmit)="onSubmit()"  >
+    <p>{{ action }}</p>
+    <form [formGroup]="vendorEdit"  (ngSubmit)="onSubmit()"  >
         <table>
             <tr>
                 <td >
-                    <input type="hidden" formControlName="id"  >
+                    <input type="hidden" formControlName="id"   >
                     <label>code :</label>
-                    <input type="text" name="code" formControlName="code" />  
-                    <div *ngIf="f.code.invalid && (f.code.dirty || f.code.touched)" class="alert alert-danger">
-                        <div *ngIf="f.code.errors.required">
+                    <input type="text"  formControlName="code" />                 
+                    <!-- <div *ngIf="code?.invalid && (code.dirty || code.touched)" class="alert alert-danger">
+                        <div *ngIf="code.errors.required">
                             code is required.
                         </div> 
-                    </div>                                                                                                      
+                    </div>                                                                                                       -->
                 </td>
                 <td >
                     <label>name1 :</label>
                     <input type="text" formControlName="name1" /> 
-                    <div *ngIf="f.name1.invalid && (f.name1.dirty || f.name1.touched)" class="alert alert-danger">
-                        <div *ngIf="f.name1.errors.required">
+                    <!-- <div *ngIf="name1?.invalid && (name1.dirty || name1.touched)" class="alert alert-danger">
+                        <div *ngIf="name1.errors.required">
                             name1 is required.
                         </div> 
-                    </div>                    
+                    </div>                     -->
                 </td>
             </tr>
             <tr>
                 <td >
                     <label>name2 :</label>
                     <input type="text" formControlName="name2"   />
-                    <div *ngIf="f.name2.invalid && (f.name2.dirty || f.name2.touched)" class="alert alert-danger">
-                        <div *ngIf="f.name2.errors.required">
+                    <!-- <div *ngIf="name2.invalid && (name2.dirty || name2.touched)" class="alert alert-danger">
+                        <div *ngIf="name2.errors.required">
                             name2 is required.
                         </div> 
-                    </div>                   
+                    </div>                    -->
                 </td>
                 <td >
                     <label>adress :</label>
                     <input type="text" formControlName="adress"  />
-                    <div *ngIf="f.adress.invalid && (f.adress.dirty || f.adress.touched)" class="alert alert-danger">
-                        <div *ngIf="f.adress.errors.required">
+                    <!-- <div *ngIf="adress.invalid && (adress.dirty || adress.touched)" class="alert alert-danger">
+                        <div *ngIf="adress.errors.required">
                             adress is required.
                         </div> 
-                    </div>                    
+                    </div>                     -->
                 </td>
             </tr>
             <tr>
                 <td >
                     <label>city :</label>
                     <input type="text" formControlName="city" />
-                    <div *ngIf="f.city.invalid && (f.city.dirty || f.city.touched)" class="alert alert-danger">
-                        <div *ngIf="f.city.errors.required">
+                    <!-- <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+                        <div *ngIf="city.errors.required">
                             city is required.
                         </div> 
-                    </div>                    
+                    </div>                     -->
                 </td>
                 <td >
                     <label>phone :</label>
-                    <input type="text" formControlName="phone"  />
-                    <div *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)" class="alert alert-danger">
-                        <div *ngIf="f.phone.errors.required">
+                    <input type="tel" formControlName="phone"  />
+                    <!-- <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+                        <div *ngIf="phone.errors.required">
                             phone is required.
                         </div> 
-                    </div>                    
+                    </div>                     -->
                 </td>
             </tr>
             <tr>
                 <td >
                     <label>gsm :</label>
                     <input type="text" formControlName="gsm" />
-                    <div *ngIf="f.gsm.invalid && (f.gsm.dirty || f.gsm.touched)" class="alert alert-danger">
-                        <div *ngIf="f.gsm.errors.required">
+                    <!-- <div *ngIf="gsm.invalid && (gsm.dirty || gsm.touched)" class="alert alert-danger">
+                        <div *ngIf="gsm.errors.required">
                             gsm is required.
                         </div> 
-                    </div>                    
+                    </div>                     -->
                 </td>
                 <td >
                     <label>fax :</label>
                     <input type="text" formControlName="fax" />
-                    <div *ngIf="f.fax.invalid && (f.fax.dirty || f.fax.touched)" class="alert alert-danger">
-                        <div *ngIf="f.fax.errors.required">
+                    <!-- <div *ngIf="fax.invalid && (fax.dirty || fax.touched)" class="alert alert-danger">
+                        <div *ngIf="fax.errors.required">
                             fax is required.
                         </div> 
-                    </div>                    
+                    </div>                     -->
                 </td>
             </tr>
             <tr>
                 <td >
                     <label>email :</label>
                     <input type="email" formControlName="email" />
-                    <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="alert alert-danger">
-                        <div *ngIf="f.email.errors.required">
+                    <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                        <div *ngIf="email.errors.required">
                             email is required.
                         </div> 
-                    </div>                    
+                    </div>                     -->
                 </td>
             </tr>    
         </table>

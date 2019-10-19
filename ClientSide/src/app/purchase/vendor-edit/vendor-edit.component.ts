@@ -10,11 +10,13 @@ import { Router } from '@angular/router';
   templateUrl: './vendor-edit.component.html',
   styleUrls: ['./vendor-edit.component.css']
 })
+
 export class VendorEditComponent implements OnInit {
 
   private sub:any;
   action:string = "";
   vendor:Vendor = new Vendor();
+  public changes : any;
   @Output() outputExemple = new EventEmitter<Vendor>();
 
 
@@ -24,10 +26,11 @@ export class VendorEditComponent implements OnInit {
   isSubmitted  =  false;   
   div : any;
   any:string = "That is my 2nd test for viewchild";
+  
 
   // 
 
-  get formControls() { return this.vendorEdit.controls; }
+  // get formControls() { return this.vendorEdit.controls; }
 
   ngOnInit() {    
     
@@ -42,12 +45,11 @@ export class VendorEditComponent implements OnInit {
       gsm: ['', Validators.required],
       fax: ['', Validators.required],
       email: ['', [Validators.required, Validators.email] ]
-    });           
-  } 
-
-  get f() { return this.vendorEdit.controls; }
-
-
+    });       
+        
+    this.vendorEdit.setValue(this.vendor);
+  }  
+  
   onSubmit(){        
     
     this.vendor = this.vendorEdit.value;
@@ -63,16 +65,15 @@ export class VendorEditComponent implements OnInit {
       });          
     }
 
-    //this.service.show = false;    
+    this.service.show = false;    
     
     this.outputExemple.emit(this.vendor);
     this.isSubmitted = true;    
     
-    if( this.vendorEdit.valid){
-      location.reload();     
-    }
-    
-      
+    // if( this.vendorEdit.valid){
+    //   location.reload();     
+    // }
+
   }
 
 }

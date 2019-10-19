@@ -24,7 +24,7 @@ import {
   MatNativeDateModule,
   MatDialogModule,
   MatProgressBarModule,
-  MatRadioButton, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatSnackBarModule
+  MatRadioButton, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatSnackBarModule, MatSliderModule
 } from '@angular/material';
 import { CustomersComponent, DialogOverviewExampleDialog } from './customers/customers.component';
 import { AgGridModule } from 'ag-grid-angular';
@@ -65,7 +65,7 @@ import { CustomersEditComponent } from './customers-edit/customers-edit.componen
     MatNativeDateModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatSnackBarModule,
+    MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatSnackBarModule,MatSliderModule
   ],
   entryComponents: [DialogOverviewExampleDialog],
   providers: [

@@ -4,14 +4,14 @@
     <nav id="sidebar" style="z-index: 10000;">
         <div id="dismiss">
             <i class="glyphicon glyphicon-arrow-left"></i>
-        </div>
-
-        <div class="sidebar-header">
+        </div> 
+ 
+         <!-- <div class="sidebar-header">
             <img src="../../assets/logo.png" alt="">
-        </div>
+        </div> -->
 
         <ul class="list-unstyled components">
-            <p>GM-SOFT</p>
+            <!-- <p>GM-SOFT</p>  -->
             <!--<li [ngClass]="{'active':url=='home'}">
       [routerLink]="['/home']"
       -->
@@ -120,15 +120,16 @@
             <div class="navbar-header">
                 <!-- Toggle Button [handles opening navbar menu on mobile screens]-->
                 <button type="button" id="sidebarCollapse1" class="navbar-toggle collapsed">
-          <i class="fas fa-bars fa-2x"></i>
+            <i class="fas fa-bars fa-2x"></i>
 
-        </button>
-
+            </button>
+            
                 <!-- Navbar Brand -->
-                <a routerLink="/home" class="navbar-brand">
+                <!-- <a routerLink="/home" class="navbar-brand">
                     <img class="logo-navbar" src="../../assets/logo.png" alt="">
-                </a>
-            </div>
+                </a> -->
+                
+        </div>
 
 
             <!-- Navbar Collapse [collect navbar components such as navbar links and forms ] -->
@@ -145,17 +146,22 @@
                     </li>
                     <li>
                         <a [routerLink]="['/clients']" routerLinkActive="selected"><i
-                class="fas fa-users fa-lg"></i>
-              Clients</a>
+                            class="fas fa-users fa-lg"></i>
+                        Clients</a>
                     </li>
+                    <li>
+                        <a [routerLink]="['/purchase/vendor']" routerLinkActive="selected"><i
+                            class="fas fa-users fa-lg"></i>
+                        Vendor</a>
+                    </li>                    
                     <li>
                         <a data-toggle="dropdown" class="Zdropdown" aria-expanded="true">Sales</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="background: #025b96">
                             <li>
-                                <a class="drop" [routerLink]="['/sales']">Action 1</a>
+                                <a class="drop" [routerLink]="['/sales']">Invoice </a>
                             </li>
                             <li>
-                                <a class="drop">Action 2</a>
+                                <a class="drop" [routerLink]="['/sales/customers']">Customer</a>
                             </li>
                             <li>
                                 <a class="drop">Action 3</a>
@@ -166,7 +172,7 @@
                             </li>
                         </ul>
                     </li>
-
+                    
 
 
 
