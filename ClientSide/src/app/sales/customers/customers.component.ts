@@ -45,7 +45,7 @@ export class CustomersComponent implements OnInit {
 
   // gridApi and columnApi
   private api: GridApi;
-  private columnApi: ColumnApi;
+  private columnApi: ColumnApi; 
 
   private rowSelection;
 
@@ -100,13 +100,14 @@ export class CustomersComponent implements OnInit {
     this.serv.getClient().subscribe(
       response => {
         this.rowData = response
-        console.log("row data",this.rowData);
+        console.log("row data", this.rowData);
       },
       error => {
         console.log(error);
       }
     )
   }
+  
   IsRowSelected: boolean = false;
   IsMultiple: boolean = false;
   IsNew: boolean;
@@ -127,6 +128,7 @@ export class CustomersComponent implements OnInit {
     console.log(event);
 
   }
+  
   edit() {
     this.IsNew = false;
     console.log("editiiiiiiing");

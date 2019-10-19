@@ -28,6 +28,7 @@ import {
 } from '@angular/material';
 import { CustomersComponent, DialogOverviewExampleDialog } from './customers/customers.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { CustomersEditComponent } from './customers-edit/customers-edit.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AgGridModule } from 'ag-grid-angular';
     InvoiceComponent,
     InvoiceEditComponent,
     CustomersComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    CustomersEditComponent
   ],
   imports: [
     CommonModule,

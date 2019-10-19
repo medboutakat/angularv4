@@ -49,6 +49,7 @@ export class InvoiceService {
     return this.http.put<InvoiceHeader>(ROOT_URL + this.endPoints+'/' + _objView.id, body, { headers, params })
 
   }
+  
   Delete(_objView: InvoiceHeader) {
     const params = new HttpParams().set('ID', _objView.id);
     const headers = new HttpHeaders().set('content-type', 'application/json');

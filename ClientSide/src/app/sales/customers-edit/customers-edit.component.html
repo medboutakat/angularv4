@@ -1,0 +1,75 @@
+<h1>Add or update a client</h1>
+
+<form #cusForm="ngForm" (ngSubmit)="onSubmit()">
+    <table>
+        <tr>
+            <td>
+                <input type="hidden" name="id" >
+                <label for="code">Code :</label>
+                <input type="text" id="code" name="code">
+            </td>
+            <td>
+                <label for="name1">Name :</label>
+                <input type="text" id="name1" name="name">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="name2">Name2 :</label>
+                <input type="text" id="name2" name="name2">
+            </td>
+            <td>
+                <label for="name3">Name3 :</label>
+                <input type="text" id="name3" name="name3">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="patente">Patente :</label>
+                <input type="text" id="patente" name="patente">
+            </td>
+            <td>
+                <label for="adresse">Adresse :</label>
+                <input type="text" id="adresse" name="adresse">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="gender">Gender :</label>
+                <input type="text" id="gender" name="gender">
+            </td>
+            <td>
+                <label for="email">Email :</label>
+                <input type="text" id="email" name="email">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="rc">RC :</label>
+                <input type="text" id="rc" name="rc">
+            </td>
+            <td>
+                <label for="clientCategorieID">Client Categorie ID :</label>
+                <input type="text" id="clientCategorieID" name="clientCategorieID">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="contracts">Contracts :</label>
+                <input type="text" id="contracts" name="contracts">
+            </td>
+            <td>
+                <label for="clientLocationID">Client Location ID :</label>
+                <input type="text" id="clientLocationID" name="clientLocationID">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="clientLocation">clientLocation :</label>
+                <input type="text" id="clientLocation" name="clientLocation">
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Send Data">
+</form>

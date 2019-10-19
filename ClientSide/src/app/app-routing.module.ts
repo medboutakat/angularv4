@@ -67,7 +67,9 @@ const routes: Routes = [
   //   },
   { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) },
   { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) },
-  { path: 'apptest', loadChildren: () => import('./apptest/apptest.module').then(m => m.ApptestModule) }
+  { path: 'apptest', loadChildren: () => import('./apptest/apptest.module').then(m => m.ApptestModule) },
+  { path: 'purchase', loadChildren: () => import('./purchase/purchase.module').then(m => m.PurchaseModule) }
+
   // {path:'Edit',component:EmployeeupdateComponent},
   // {path:'Add',component:EmployeeAddComponent},
   // {path:'Home',component:AngularCRUDComponent}

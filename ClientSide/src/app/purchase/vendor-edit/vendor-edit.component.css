@@ -1,0 +1,14 @@
+label{
+    display: block;
+    float: left;
+    width: 100px;
+}
+input[type="text"]{
+    display: block;
+    float: left;
+    margin-right: 2cm;
+}
+
+form{
+    margin-left : 5cm;
+} 

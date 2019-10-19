@@ -9,6 +9,7 @@ import { InvoiceHeader, InvoiceDetail } from 'src/Models/Commande';
   templateUrl: './invoice-edit.component.html',
   styleUrls: ['./invoice-edit.component.css']
 })
+
 export class InvoiceEditComponent implements OnInit {
   objectFromDetail: any;
   

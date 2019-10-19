@@ -1,0 +1,223 @@
+<!-- <form [formGroup]="firstFormGroup">
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <mat-form-field class="example-form-field">
+                <input matInput placeholder="Name1" formControlName="name1" required>
+                <button mat-button *ngIf="name1.value" matSuffix mat-icon-button aria-label="Clear" (click)="name1.reset()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-hint></mat-hint>
+                <mat-error *ngIf="name1.errors && !name1.hasError('required')">
+                    Name1 is to short
+                </mat-error>
+                <mat-error *ngIf="name1.hasError('required')">
+                    name1 is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <mat-form-field class="example-form-field">
+                <input matInput placeholder="Name2" formControlName="name2" required>
+                <button mat-button *ngIf="name2.value" matSuffix mat-icon-button aria-label="Clear" (click)="name2.reset()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-hint></mat-hint>
+                <mat-error *ngIf="name2.errors && !name2.hasError('required')">
+                    Name2 is to short
+                </mat-error>
+                <mat-error *ngIf="name2.hasError('required')">
+                    name2 is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            <mat-form-field class="example-form-field">
+                <input matInput placeholder="code" formControlName="code" required>
+
+                <mat-error *ngIf="code.hasError('required')">
+                    code is <strong> required. </strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!-- <div class="form-group">
+        <div class="col-md-6">
+            <mat-form-field class="example-form-field">
+                <span matPrefix>+212 &nbsp;</span>
+                <input type="tel" matInput placeholder="Telephone" formControlName="tele" required>
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error *ngIf="tele.errors && !tele.hasError('required')">
+                    Téléphone saisi invalid
+                </mat-error>
+                <mat-error *ngIf="tele.hasError('required')">
+                    Téléphone est <strong> required. </strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div> -->
+
+    <!-- <div class="form-group">
+        <div class="col-md-6">
+            <mat-form-field class="example-form-field">
+                <input matInput placeholder="Email Adresse" formControlName="email" required>
+                <mat-hint></mat-hint>
+                <mat-error *ngIf="email.errors && !email.hasError('required')">
+                    Email is invalid
+                </mat-error>
+                <mat-error *ngIf="email.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            <mat-form-field class="example-form-field">
+                <input matInput placeholder="patent" formControlName="patent" required>
+                <mat-hint></mat-hint>
+
+                <mat-error *ngIf="patent.hasError('required')">
+                    patent est <strong> required. </strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <mat-form-field class="example-form-field">
+                <mat-select placeholder="gender" formControlName="gender" required>
+                    <mat-option>--</mat-option>
+                    <mat-option value="male"> Male</mat-option>
+                    <mat-option value="female"> Female</mat-option>
+                </mat-select>
+                <mat-error *ngIf="gender.hasError('required')">gender is
+                    <strong>required</strong></mat-error>
+
+            </mat-form-field>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <mat-form-field class="example-form-field" required>
+                <textarea matInput placeholder="Address" formControlName="adresse"></textarea>
+                <mat-error *ngIf="adresse.hasError('required')">
+                    adresse is <strong> required. </strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            <mat-form-field class="example-form-field">
+                <input matInput placeholder="RC" formControlName="rc" required>
+
+                <mat-error *ngIf="rc.hasError('required')">
+                    RC is <strong> required. </strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-md-offset-3">
+        <button mat-raised-button color="primary" (click)="setValue()" matStepperNext>Suivant</button>
+    </div>
+</form> 
+
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+    <h1>vendor-edit works!</h1>
+
+    <form #myForm="ngForm" (ngSubmit)="onSubmit('url')">
+        <table>
+            <tr>
+                <td>
+                    <label>code :</label>
+                    <input type="text" name="code" [(ngModel)]="vendor.code"/> 
+                </td>
+                <td>
+                    <label>name1 :</label>
+                    <input type="text" name="name1" [(ngModel)]="vendor.name1" > 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>name2 :</label>
+                    <input type="text" name="name2" [(ngModel)]="vendor.name2">
+                </td>
+                <td>
+                    <label>adress :</label>
+                    <input type="text" name="adress" [(ngModel)]="vendor.adress">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>city :</label>
+                    <input type="text" name="city" [(ngModel)]="vendor.city">
+                </td>
+                <td>
+                    <label>phone :</label>
+                    <input type="text" name="phone" [(ngModel)]="vendor.phone">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>gsm :</label>
+                    <input type="text" name="gsm" [(ngModel)]="vendor.gsm">
+                </td>
+                <td>
+                    <label>fax :</label>
+                    <input type="text" name="fax" [(ngModel)]="vendor.fax">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>email :</label>
+                    <input type="text" name="email" [(ngModel)]="vendor.email">
+                </td>
+            </tr>    
+        </table>
+        <br />
+        <input type="submit" class="btn btn-" value="Send Data" />
+
+    </form>
+</div>
