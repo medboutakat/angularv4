@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Delivery } from 'src/Models/Delivery'; 
-import { DeliveryDataService } from '../DataService/DeliveryDataService';
+import { DeliveryDataService } from '../../DataService/DeliveryDataService';
 import { Router } from '@angular/router';
-import { DeliveryEditComponent } from '../Delivery-edit/Delivery-edit.component';
+import { DeliveryEditComponent } from '../delivery-edit/Delivery-edit.component';
 
 @Component({
   selector: 'app-Delivery',

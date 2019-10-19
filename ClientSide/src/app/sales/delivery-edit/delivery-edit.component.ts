@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input, EventEmitter, Output, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms'; 
-import { DeliveryDataService } from '../DataService/DeliveryDataService';
+import { DeliveryDataService } from '../../DataService/DeliveryDataService';
 import { Delivery } from 'src/Models/Delivery';
   
 @Component({

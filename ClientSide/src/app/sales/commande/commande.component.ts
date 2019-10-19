@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { InvoiceHeader, InvoiceDetail } from 'src/Models/Commande';
 // import { IDataService } from '../DataService/IDataService';
 import { Router } from '@angular/router'; 
-import { IDataService } from '../DataService/IDataService';
+import { IDataService } from '../../DataService/IDataService';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms'; 
 import { CommandeEditComponent } from '../commande-edit/commande-edit.component';

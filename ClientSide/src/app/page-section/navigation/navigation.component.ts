@@ -3,8 +3,8 @@ import { Location } from '@angular/common';
 import { Observable, of } from 'rxjs';
 import { RouterLinkActive } from '@angular/router'; 
 import * as $ from 'jquery';
-import { ConfigService } from '../config.service';
-import { AuthenticationService } from '../DataService/authentication.service';
+import { ConfigService } from '../../config.service';
+import { AuthenticationService } from '../../DataService/authentication.service';
 
 
 @Component({

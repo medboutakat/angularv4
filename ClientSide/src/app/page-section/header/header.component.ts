@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ConfigService } from '../config.service';
+import { ConfigService } from '../../config.service';
 import * as $ from 'jquery';
 
 @Component({

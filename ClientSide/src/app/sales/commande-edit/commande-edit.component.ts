@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input, EventEmitter, Output, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms'; 
-import { CommandeDataService } from '../DataService/CommandeDataService';
+import { CommandeDataService } from '../../DataService/CommandeDataService';
 import { Delivery } from 'src/Models/Delivery';
 import { InvoiceDetail, InvoiceHeader } from 'src/Models/Commande';
   
