@@ -1,6 +1,6 @@
 
 export class  Vat{
-    displayname:string;
+    displayName:string;
     value:string ; 
     id:string 
 }

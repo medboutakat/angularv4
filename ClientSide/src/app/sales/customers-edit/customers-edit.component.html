@@ -1,5 +1,6 @@
 <h1>Add or update a client</h1>
 
+<!-- 
 <form #cusForm="ngForm" (ngSubmit)="onSubmit()">
     <table>
         <tr>
@@ -72,4 +73,164 @@
     </table>
 
     <input type="submit" value="Send Data">
-</form>
+</form> -->
+
+<div class="container">
+    <form [formGroup]='myForm' name="myForm" (ngSubmit)="EditMainObject(myForm)" class="form-horizontal"
+        style="width:600px;">
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="col-sm-5">
+                    <input type="hidden" formControlName="id" />
+
+                    <mat-form-field>
+                        <label for="code">Code :</label>
+                        <input matInput type="text" width="20%" id="code" formControlName="code">                                                
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-12">
+
+                    <mat-form-field style="width : 350px;">
+                        <label for="name1">Name1 :</label>
+                        <input matInput type="text" width="30%" id="name1" formControlName="name1">                                                    
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field>
+                        <label for="name2">Name2 :</label>
+                        <input matInput type="text" width="30%" id="name1" formControlName="name2">
+                    </mat-form-field>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <mat-form-field>
+                        <label for="name3">Name3 :</label>
+                        <input matInput type="text" width="30%" id="name3" formControlName="name3">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-sm-4">
+                <label class="control-label col-sm-2" for="patent">Patent:</label>
+                <br />
+                <mat-form-field>
+                    <input matInput type="text" width="50%" id="patent" placeholder="patent" formControlName="patent" />                    
+                </mat-form-field>
+            </div>
+            <div class="col-sm-5">
+                <label class="control-label col-sm-2" for="gender">Gender:</label>
+                <!-- <div> -->
+                <br />
+                <mat-form-field>
+                    <!-- <mat-label>Gender :</mat-label> -->
+                    <select matNativeControl required>
+                        <option value="">--</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>                        
+                    </select>
+                </mat-form-field>
+                <!-- </div> -->
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-8">
+                <label class="control-label col-sm-3" for="adresse">Adress :</label>
+                <mat-form-field style="width: 500px;">
+                    <textarea matInput required rows="2" cols="80" placeholder="adress" formControlName="adresse"> </textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-5">
+                <label class="control-label col-sm" for="email">Email :</label>
+                <mat-form-field style="width: 200px;">
+                    <input matInput type="email" formControlName="email" id="email" [errorStateMatcher]="matcher" />                                        
+                </mat-form-field>
+            </div>
+            <div class="col-sm-5">
+                <label class="control-label" for="rc">RC :</label><br/>
+                <mat-form-field>
+                    <input matInput type="text" id="rc" formControlName="rc" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-5">
+                <label class="control-label " for="clientCategorieID">Client Categorie ID :</label>
+                <mat-form-field style="width: 200px;">
+                    <input matInput type="text" formControlName="clientCategorieID" id="clientCategorieID" />
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <label class="control-label" for="contracts">Contracts :</label>
+                <mat-form-field>
+                    <input matInput type="text" id="contracts" formControlName="contracts" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-5">
+                <label class="control-label " for="clientLocationID">Client Location ID :</label>
+                <mat-form-field style="width: 200px;">
+                    <input matInput type="text" formControlName="clientLocationID" id="clientLocationID" />
+                </mat-form-field>
+            </div>
+            <div class="col-sm-5">
+                <label class="control-label" for="clientLocation">Client Location :</label>
+                <mat-form-field>
+                    <input matInput type="text" id="clientLocation" formControlName="clientLocation" />
+                </mat-form-field>
+            </div>
+        </div>
+
+        <table class="table" border="1">
+            <thead>
+                <!-- <tr>
+                    <th scope="col">Sr.No </th>
+                    <th scope="col">Code
+
+                        <input type="text" class="form-control" width="50%" id="code" placeholder="Enter code"
+                            name="code" code required [(ngModel)]='client.Code' #Code="ngModel">
+                    </th>
+                    <th scope="col">Name <input required type="text" class="form-control" width="50%" id="pName"
+                            placeholder="Enter Name" name="pName" date required [(ngModel)]='client.pname'
+                            #pName="ngModel">
+                    </th>
+                    <th scope="col" width="100%">
+                        <button type="button" (click)="AddDetails(client)" class="btn btn-primary" value="Save"><i
+                                class="far fa-save"></i>
+                            Save
+                        </button>
+
+                        <button type="button" class="btn btn-primary" (click)="newDetail()" value="new"> <i
+                                class="fas fa-plus"></i>
+                            New
+                        </button>
+                    </th>
+                </tr> -->
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of clients">
+                    <td scope="col">{{e.no}}</td>
+                    <td scope="col">{{e.pCode}}</td>
+                    <td scope="col">{{e.pname}}</td>
+                    <td style="display:none">{{e.id}}</td>
+                    <td scope="col">
+                        <button type="button" class="btn btn-default btn-primary" (click)="DeleteDetails(e)">
+                            <span class="glyphicon glyphicon-trash"></span> Delete
+                        </button>
+                        <button type="button" class="btn btn-default btn-danger" (click)="EditDetails(e)">
+                            <span class="glyphicon glyphicon-edit"></span> Edit
+                        </button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

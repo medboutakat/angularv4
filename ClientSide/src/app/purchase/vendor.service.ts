@@ -11,7 +11,10 @@ export class VendorService {
 
   endpoints:string = "Vendor";
   newObject: Vendor;
-  IsAffected:boolean = false;
+  show:boolean = false;
+  do : number = 0;
+  
+  
 
 
   constructor(private http:HttpClient) { }
@@ -65,16 +68,16 @@ export class VendorService {
   }
 
 
-  Edit(obj: Vendor) {
-    console.log(obj);
-    const params = new HttpParams().set('ID', obj.id.toString());
+  Edit(obj) {
+    console.log(obj); 
+    const params = new HttpParams().set('ID', obj.id);
     const headers = new HttpHeaders().set('content-type', 'application/json');
     var body = {
       id:obj.id, Code: obj.code, name1: obj.name1, name2: obj.name2,
       Adress:obj.adress, City : obj.city, Phone : obj.phone, GSM : obj.gsm, FAX: obj.fax, Email : obj.email 
     }
     
-    return this.http.put<Vendor>(ROOT_URL+"Vendor/"+obj.id, body, { headers, params })
+    return this.http.put<Vendor>(ROOT_URL+"vendor/"+obj.id, body, { headers, params })
   }
   
   Delete(_objView: Vendor) {

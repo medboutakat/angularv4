@@ -31,7 +31,11 @@ export class ClientDataService {
     const headers = new HttpHeaders().set('content-type', 'application/json');
 
     var body = {
-      name1: emp.name1, name2: emp.name2, name3: emp.name3, clientCategorieId: emp.clientCategorieID
+      id: emp.id, code:emp.code, name1: emp.name1, name2: emp.name2, name3: emp.name3,
+      patent: emp.patent, adresse: emp.adresse, gender: emp.gender, email: emp.email,
+      rc: emp.rc, clientCategorieID: emp.clientCategorieID, contracts: emp.contracts,
+      clientLocationID: emp.clientLocationID, clientLocation: emp.clientLocation
+          
     }
 
     console.log(ROOT_URL);

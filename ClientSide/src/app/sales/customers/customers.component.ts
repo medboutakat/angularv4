@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 
 import {
   Title
@@ -31,6 +31,7 @@ import { EmployeeService } from '../../DataService/emp.service';
 import { ClientDataService } from '../../DataService/ClientDataService';
 import { Client, client } from 'src/Models/Client';
 import { ColDef, ColumnApi, GridApi } from 'ag-grid-community';
+import { CustomersEditComponent } from '../customers-edit/customers-edit.component';
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
@@ -68,6 +69,7 @@ export class CustomersComponent implements OnInit {
   firstFormGroup: FormGroup;
   service: string;
   animate;
+
   private createColumnDefs() {
     return [
       { headerName: 'code', field: 'code', editable: true, filter: true, sortable: true, checkboxSelection: true },
@@ -76,18 +78,16 @@ export class CustomersComponent implements OnInit {
 
     ]
   }
-  // columnDefs = [
-  //   { headerName: 'Nom', field: 'name1' ,editable:true},
-  //   { headerName: 'name2', field: 'name2', editable:true},
-  //   { headerName: 'code', field: 'code', editable: true }
-  // ];
-
+  
 
   constructor(private http: HttpClient, public serv: ClientDataService, public SerEmployes: EmployeeService, public dialog: MatDialog,
     private _formBuilder: FormBuilder, private titleService: Title, public snackBar: MatSnackBar, private router: Router) {
     this.columnDefs = this.createColumnDefs();
     this.rowSelection = "multiple";
   }
+
+  
+
   onGridReady(params): void {
     this.api = params.api;
     this.columnApi = params.columnApi;
@@ -128,20 +128,26 @@ export class CustomersComponent implements OnInit {
     console.log(event);
 
   }
-  
+  //oussama
+  @ViewChild( CustomersEditComponent, { static:false, }) customerEdit:CustomersEditComponent;
+
   edit() {
     this.IsNew = false;
     console.log("editiiiiiiing");
     this.SelectedClient = this.api.getSelectedRows()[0];
     this.mode = 1;
+    
+    this.firstFormGroup.controls['id'].setValue(this.SelectedClient.id);
+    this.firstFormGroup.controls['code'].setValue(this.SelectedClient.code);
     this.firstFormGroup.controls['name1'].setValue(this.SelectedClient.name1);
+    this.firstFormGroup.controls['name2'].setValue(this.SelectedClient.name2);
     this.firstFormGroup.controls['email'].setValue("mail@mail.com");
     this.firstFormGroup.controls['adresse'].setValue(this.SelectedClient.adresse);
     this.firstFormGroup.controls['patent'].setValue("patent");
-    this.firstFormGroup.controls['code'].setValue(this.SelectedClient.name3);
-    this.firstFormGroup.controls['Lnaissance'].setValue("25/10/1997");
-    this.firstFormGroup.controls['name2'].setValue(this.SelectedClient.name2);
+    this.firstFormGroup.controls['code'].setValue(this.SelectedClient.code);
+    this.firstFormGroup.controls['Lnaissance'].setValue("25/10/1997");    
     this.firstFormGroup.controls['gender'].setValue("Homme");
+    this.firstFormGroup.controls['rc'].setValue(this.SelectedClient.rc);
 
     // this.secondFormGroup.controls['rc'].setValue(emp.rcEtude);
     // this.secondFormGroup.controls['service'].setValue(emp.service);
@@ -149,16 +155,50 @@ export class CustomersComponent implements OnInit {
     // this.secondFormGroup.controls['DateFin'].setValue(emp.dateFin);
     // this.client.photo = emp.photo;
     // this.client.matricule = emp.matricule;
+
+    //oussama
+    this.customerEdit.myForm.controls['name1'].setValue(this.SelectedClient.name1);
+    this.customerEdit.myForm.controls['email'].setValue("mail@mail.com");
+    this.customerEdit.myForm.controls['adresse'].setValue(this.SelectedClient.adresse);
+    this.customerEdit.myForm.controls['patent'].setValue("patent");
+    this.customerEdit.myForm.controls['code'].setValue(this.SelectedClient.name3);
+    this.customerEdit.myForm.controls['Lnaissance'].setValue("25/10/1997");
+    this.customerEdit.myForm.controls['name2'].setValue(this.SelectedClient.name2);
+    this.customerEdit.myForm.controls['gender'].setValue("Homme");
+
+    
   }
+
   add() {
     this.mode = 1;
     this.IsNew = true;
     this.firstFormGroup.reset();
+    //oussama
+    // this.customerEdit.client.id = 0;
+    // this.customerEdit.client.code = "I123";
+    // this.customerEdit.client.name1 = "El Bakouri";
+    // this.customerEdit.client.name2 = "Oussama";
+    // this.customerEdit.client.name3 = "Bak";
+    // this.customerEdit.client.patent = "13%";
+    // this.customerEdit.client.adresse = "Benkirane";
+    // this.customerEdit.client.gender = "Man";
+    // this.customerEdit.client.email = "oussama@gmail.com";
+    // this.customerEdit.client.rc = "rc";
+    // this.customerEdit.client.clientCategorieID = 1;
+    // this.customerEdit.client.contracts = null;
+    // this.customerEdit.client.clientLocationID = 1;
+    // this.customerEdit.client.clientLocation = null;
+
+    // alert(this.customerEdit.myForm.controls.name1);
+    
   }
+
   delete() {
     this.openDialog(this.api.getSelectedRows());
   }
+
   ngOnInit() {
+    
     this.CurrentEmp = JSON.parse(localStorage.getItem('currentUser'));
     if (!this.CurrentEmp) {
       //this.router.navigate(['login']);
@@ -171,6 +211,7 @@ export class CustomersComponent implements OnInit {
 
     this.LoadData();
     this.firstFormGroup = this._formBuilder.group({
+      id: ['', Validators.required],
       name1: ['', [Validators.required, Validators.minLength(4)]],
       name2: ['', [Validators.required, Validators.minLength(4)]],
       gender: ['', Validators.required],
@@ -292,6 +333,7 @@ export class CustomersComponent implements OnInit {
     this.api.deselectAll();
     this.IsRowSelected = false;
   }
+
   send() {
     if (this.IsNew) {
       console.log(this.client);
@@ -302,11 +344,11 @@ export class CustomersComponent implements OnInit {
       })
     } else {
       //editing client
-
     }
-
   }
+
   OnlySelected: boolean = false;
+
   exportCSV() {
 
     var params = {
@@ -316,6 +358,7 @@ export class CustomersComponent implements OnInit {
       alert("No rows is selected! select some rows or uncheck only selected rows checkbox.")
     else this.api.exportDataAsCsv(params);
   }
+
   update() {
     this.serv.EditClient(this.client).subscribe(value => {
 
@@ -391,6 +434,8 @@ export class CustomersComponent implements OnInit {
 
     });
   }
+
+
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 2000,

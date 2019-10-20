@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientDataService } from 'src/app/DataService/ClientDataService';
 import { client } from 'src/Models/Client';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+
+
+
 
 @Component({
   selector: 'app-customers-edit',
@@ -10,10 +15,54 @@ import { client } from 'src/Models/Client';
 export class CustomersEditComponent implements OnInit {
 
   client : client;
+  myForm:FormGroup;
+  //gender:string[] = ["Male","Female","Unknown"];
+  genders: any[] = [
+    {value: '0', viewValue: 'Male'},
+    {value: '1', viewValue: 'Female'},
+    {value: '2', viewValue: 'Unknown'}
+  ];
 
-  constructor(private service:ClientDataService) { }
+  show: boolean = false;
+
+
+
+  constructor(private service:ClientDataService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.myForm = this.fb.group({
+      id: [''],
+      code: ['', Validators.required],
+      name1:['', Validators.required],
+      name2:[''],
+      name3: [''],
+      patent:['', Validators.required],            
+      adresse:['', Validators.required],
+      gender: ['select gender', Validators.required],         
+      email: ['', [Validators.required, Validators.email]],
+      rc: ['', Validators.required],
+      clientCategorieID: [''],
+      contracts: [''],         
+      clientLocationID: [''],  
+      clientLocation: ['']   
+    });    
+
+    this.client  = new client();
+    this.client.code = "123";
+    this.client.name1 = "sara";
+    this.myForm.setValue(this.client); 
+  }
+
+  //get f():any { return this.myForm.controls; }
+
+  EditMainObject(EditForm){
+    this.client = new client();
+    this.client = this.myForm.value;
+    this.client.id = 1033;
+    alert( "client value : "+ this.client + "\n email client "+ this.client.name1  );
+    this.service.EditClient(this.client).subscribe( resultat => {
+
+    });
   }
 
 }

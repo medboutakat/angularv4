@@ -1,101 +1,78 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit,  Output, EventEmitter } from '@angular/core';
+import { NgForm,  FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { VendorService } from '../vendor.service';
 import { Vendor } from 'src/Models/vendor';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-vendor-edit',
   templateUrl: './vendor-edit.component.html',
   styleUrls: ['./vendor-edit.component.css']
 })
+
 export class VendorEditComponent implements OnInit {
-
-  vendor:Vendor;
-
-
-  // myForm = new FormGroup({
-  //   id: new FormControl(''),
-  //   code: new FormControl(''),
-  //   name1: new FormControl(''),
-  //   name2: new FormControl(''),
-  //   adress: new FormControl(''),
-  //   city: new FormControl(''),
-  //   phone: new FormControl(''),
-  //   gsm: new FormControl(''),
-  //   fax: new FormControl(''),
-  //   email: new FormControl('')
-  // }); 
-
-
-
 
   private sub:any;
   action:string = "";
-  constructor(private service:VendorService, private router:Router, private route: ActivatedRoute) { }
+  vendor:Vendor = new Vendor();
+  public changes : any;
+  @Output() outputExemple = new EventEmitter<Vendor>();
 
 
-  generate(){
-    this.vendor = new Vendor();
-    this.vendor.id = 0,
-    this.vendor.code = "",
-    this.vendor.name1 = "",
-    this.vendor.name2 = "",
-    this.vendor.adress = "",
-    this.vendor.phone = "",
-    this.vendor.gsm = "",
-    this.vendor.fax = "",
-    this.vendor.email = ""
+  constructor(private service:VendorService, private router:Router, private formBuilder: FormBuilder) { }
 
-  }
+  vendorEdit: FormGroup;
+  isSubmitted  =  false;   
+  div : any;
+  any:string = "That is my 2nd test for viewchild";
+  
+
+  // 
+
+  // get formControls() { return this.vendorEdit.controls; }
 
   ngOnInit() {    
-
-     this.generate();
-    this.sub = this.route.params.subscribe(params => {
-      var id = +params['id']; // (+) converts string 'id' to a number
-
-      // In a real app: dispatch action to load the details here.
-
-      if(isNaN(id)){
-        this.generate(); 
-      }
-      else{
-        this.service.Get1(id).subscribe( result => {
-          this.vendor = result; 
-        });
-      }
-
-      // console.log("Vendor",this.vendor);
-   });
-  }
-
-  onSubmit(){
-    //this.vendor = this.myForm.value;
-    if(this.vendor.id == 0){
-      console.log(this.vendor);
-      this.service.Add(this.vendor).subscribe(result=>{
+    
+    this.vendorEdit  =  this.formBuilder.group({
+      id: [''],
+      code: ['', Validators.required],
+      name1: ['', Validators.required],
+      name2: ['', Validators.required],
+      adress: ['', Validators.required],
+      city: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)] ],
+      gsm: ['', Validators.required],
+      fax: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email] ]
+    });       
+        
+    this.vendorEdit.setValue(this.vendor);
+  }  
   
-        this.vendor=result;
+  onSubmit(){        
+    
+    this.vendor = this.vendorEdit.value;
+    console.log(this.vendor);
+
+    if( this.service.do == 1 ){      
+      this.service.Add(this.vendor).subscribe(r=>{          
       });
     }
-    else{
-      console.log(this.vendor);
-      this.service.Edit(this.vendor).subscribe( result => {
-        this.vendor = result;
-      })      
+
+    if( this.service.do == 2){      
+      this.service.Edit(this.vendor).subscribe( r => {        
+      });          
     }
-   
-    this.service.IsAffected = true;
-    console.log(this.vendor);
+
+    this.service.show = false;    
     
-    this.router.navigateByUrl("vendor").then(e => {
-      if (e) {
-        console.log("Navigation is successful!");
-      } else {
-        console.log("Navigation has failed!");
-      }
-    });
+    this.outputExemple.emit(this.vendor);
+    this.isSubmitted = true;    
+    
+    // if( this.vendorEdit.valid){
+    //   location.reload();     
+    // }
 
   }
 

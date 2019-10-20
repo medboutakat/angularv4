@@ -16,6 +16,7 @@ export class client {
     clientLocation:    ClientLocation;
 }
 
+
 export interface ClientLocation {
     id:        number;
     name:      string;

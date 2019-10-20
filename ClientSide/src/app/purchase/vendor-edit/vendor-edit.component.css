@@ -12,3 +12,7 @@ input[type="text"]{
 form{
     margin-left : 5cm;
 } 
+
+td{
+    height: 80px;
+}
