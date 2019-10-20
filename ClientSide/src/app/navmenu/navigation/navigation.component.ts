@@ -2,10 +2,9 @@ import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { Location } from '@angular/common';
 import { Observable, of } from 'rxjs';
 import { RouterLinkActive } from '@angular/router'; 
-import * as $ from './node_modules/jquery_modules/jquery';
-import { ConfigService } from '../../../config.service';
-import { AuthenticationService } from '../../../DataService/authentication.service';
-
+import { AuthenticationService } from 'src/app/DataService/authentication.service';
+import { ConfigService } from 'src/app/config.service';
+// import * as $ from './././node_modules/jquery_modules/jquery'; 
 
 @Component({
   selector: 'app-navigation',

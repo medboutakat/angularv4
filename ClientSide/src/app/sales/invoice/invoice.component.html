@@ -16,8 +16,39 @@
     </div>
     <br>
     <div class="container">
-        <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal" value="Create New">
+        <!-- <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal1" value="Create New"> -->
+        <input type="button" class="btn btn-primary" (click)="loadAddnew()" >
         <hr>
+
+
+ 
+        <!-- <div id="myModal" class="modal fade" role="dialog"> -->
+            <!-- <div class="modal-dialog"> -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-primary">{{action}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <app-invoice-edit #editView (nameEvent)="RefreshData($event)"></app-invoice-edit>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            <!-- </div>
+        </div> -->
+
+
+
+
+
+
+
+
+
+
+
         <div *ngIf="!dataavailbale">
             <h4> No Invoice Data is present Click Add new to add Data.</h4>
         </div>
@@ -52,22 +83,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-primary">{{action}}</h4>
-                    </div>
-                    <div class="modal-body">
-                        <app-invoice-edit #editView (nameEvent)="RefreshData($event)"></app-invoice-edit>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> 
     </div>
 </div>

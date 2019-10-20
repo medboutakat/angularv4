@@ -9,7 +9,7 @@ import { CustomersComponent } from './customers/customers.component';
 
  
 const routes: Routes = [ 
-  {path:'',component:InvoiceComponent}, 
+  {path:'invoices',component:InvoiceComponent}, 
   {path:'customers',component:CustomersComponent}
 ];
 

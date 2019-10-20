@@ -179,7 +179,6 @@ export class CustomersComponent implements OnInit {
       rc: ['',],
       adresse: ['', Validators.required],
       patent: ['', Validators.required]
-
     });
 
 

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Vat } from 'src/Models/Vat'; 
 import { VatDataService } from '../../DataService/VatDataService';
 import { Router } from '@angular/router';
-import { VatEditComponent } from '../../vat-edit/vat-edit.component';
+import { VatEditComponent } from '../vat-edit/vat-edit.component';
 
 @Component({
   selector: 'app-vat',
