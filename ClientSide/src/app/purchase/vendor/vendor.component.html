@@ -1,17 +1,12 @@
-<h1> this is vendor component</h1>
- 
-<hr/>
+<br> <br>
+<h1> this is vendor component</h1> 
 <app-vendor-edit  #editView (outputExemple)="outputExemple($event)"></app-vendor-edit>
-<!-- <app-vendor-edit [ngStyle]="{'display': service.show ? 'initial' : 'none'}"  (outputExemple)="outputExemple($event)"></app-vendor-edit> -->
-<div *ngIf="!service.show" id="div">
-    <!-- <div [ngStyle]="{'display': !service.show ? 'initial' : 'none' }" id="div"> -->  
-  <button  (click)="navigate()" >Create New</button>
-  <hr/>
-
+<div>  
   <div>
+    <button *ngIf="!service.show" class="btn btn-primary" (click)="navigate()" >Create New</button>
     <button class="btn btn-primary" (click)="Edit()">Edit vendor</button><button class="btn btn-danger" (click)="Delete()">Delete vendor</button>
-  </div> 
-  <hr/>
+  </div>  
+  <br>
   <ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham" (gridReady)="onGridReady($event)"
     [columnDefs]="columnDefs" [rowData]="rowData" (selectionChanged)="onSelectionChanged($event)">
   </ag-grid-angular>
