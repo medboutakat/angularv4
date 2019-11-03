@@ -29,7 +29,7 @@ import { DemoComponent } from './demo/demo.component';
 
 const routes: Routes = [
 
-  { path: '', component: HomeComponent },
+  // { path: '', component: HomeComponent },
   { path: 'employee', component: EmployeesComponent },
   { path: 'clients', component: ClientsComponent },
   { path: 'navbar', component: NavBarComponent },

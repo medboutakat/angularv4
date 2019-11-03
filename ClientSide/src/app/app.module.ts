@@ -88,6 +88,8 @@ import { ButtonRendererComponent } from './clients/button-render.component';
 import { DemoComponent } from './demo/demo.component';
 import { DemoService } from './demo/demo.service';
 import { PurchaseModule } from './purchase/purchase.module';
+import { NavComponent } from './page-section/nav/nav.component';
+import { LeftbarComponent } from './page-section/leftbar/leftbar.component';
 
 //import { Grid } from 'ag-grid-community';
 
@@ -131,7 +133,9 @@ import { PurchaseModule } from './purchase/purchase.module';
     ClientEditComponent, NavBarComponent, TestComponent, ClientsComponent,
     DialogOverviewExampleDialog,
     InvoiceComponent,
-    DemoComponent
+    DemoComponent,
+    NavComponent,
+    LeftbarComponent
     
     ],
   imports: [

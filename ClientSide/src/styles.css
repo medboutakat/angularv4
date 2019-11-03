@@ -1,13 +1,6 @@
 /*
     DEMO STYLE
 */
-
-/* You can add global styles to this file, and also import other style files */
-
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import 'ag-grid-community/dist/styles/ag-grid.css';
-@import 'ag-grid-community/dist/styles/ag-theme-balham.css';
-
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 
@@ -68,7 +61,7 @@ a, a:hover, a:focus {
     transition: all 0.3s;
 }
 
-#sidebar.active {
+#sidebar.show {
     margin-left: -250px;
 }
 
@@ -166,7 +159,7 @@ a.article, a.article:hover {
     #sidebar {
         margin-left: -250px;
     }
-    #sidebar.active {
+    #sidebar.show {
         margin-left: 0;
     }
     #sidebarCollapse span {
