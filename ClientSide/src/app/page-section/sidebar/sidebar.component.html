@@ -59,7 +59,7 @@
                   <li>
                         <a routerLink="statut" [class.activated]="currentUrl == '/statut'">
                             <i class="material-icons">statut</i>
-                          </a> 
+                        </a> 
                 </li> 
                 <li>
                 <a routerLink="stock" [class.activated]="currentUrl == '/stock'">
@@ -72,14 +72,28 @@
           <li> 
             <a href="#sales" data-toggle="collapse" aria-expanded="false">Sales</a>
             <ul class="collapse list-unstyled" id="sales"> 
+              <li>
+                <a routerLink="sales/invoices" [class.activated]="currentUrl == 'sales'">
+                    <i class="material-icons">Invoice</i>
+                </a> 
+              </li> 
+              <li>
+                <a routerLink="sales/customers" [class.activated]="currentUrl == 'sales'">
+                  <i class="material-icons">Customers</i>
+                </a> 
+              </li> 
+            </ul>
+          </li> 
+          <li> 
+            <a href="#Purchase" data-toggle="collapse" aria-expanded="false">Purchase</a>
+            <ul class="collapse list-unstyled" id="Purchase"> 
                 <li>
-                      <a routerLink="sales" [class.activated]="currentUrl == 'sales'">
-                          <i class="material-icons">invoice</i>
+                      <a routerLink="vendor" [class.activated]="currentUrl == 'Purchase'">
+                          <i class="material-icons">Purchase</i>
                       </a> 
               </li> 
             </ul>
           </li> 
-
 
           <li> 
             <a href="#Paiements" data-toggle="collapse" aria-expanded="false">Paiements</a>

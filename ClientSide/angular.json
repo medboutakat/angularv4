@@ -27,9 +27,18 @@
                             "src/assets"
                         ],
                         "styles": [ 
+                            {
+                                "input": "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"
+                            },
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/styles.css"                            
                         ],
-                        "scripts": [                            
+                        "scripts": [  
+                           "src/assets/jquery-1.12.0.min.js",
+                            "src/assets/jquery.mCustomScrollbar.concat.min.js",
+                            "src/assets/bars.js",
+                            "src/assets/refresh.js",
+                            "src/assets/bootstrap.min.js",                          
                            
                         ]
                     },

@@ -82,14 +82,15 @@ import {
 import { ClientsComponent, DialogOverviewExampleDialog } from './clients/clients.component';
 import { EmployeeService } from './DataService/emp.service';
 import { ApptestModule } from './apptest/apptest.module';
-import {  AgGridModule } from 'ag-grid-angular';
+import { AgGridModule } from 'ag-grid-angular';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { ButtonRendererComponent } from './clients/button-render.component';
 import { DemoComponent } from './demo/demo.component';
 import { DemoService } from './demo/demo.service';
 import { PurchaseModule } from './purchase/purchase.module';
 import { NavComponent } from './page-section/nav/nav.component';
-import { LeftbarComponent } from './page-section/leftbar/leftbar.component';
+import { LeftbarComponent } from './page-section/leftbar/leftbar.component'; 
+import { ControlsModule } from './controls/controls.module';
 
 //import { Grid } from 'ag-grid-community';
 
@@ -135,8 +136,7 @@ import { LeftbarComponent } from './page-section/leftbar/leftbar.component';
     InvoiceComponent,
     DemoComponent,
     NavComponent,
-    LeftbarComponent
-    
+    LeftbarComponent,
     ],
   imports: [
     BrowserModule,
@@ -167,7 +167,8 @@ import { LeftbarComponent } from './page-section/leftbar/leftbar.component';
     MatRadioModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    PurchaseModule
+    PurchaseModule,
+    ControlsModule
     //Grid
 
   ],

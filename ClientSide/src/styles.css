@@ -2,7 +2,9 @@
     DEMO STYLE
 */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";  
 
 body {
     font-family: 'Poppins', sans-serif;

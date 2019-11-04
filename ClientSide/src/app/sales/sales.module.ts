@@ -28,7 +28,8 @@ import {
 } from '@angular/material';
 import { CustomersComponent, DialogOverviewExampleDialog } from './customers/customers.component';
 import { AgGridModule } from 'ag-grid-angular';
-import { CustomersEditComponent } from './customers-edit/customers-edit.component';
+import { CustomersEditComponent } from './customers-edit/customers-edit.component'; 
+import { ControlsModule } from '../controls/controls.module';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { CustomersEditComponent } from './customers-edit/customers-edit.componen
     InvoiceEditComponent,
     CustomersComponent,
     DialogOverviewExampleDialog,
-    CustomersEditComponent
+    CustomersEditComponent,
   ],
   imports: [
     CommonModule,
@@ -65,7 +66,12 @@ import { CustomersEditComponent } from './customers-edit/customers-edit.componen
     MatNativeDateModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatSnackBarModule,MatSliderModule
+    MatRadioModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatSliderModule,  
+    ControlsModule
   ],
   entryComponents: [DialogOverviewExampleDialog],
   providers: [

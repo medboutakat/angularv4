@@ -1,0 +1,6 @@
+<label for="orders">{{label}}</label> 
+<select formControlName="orders" id="orders">
+  <option *ngFor="let obj of listObjects; let i = index" [value]="obj.id">
+    {{obj.name}}
+  </option>
+</select>
