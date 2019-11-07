@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { employee } from 'src/Models/Employee';
 import { Observable } from 'rxjs';
 import { ReturnStatement } from '@angular/compiler';
-import { client } from 'src/Models/Client';
+import { Customer } from 'src/Models/Customer';
 
 
 
@@ -17,8 +17,8 @@ export class EmployeeService {
 
     }
 
-    getEmployes(): Observable<client[]> {
-        return this.http.get<client[]>('http://localhost:4200/assets/clients.json');
+    getEmployes(): Observable<Customer[]> {
+        return this.http.get<Customer[]>('http://localhost:4200/assets/clients.json');
     }
     getEmployesService(service: String): any {
         console.log(service);

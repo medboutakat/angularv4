@@ -13,7 +13,11 @@
                 </mat-form-field>
             </div>
         </div>
-      
+        <div class="form-group">
+            <div class="col-sm-8"> 
+                <app-select label="customer:" display="name2" [listObjects]="customers | async"></app-select>
+            </div>
+        </div>
         <div class="form-group">
             <!--
                     <label class="control-label col-sm-2" for="email">Date:</label>
@@ -23,7 +27,7 @@
                     </div>
                 -->
             <mat-form-field class="example-form-field">
-                <input matInput [matDatepicker]="picker1" formControlName="DateDebut" placeholder="Date Début">
+                <input matInput [matDatepicker]="picker1" name="DateDebut" placeholder="Date Début">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>

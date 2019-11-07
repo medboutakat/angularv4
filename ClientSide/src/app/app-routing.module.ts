@@ -1,9 +1,7 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EmployeesComponent } from './employees/EmployeesComponent';
-import { EmployeeupdateComponent } from './employeeupdate/employeeupdate.component';
-
-import { EmployeeAddComponent } from './employee-add/employee-add.component';
+import { EmployeesComponent } from './apptest/Employees/EmployeesComponent'; 
+import { EmployeeAddComponent } from './apptest/employee-add/employee-add.component';
 import { VatComponent } from './settings/vat/vat.component';
 import { LoginComponent } from './security/login/login.component';
 import { SignupComponent } from './security/signup/signup.component';
@@ -13,34 +11,30 @@ import { FooterComponent } from './page-section/footer/footer.component';
 import { SocialComponent } from './page-section/social/social.component';
 import { BankComponent } from './bank/bank.component';
 import { HomeComponent } from './home/home.component';
-import { ChartComponent } from './chart/chart.component';
-import { MapsComponent } from './maps/maps.component';
-import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
+import { ChartComponent } from './apptest/chart/chart.component';
+import { MapsComponent } from './apptest/maps/maps.component';
+import { UploadfilesComponent } from './apptest/uploadfiles/uploadfiles.component';
 import { StatutComponent } from './settings/statut/statut.component';
-import { TripComponent } from './trip/trip.component';
-import { ProductComponent } from './stock/product/product.component';
-import { ClientComponent } from './client/client.component';
+import { TripComponent } from './apptest/trip/trip.component'; 
 import { DeliveryComponent } from './sales/delivery/delivery.component';
 import { NavBarComponent } from './page-section/nav-bar/nav-bar.component';
-import { TestComponent } from './test/test.component';
-import { ClientsComponent } from './clients/clients.component';
-import { InvoiceComponent } from './invoice/invoice.component';
-import { DemoComponent } from './demo/demo.component';
+import { TestComponent } from './apptest/test/test.component';
+import { ClientsComponent } from './apptest/clients/clients.component';
+import { InvoiceComponent } from './apptest/invoice/invoice.component';
+import { DemoComponent } from './apptest/demo/demo.component';
 
 const routes: Routes = [
 
   // { path: '', component: HomeComponent },
-  { path: 'employee', component: EmployeesComponent },
+  // { path: 'employee', component: EmployeesComponent },
   { path: 'clients', component: ClientsComponent },
   { path: 'navbar', component: NavBarComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'Edit', component: EmployeeupdateComponent },
-  { path: 'Add', component: EmployeeAddComponent },
-  { path: 'Home', component: EmployeesComponent },
+  { path: 'signup', component: SignupComponent }, 
+  // { path: 'Add', component: EmployeeAddComponent },
+  // { path: 'Home', component: EmployeesComponent },
   { path: 'tva', component: VatComponent },
-  { path: 'commande', component: CommandeComponent },
-  { path: 'client', component: ClientComponent },
+  { path: 'commande', component: CommandeComponent }, 
   { path: 'bank', component: BankComponent },
   { path: 'home', component: HomeComponent },
   { path: 'contact', component: HomeComponent },

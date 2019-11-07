@@ -3,6 +3,7 @@ import { InvoiceService } from '../invoice.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InvoiceHeader, InvoiceDetail } from 'src/Models/Commande';
+import { ClientDataService } from 'src/app/DataService/ClientDataService';
 
 @Component({
   selector: 'app-invoice-edit',
@@ -13,16 +14,21 @@ import { InvoiceHeader, InvoiceDetail } from 'src/Models/Commande';
 export class InvoiceEditComponent implements OnInit {
   objectFromDetail: any;
   
+  _customers: any;
+  
  
    
 
-  constructor(private service: InvoiceService, private route: Router) {
-
+  constructor(private service: InvoiceService,private customerService:ClientDataService, private route: Router) {
+    this._customers = this.customerService.getClient(); 
   }
-  ngOnInit() { 
-    
+  ngOnInit() 
+  { 
   }
 
+  get customers(){
+    return this._customers;
+  }
  
 
 

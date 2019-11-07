@@ -2,12 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { EmployeesComponent } from './employees/EmployeesComponent';
-import { EmployeeAddComponent } from './employee-add/employee-add.component';
-import { EmployeeupdateComponent } from './employeeupdate/employeeupdate.component';
-
-
+import { AppComponent } from './app.component'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeDataService } from '../app/DataService/EmployeeDataService';
@@ -28,8 +23,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { FooterComponent } from './page-section/footer/footer.component';
 import { SocialComponent } from './page-section/social/social.component';
 import { HeaderComponent } from './page-section/header/header.component';
-import { ClientComponent } from './client/client.component';
-import { TestimonialComponent } from './testimonial/testimonial.component';
+import { TestimonialComponent } from './page-section/testimonial/testimonial.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { NotfoundComponent } from './page-section/notfound/notfound.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard/user-dashboard.component';
@@ -39,24 +33,23 @@ import { ConfigService } from './config.service';
 import { NavmenuComponent } from './page-section/navmenu/navmenu.component';
 import { BankComponent } from './bank/bank.component';
 import { HomeComponent } from './home/home.component';
-import { ContactComponent } from './contact/contact.component';
-import { ChartComponent } from './chart/chart.component';
+import { ContactComponent } from './apptest/contact/contact.component';
+import { ChartComponent } from './apptest/chart/chart.component';
 import { SignalRService } from './DataService/signal-r.service';
-import { MapsComponent } from './maps/maps.component';
-import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
+import { MapsComponent } from './apptest/maps/maps.component';
+import { UploadfilesComponent } from './apptest/uploadfiles/uploadfiles.component';
 import { StatutComponent } from './settings/statut/statut.component';
-import { TripComponent } from './trip/trip.component';
+import { TripComponent } from './apptest/trip/trip.component';
 import { StockModule } from './stock/stock.module';
 import { DeliveryComponent } from './sales/delivery/delivery.component';
 import { DeliveryEditComponent } from './sales/delivery-edit/delivery-edit.component';
 import { DeliveryDataService } from './DataService/DeliveryDataService';
-import { ClientEditComponent } from './client-edit/client-edit.component';
 import { ClientDataService } from './DataService/ClientDataService';
 import { ClientCategoryDataService } from './DataService/ClientCategoryDataService';
 import { CommandeDataService } from './DataService/CommandeDataService';
 import { SalesModule } from './sales/sales.module';
 import { NavBarComponent } from './page-section/nav-bar/nav-bar.component';
-import { TestComponent } from './test/test.component';
+import { TestComponent } from './apptest/test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
@@ -79,14 +72,14 @@ import {
   MatProgressBarModule,
   MatRadioButton, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatSnackBarModule
 } from '@angular/material';
-import { ClientsComponent, DialogOverviewExampleDialog } from './clients/clients.component';
+import { ClientsComponent, DialogOverviewExampleDialog } from './apptest/clients/clients.component';
 import { EmployeeService } from './DataService/emp.service';
 import { ApptestModule } from './apptest/apptest.module';
 import { AgGridModule } from 'ag-grid-angular';
-import { InvoiceComponent } from './invoice/invoice.component';
-import { ButtonRendererComponent } from './clients/button-render.component';
-import { DemoComponent } from './demo/demo.component';
-import { DemoService } from './demo/demo.service';
+import { InvoiceComponent } from './apptest/invoice/invoice.component';
+import { ButtonRendererComponent } from './apptest/clients/button-render.component';
+import { DemoComponent } from './apptest/demo/demo.component';
+import { DemoService } from './apptest/demo/demo.service';
 import { PurchaseModule } from './purchase/purchase.module';
 import { NavComponent } from './page-section/nav/nav.component';
 import { LeftbarComponent } from './page-section/leftbar/leftbar.component'; 
@@ -97,9 +90,6 @@ import { ControlsModule } from './controls/controls.module';
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeesComponent,
-    EmployeeAddComponent,
-    EmployeeupdateComponent,
     LayoutComponent,
     SidebarComponent,
     FixedtopbarComponent,
@@ -114,7 +104,6 @@ import { ControlsModule } from './controls/controls.module';
     FooterComponent,
     SocialComponent,
     HeaderComponent,
-    ClientComponent,
     BankComponent,
     TestimonialComponent,
     PricingComponent,
@@ -130,8 +119,7 @@ import { ControlsModule } from './controls/controls.module';
     StatutComponent,
     TripComponent,
     DeliveryComponent,
-    DeliveryEditComponent,
-    ClientEditComponent, NavBarComponent, TestComponent, ClientsComponent,
+    DeliveryEditComponent,NavBarComponent, TestComponent, ClientsComponent,
     DialogOverviewExampleDialog,
     InvoiceComponent,
     DemoComponent,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientDataService } from 'src/app/DataService/ClientDataService';
-import { client } from 'src/Models/Client';
+import { Customer } from 'src/Models/Customer';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
@@ -14,7 +14,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CustomersEditComponent implements OnInit {
 
-  client : client;
+  client : Customer;
   myForm:FormGroup;
   //gender:string[] = ["Male","Female","Unknown"];
   genders: any[] = [
@@ -47,7 +47,7 @@ export class CustomersEditComponent implements OnInit {
       clientLocation: ['']   
     });    
 
-    this.client  = new client();
+    this.client  = new Customer();
     this.client.code = "123";
     this.client.name1 = "sara";
     this.myForm.setValue(this.client); 
@@ -56,7 +56,7 @@ export class CustomersEditComponent implements OnInit {
   //get f():any { return this.myForm.controls; }
 
   EditMainObject(EditForm){
-    this.client = new client();
+    this.client = new Customer();
     this.client = this.myForm.value;
     this.client.id = 1033;
     alert( "client value : "+ this.client + "\n email client "+ this.client.name1  );

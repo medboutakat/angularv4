@@ -29,7 +29,7 @@ import {
 } from '@angular/router';
 import { EmployeeService } from '../../DataService/emp.service';
 import { ClientDataService } from '../../DataService/ClientDataService';
-import { Client, client } from 'src/Models/Client';
+import { Customer } from 'src/Models/Customer';
 import { ColDef, ColumnApi, GridApi } from 'ag-grid-community';
 import { CustomersEditComponent } from '../customers-edit/customers-edit.component';
 @Component({
@@ -41,7 +41,7 @@ export class CustomersComponent implements OnInit {
 
   /************************* */
   // row data and column definitions
-  private rowData: client[];
+  private rowData: Customer[];
   private columnDefs: ColDef[];
 
   // gridApi and columnApi
@@ -50,20 +50,20 @@ export class CustomersComponent implements OnInit {
 
   private rowSelection;
 
-  private SelectedClient: client;
+  private SelectedClient: Customer;
 
 
   /**************************************** */
   date: any;
-  clients: client[] = new Array();
-  pageEmployes: client[];
+  clients: Customer[] = new Array();
+  pageEmployes: Customer[];
   motCle: string = '';
   size: number = 5;
 
   page: number = 0;
   pages: Array<number>;
   ArrayS: number;
-  client: client = new client();
+  client: Customer = new Customer();
   mode: number = 0;
   photo: string;
   firstFormGroup: FormGroup;
@@ -75,7 +75,6 @@ export class CustomersComponent implements OnInit {
       { headerName: 'code', field: 'code', editable: true, filter: true, sortable: true, checkboxSelection: true },
       { headerName: 'Nom', field: 'name1', editable: true, filter: true, sortable: true },
       { headerName: 'name2', field: 'name2', editable: true, filter: true, sortable: true }
-
     ]
   }
   
@@ -372,7 +371,7 @@ export class CustomersComponent implements OnInit {
   }
 
 
-  CurrentEmp: client;
+  CurrentEmp: Customer;
 
 
   setValue() {
@@ -413,7 +412,7 @@ export class CustomersComponent implements OnInit {
   }
 
 
-  openDialog(clientsToDelete: client[]): void {
+  openDialog(clientsToDelete: Customer[]): void {
     console.log(clientsToDelete);
     let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '260px',
@@ -462,7 +461,7 @@ export class DialogOverviewExampleDialog {
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: client[]) {
+    @Inject(MAT_DIALOG_DATA) public data: Customer[]) {
     console.log(this.data);
   }
 

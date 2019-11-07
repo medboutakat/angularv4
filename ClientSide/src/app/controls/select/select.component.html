@@ -1,6 +1,7 @@
 <label for="orders">{{label}}</label> 
-<select formControlName="orders" id="orders">
+<!-- {{listObjects | json}} -->
+<select name="orders" id="orders">
   <option *ngFor="let obj of listObjects; let i = index" [value]="obj.id">
-    {{obj.name}}
+    {{obj[display]}}
   </option>
 </select>

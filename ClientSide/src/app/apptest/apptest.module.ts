@@ -3,18 +3,19 @@ import { CommonModule } from '@angular/common';
 import { ChildComponent } from './child/child.component';
 import { ChildeditComponent } from './childedit/childedit.component';
 import { AppTestRoutingModule } from './test.routing';
+import { EmployeesComponent } from './Employees/EmployeesComponent';
 
 
 
 @NgModule({
-  declarations: [ChildComponent, ChildeditComponent],
+  declarations: [ChildComponent, ChildeditComponent, EmployeesComponent ],
   imports: [
     CommonModule,
     AppTestRoutingModule
   ],
-  exports:[
+  exports: [
     ChildComponent,
-    ChildeditComponent
+    ChildeditComponent 
   ]
 })
 export class ApptestModule { }
