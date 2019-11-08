@@ -3,10 +3,14 @@ import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../DataService/authentication.service';
 
+
+
+export class ChipsOverviewExample {}
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
+ 
 })
 export class LoginComponent implements OnInit {
 

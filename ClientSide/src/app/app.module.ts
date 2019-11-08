@@ -52,7 +52,7 @@ import { NavBarComponent } from './page-section/nav-bar/nav-bar.component';
 import { TestComponent } from './apptest/test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {
+import {MatChipsModule,
   MatButtonModule,
   MatCardModule,
   MatMenuModule,
@@ -84,8 +84,7 @@ import { PurchaseModule } from './purchase/purchase.module';
 import { NavComponent } from './page-section/nav/nav.component';
 import { LeftbarComponent } from './page-section/leftbar/leftbar.component'; 
 import { ControlsModule } from './controls/controls.module';
-
-//import { Grid } from 'ag-grid-community';
+// import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -156,7 +155,8 @@ import { ControlsModule } from './controls/controls.module';
     MatProgressSpinnerModule,
     MatSnackBarModule,
     PurchaseModule,
-    ControlsModule
+    ControlsModule,
+    MatChipsModule
     //Grid
 
   ],
