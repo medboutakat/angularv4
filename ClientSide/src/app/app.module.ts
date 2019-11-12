@@ -154,13 +154,9 @@ import { SettingsModule } from './settings/settings.module';
     MatProgressSpinnerModule,
     MatSnackBarModule,
     PurchaseModule,
-<<<<<<< HEAD
     SettingsModule,
-    ControlsModule
-=======
-    ControlsModule,
+    ControlsModule, 
     MatChipsModule
->>>>>>> fdb65a852de5e2bdff5898b0f3c6883e9e6f48fd
     //Grid
 
   ],
