@@ -1,6 +1,6 @@
 # aspcore_angular
 
-salam asp core demo with angular 7 
+salam asp core demo with angular 8
 
 Mohamed BOUTAKAT and Ghizlane NEJJAR
 
