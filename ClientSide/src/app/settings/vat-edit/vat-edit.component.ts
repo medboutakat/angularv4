@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input, EventEmitter, Output, ElementRef } from '@angular/core'; 
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms'; 
-import { VatDataService } from '../../DataService/VatDataService';
+import { VatService } from '../vat-service';
 import { Vat } from 'src/Models/Vat';
 @Component({
   selector: 'app-vat-edit',
@@ -11,7 +11,7 @@ import { Vat } from 'src/Models/Vat';
 
 export class VatEditComponent implements OnInit {
 
-  constructor(private dataservice: VatDataService, private route: Router) {
+  constructor(private dataservice: VatService, private route: Router) {
 
   }
   

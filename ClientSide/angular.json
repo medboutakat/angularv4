@@ -38,7 +38,7 @@
                             "src/assets/jquery.mCustomScrollbar.concat.min.js",
                             "src/assets/bars.js",
                             "src/assets/refresh.js",
-                            "src/assets/bootstrap.min.js",                          
+                            "src/assets/bootstrap.min.js"                        
                            
                         ]
                     },

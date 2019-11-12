@@ -9,8 +9,7 @@ import { EmployeeDataService } from '../app/DataService/EmployeeDataService';
 import { LayoutComponent } from './page-section/layout/layout.component';
 import { SidebarComponent } from './page-section/sidebar/sidebar.component';
 import { FixedtopbarComponent } from './page-section/fixedtopbar/fixedtopbar.component';
-import { VatComponent } from './settings/vat/vat.component'
-import { VatDataService } from './DataService/VatDataService';
+import { VatComponent } from './settings/vat/vat.component' 
 import { VatEditComponent } from './settings/vat-edit/vat-edit.component';
 import { LoginComponent } from './security/login/login.component';
 import { AuthenticationService } from './DataService/authentication.service';
@@ -84,6 +83,7 @@ import { PurchaseModule } from './purchase/purchase.module';
 import { NavComponent } from './page-section/nav/nav.component';
 import { LeftbarComponent } from './page-section/leftbar/leftbar.component'; 
 import { ControlsModule } from './controls/controls.module';
+import { SettingsModule } from './settings/settings.module';
 
 //import { Grid } from 'ag-grid-community';
 
@@ -92,9 +92,7 @@ import { ControlsModule } from './controls/controls.module';
     AppComponent,
     LayoutComponent,
     SidebarComponent,
-    FixedtopbarComponent,
-    VatComponent,
-    VatEditComponent,
+    FixedtopbarComponent, 
     ButtonRendererComponent,
     LoginComponent,
     SignupComponent,
@@ -115,8 +113,7 @@ import { ControlsModule } from './controls/controls.module';
     ContactComponent,
     ChartComponent,
     MapsComponent,
-    UploadfilesComponent,
-    StatutComponent,
+    UploadfilesComponent, 
     TripComponent,
     DeliveryComponent,
     DeliveryEditComponent,NavBarComponent, TestComponent, ClientsComponent,
@@ -156,14 +153,14 @@ import { ControlsModule } from './controls/controls.module';
     MatProgressSpinnerModule,
     MatSnackBarModule,
     PurchaseModule,
+    SettingsModule,
     ControlsModule
     //Grid
 
   ],
   providers: [
     EmployeeDataService,
-    DeliveryDataService,
-    VatDataService,
+    DeliveryDataService, 
     AuthenticationService,
     ClientDataService,
     CommandeDataService,

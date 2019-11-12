@@ -4,7 +4,7 @@ import { Vat } from 'src/Models/Vat'
 import { ROOT_URL } from 'src/Models/Config'
 import { Observable } from 'rxjs';
 @Injectable()
-export class VatDataService {
+export class VatResolverService {
 
   
   Vats: Observable<Vat[]>;

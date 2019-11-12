@@ -25,29 +25,32 @@ import { DemoComponent } from './apptest/demo/demo.component';
 
 const routes: Routes = [
 
+  { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) },
+  { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) },
+  { path: 'apptest', loadChildren: () => import('./apptest/apptest.module').then(m => m.ApptestModule) },
+  { path: 'purchase', loadChildren: () => import('./purchase/purchase.module').then(m => m.PurchaseModule) },
+  { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) }
+
   // { path: '', component: HomeComponent },
   // { path: 'employee', component: EmployeesComponent },
-  { path: 'clients', component: ClientsComponent },
-  { path: 'navbar', component: NavBarComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent }, 
-  // { path: 'Add', component: EmployeeAddComponent },
-  // { path: 'Home', component: EmployeesComponent },
-  { path: 'tva', component: VatComponent },
-  { path: 'commande', component: CommandeComponent }, 
-  { path: 'bank', component: BankComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'contact', component: HomeComponent },
-  { path: 'chart', component: ChartComponent },
-  { path: 'maps', component: MapsComponent },
-  { path: 'upload', component: UploadfilesComponent },
-  { path: 'statut', component: StatutComponent },
-  { path: 'trip', component: TripComponent },
-  { path: 'delivery', component: DeliveryComponent },
-  { path: 'route', component: VatComponent },
-  { path: 'test', component: TestComponent },
-  { path: 'invoice', component: InvoiceComponent },
-  { path: 'demo', component: DemoComponent },
+  // { path: 'clients', component: ClientsComponent },
+  // { path: 'navbar', component: NavBarComponent },
+  // { path: 'login', component: LoginComponent },
+  // { path: 'signup', component: SignupComponent },  
+  // { path: 'commande', component: CommandeComponent }, 
+  // { path: 'bank', component: BankComponent },
+  // { path: 'home', component: HomeComponent },
+  // { path: 'contact', component: HomeComponent },
+  // { path: 'chart', component: ChartComponent },
+  // { path: 'maps', component: MapsComponent },
+  // { path: 'upload', component: UploadfilesComponent },
+  // { path: 'statut', component: StatutComponent },
+  // { path: 'trip', component: TripComponent },
+  // { path: 'delivery', component: DeliveryComponent },
+  // { path: 'route', component: VatComponent },
+  // { path: 'test', component: TestComponent },
+  // { path: 'invoice', component: InvoiceComponent },
+  // { path: 'demo', component: DemoComponent },
 
   // {
   // path: 'sales', component: ProductComponent,
@@ -59,11 +62,6 @@ const routes: Routes = [
   //     component: ProductComponent
   //   }]
   //   },
-  { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) },
-  { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) },
-  { path: 'apptest', loadChildren: () => import('./apptest/apptest.module').then(m => m.ApptestModule) },
-  { path: 'purchase', loadChildren: () => import('./purchase/purchase.module').then(m => m.PurchaseModule) }
-
   // {path:'Edit',component:EmployeeupdateComponent},
   // {path:'Add',component:EmployeeAddComponent},
   // {path:'Home',component:AngularCRUDComponent}

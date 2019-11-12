@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Vat } from 'src/Models/Vat'; 
-import { VatDataService } from '../../DataService/VatDataService';
+import { VatService } from '../vat-service';
 import { Router } from '@angular/router';
 import { VatEditComponent } from '../vat-edit/vat-edit.component';
 import { ColumnApi, ColDef, GridApi } from 'ag-grid-community';
@@ -44,7 +44,7 @@ export class VatComponent implements OnInit {
     var:any;
     
 
-    constructor(private dataservce: VatDataService, private route: Router) {
+    constructor(private dataservce: VatService, private route: Router) {
       this.columnDefs = this.createColumnDefs();
   //    this.hidden = true;
     }
