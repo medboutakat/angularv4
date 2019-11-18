@@ -3,7 +3,7 @@
   <button type="text" class="btn btn-success"  (click)="edit()"  data-toggle="modal" data-target="#myModal">Edit</button>
   
   <hr>
-  <div *ngIf="!dataavailbale">  
+  <div *ngIf="this.objlist.length > 0">  
     <h4> No Employee Data is present Click Add new to add Data.</h4>
   </div>
 

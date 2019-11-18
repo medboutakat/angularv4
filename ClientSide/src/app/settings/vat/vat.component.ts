@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Vat } from 'src/Models/Vat'; 
 import { VatService } from '../vat-service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { VatEditComponent } from '../vat-edit/vat-edit.component';
 import { ColumnApi, ColDef, GridApi } from 'ag-grid-community';
 
@@ -44,31 +44,38 @@ export class VatComponent implements OnInit {
     var:any;
     
 
-    constructor(private dataservce: VatService, private route: Router) {
+    constructor(private dataservce: VatService,private activatedRoute: ActivatedRoute, private route: Router) {
       this.columnDefs = this.createColumnDefs();
   //    this.hidden = true;
     }
   
     ngOnInit() {
-      this.LoadData(); 
+      this.LoadData();  
     }
   
     LoadData() { 
-      this.dataservce.getVat().subscribe((tempdate) => {
-      this.objlist = tempdate;
+      this.dataavailbale = true;
+      this.activatedRoute.data.subscribe((data: { vats: Vat[] }) => { 
+        // this.objlist = data.objs; 
+        console.log("vats : ",data.vats);
+        this.objlist = data.vats; 
+      });
+
+      // this.dataservce.getVat().subscribe((tempdate) => {
+      // this.objlist = tempdate;
       
-        console.log(this.objlist);
-        if (this.objlist.length > 0) {
-          this.dataavailbale = true;
-        }
-        else {
-          this.dataavailbale = false;
-        }
-      }
-      )
-        , err => {
-          console.log(err);
-        }
+      //   console.log(this.objlist);
+      //   if (this.objlist.length > 0) {
+      //     this.dataavailbale = true;
+      //   }
+      //   else {
+      //     this.dataavailbale = false;
+      //   }
+      // }
+      // )
+      //   , err => {
+      //     console.log(err);
+      //   }
     }
 
     deleteconfirmation(id: string) {

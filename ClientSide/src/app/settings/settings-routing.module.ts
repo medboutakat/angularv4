@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';  
 import { StatutComponent } from './statut/statut.component';
 
-import { VatComponent } from './vat/vat.component';
+import { VatComponent } from './vat/vat.component'; 
+import { VatResolverService } from './vat-resolver-service';
 const routes: Routes = [ 
   {path: 'status', component: StatutComponent}, 
-  {path: 'vats', component: VatComponent}
+  {path: 'vats', component: VatComponent,resolve: { vats: VatResolverService }}
 ];
 
 

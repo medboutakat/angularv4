@@ -6,7 +6,7 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import { VatService } from './vat-service';
-import { VatResolverService } from './vat-resolver-service';
+import { VatResolverService } from "./vat-resolver-service";
 import { StatutComponent } from './statut/statut.component';
 
 
