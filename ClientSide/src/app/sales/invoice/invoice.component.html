@@ -54,7 +54,13 @@
         <div *ngIf="!dataavailbale">
             <h4> No Invoice Data is present Click Create new to add Data.</h4>
         </div>
-        <div id="no-more-tables">
+
+        
+        <ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham" (gridReady)="onGridReady($event)"
+        [columnDefs]="columnDefs" [rowData]="objlist" (selectionChanged)="onSelectionChanged($event)">
+        </ag-grid-angular>
+        
+        <!-- <div id="no-more-tables">
 
             <table class="table table-hover table-striped table-bordered nowrap" style="margin-top: 10px; width:100%"
                 *ngIf="dataavailbale">
@@ -86,6 +92,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div> 
+        </div>  -->
     </div>
 </div>

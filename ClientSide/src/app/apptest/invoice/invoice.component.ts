@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from '../../sales/invoice.service';
 import { Customer } from 'src/Models/Customer';
 import { ColDef, ColumnApi, GridApi } from 'ag-grid-community';
-import { InvoiceHeader } from 'src/Models/Commande';
+import { InvoiceHeader } from 'src/Models/InvoiceModels';
 import { MatSnackBar } from '@angular/material';
 
 @Component({

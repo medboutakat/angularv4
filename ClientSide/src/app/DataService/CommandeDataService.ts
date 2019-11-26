@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { InvoiceHeader } from 'src/Models/Commande'
+import { InvoiceHeader } from 'src/Models/InvoiceModels'
 import { ROOT_URL } from 'src/Models/Config'
 import { Observable } from 'rxjs';
 @Injectable()

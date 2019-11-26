@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, ViewChild, EventEmitter, Input, ElementRef } from '@angular/core';
 import { InvoiceService } from '../invoice.service'; 
-import { Router } from '@angular/router';
-import { InvoiceHeader, InvoiceDetail } from 'src/Models/Commande';
+import { Router, ActivatedRoute } from '@angular/router';
+import { InvoiceHeader, InvoiceDetail } from 'src/Models/InvoiceModels';
 import { InvoiceEditComponent } from '../invoice-edit/invoice-edit.component';
+import { ColDef } from 'ag-grid-community';
 
 @Component({
   selector: 'app-invoice',
@@ -16,31 +17,60 @@ export class InvoiceComponent implements OnInit {
   dataavailbale: Boolean = false;
   action:string;
   objTemp: InvoiceHeader;
-  
+  params: any;
 
-  constructor(private service: InvoiceService, private route: Router) {
-     
+  constructor(private service: InvoiceService,private activatedRoute: ActivatedRoute,private route: Router) {
+    this.columnDefs = this.createColumnDefs();
   }
  
+
+  
+  private rowData: InvoiceHeader[];
+  private columnDefs: ColDef[];
+  
+  private createColumnDefs() {
+    return [ 
+      { headerName: 'Id', field: 'id', editable: true, filter: true, sortable: true, checkboxSelection: true },
+      { headerName: 'Code', field: 'code', editable: true, filter: true, sortable: true },
+      { headerName: 'Date', field: 'date', editable: true, filter: true, sortable: true },
+      // { headerName: 'Delete', field: 'id', 
+      // cellRenderer: 'buttonRenderer',
+      //   cellRendererParams: {
+      //     onClick: this.onClick.bind(this),
+      //     label: 'Click'
+      //   }
+      // }
+    ]
+  }
+
+  refresh(params?: any): boolean {
+    return true;
+  }
+
+  onClick($event) {
+    if (this.params.onClick instanceof Function) {
+      // put anything into params u want pass into parents component
+      const params = {
+        event: $event,
+        rowData: this.params.node.data
+        // ...something
+      }
+      this.params.onClick(params);
+
+    }
+  }
+
   ngOnInit() {
     this.LoadData(); 
   }
   
   LoadData() { 
-    this.service.Get().subscribe((tempdate) => {
-      this.objlist = tempdate;
-      console.log(this.objlist);
-      if (this.objlist.length > 0) {
-        this.dataavailbale = true;
-      }
-      else {
-        this.dataavailbale = false;
-      }
-    }
-    )
-      , err => {
-        console.log(err);
-      }
+
+    this.dataavailbale = true;
+    this.activatedRoute.data.subscribe((data: { datas: InvoiceHeader[] }) => {  
+      console.log("datas : ",data.datas);
+      this.objlist = data.datas; 
+    });
   }
  
 
@@ -63,13 +93,14 @@ export class InvoiceComponent implements OnInit {
         
     this.editcomponent.IsNew=true;
     this.editcomponent.objDetails.splice(0, this.editcomponent.objDetails.length);
-    console.log(this.editcomponent.objDetails);
+
     this.action="Add new invoice"; 
     this.editcomponent.objTemp= new InvoiceHeader();
     this.editcomponent.objTemp.id = "" 
-    this.editcomponent.objTemp.code = ""
+    this.editcomponent.objTemp.code = (new Date()).toDateString()
     this.editcomponent.objTemp.date = new Date()  
     this.editcomponent.objTemp.invoiceDetails=[]; 
+    console.log(this.editcomponent.objTemp);
   }
 
  

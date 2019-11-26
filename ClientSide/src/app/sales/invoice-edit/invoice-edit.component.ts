@@ -2,7 +2,7 @@ import { Component, OnInit, Output, ViewChild, EventEmitter, Input, ElementRef }
 import { InvoiceService } from '../invoice.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { InvoiceHeader, InvoiceDetail } from 'src/Models/Commande';
+import { InvoiceHeader, InvoiceDetail } from 'src/Models/InvoiceModels';
 import { ClientDataService } from 'src/app/DataService/ClientDataService';
 
 @Component({
@@ -12,10 +12,23 @@ import { ClientDataService } from 'src/app/DataService/ClientDataService';
 })
 
 export class InvoiceEditComponent implements OnInit {
+  
   objectFromDetail: any;
-  
   _customers: any;
+  objTemp: InvoiceHeader = new InvoiceHeader();
+  objID:InvoiceDetail=new InvoiceDetail();
+  objDetail:InvoiceDetail=new InvoiceDetail();
+  tempemp:InvoiceDetail;
+  objDetails:InvoiceDetail[]=[];
   
+  @ViewChild('closeBtn', { static: false, }) cb: ElementRef; 
+  @ViewChild('EditForm', { static: false, }) myForm: NgForm;
+  @Output() nameEvent = new EventEmitter<string>();
+  @Input() reset: boolean = false;
+  @Input() isReset: boolean = false;
+  @Input() IsNew: boolean = false;
+  @Input() objView: InvoiceHeader = new InvoiceHeader();
+
  
    
 
@@ -32,23 +45,6 @@ export class InvoiceEditComponent implements OnInit {
  
 
 
-  objTemp: InvoiceHeader = new InvoiceHeader();
-  objID:InvoiceDetail=new InvoiceDetail();
-  objDetail:InvoiceDetail=new InvoiceDetail();
-  tempemp:InvoiceDetail;
-  objDetails:InvoiceDetail[]=[];
-
-
-  @Output() nameEvent = new EventEmitter<string>();
-  @ViewChild('closeBtn', { static: false, }) cb: ElementRef; 
-  @Input() reset: boolean = false;
-  @ViewChild('EditForm', { static: false, }) myForm: NgForm;
-  @Input() isReset: boolean = false;
-  @Input() IsNew: boolean = false;
-
-  
-  
-  @Input() objView: InvoiceHeader = new InvoiceHeader();
 
  
 
@@ -106,6 +102,7 @@ export class InvoiceEditComponent implements OnInit {
     this.objDetail.pCode=obj[0].pCode;
     this.objDetail.pname=obj[0].pname;
     this.objDetail.no=obj[0].no;
+
   }
  
  

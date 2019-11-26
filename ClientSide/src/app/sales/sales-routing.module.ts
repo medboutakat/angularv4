@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { InvoiceComponent } from './invoice/invoice.component';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { CustomersComponent } from './customers/customers.component';
+import { InvoiceResolverService } from './invoice-resolver-service';
 
 const routes: Routes = [ 
-  {path: 'invoices', component: InvoiceComponent}, 
+  {path: 'invoices', component: InvoiceComponent,resolve: { datas: InvoiceResolverService }}, 
   {path: 'customers', component: CustomersComponent}
 ];
 

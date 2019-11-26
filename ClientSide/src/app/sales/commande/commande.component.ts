@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { InvoiceHeader, InvoiceDetail } from 'src/Models/Commande';
+import { InvoiceHeader, InvoiceDetail } from 'src/Models/InvoiceModels';
 // import { IDataService } from '../DataService/IDataService';
 import { Router } from '@angular/router'; 
 import { IDataService } from '../../DataService/IDataService';

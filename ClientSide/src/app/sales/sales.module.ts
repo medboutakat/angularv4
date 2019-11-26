@@ -30,6 +30,7 @@ import { CustomersComponent, DialogOverviewExampleDialog } from './customers/cus
 import { AgGridModule } from 'ag-grid-angular';
 import { CustomersEditComponent } from './customers-edit/customers-edit.component'; 
 import { ControlsModule } from '../controls/controls.module';
+import { InvoiceResolverService } from './invoice-resolver-service';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { ControlsModule } from '../controls/controls.module';
   ],
   entryComponents: [DialogOverviewExampleDialog],
   providers: [
-    InvoiceService
+    InvoiceService, 
+    InvoiceResolverService
   ]
 })
 export class SalesModule { }
