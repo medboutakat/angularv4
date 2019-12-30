@@ -1,4 +1,3 @@
-
 export class  ClientCategory{
     id:string;
     name:string;
