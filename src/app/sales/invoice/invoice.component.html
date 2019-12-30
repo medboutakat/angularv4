@@ -1,0 +1,24 @@
+   
+    <div class="container"> 
+
+            <div class="ribon"> 
+                    <a routerLink="/Edit" class="btn btn-default btn-primary fixed-top" routerLinkActive="active">New</a>  
+                    |
+                    <button type="button" class="btn btn-default btn-primary"
+                    (click)="loadEditForm(e.id,e.code,e.date)"  >
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button> |
+                <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(e.id)">
+                    <span class="glyphicon glyphicon-trash"></span> Delete
+                </button> 
+                </div>
+
+        <div *ngIf="!dataavailbale">
+            <h4> No Invoice Data is present Click Create new to add Data.</h4>
+        </div>
+
+        <!-- (gridReady)="onGridReady($event)" -->
+            <ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham" 
+            [columnDefs]="columnDefs" [rowData]="objlist" (selectionChanged)="onSelectionChanged($event)">
+            </ag-grid-angular>  
+    </div>
