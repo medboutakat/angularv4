@@ -52,8 +52,8 @@ export class ClientDataService {
     }
 
     return this.http.put<Customer>(ROOT_URL + this.endPoints + '/' + emp.id, body, { headers, params })
-
   }
+
   DeleteClient(id:number) {
     const params = new HttpParams().set('ID',id+'');
     const headers = new HttpHeaders().set('content-type', 'application/json');

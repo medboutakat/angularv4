@@ -118,7 +118,6 @@ export class VatComponent implements OnInit {
         this.IsMultple = false;        
       }
       console.log(event);
-  
     }
   
     loadAddnew() {

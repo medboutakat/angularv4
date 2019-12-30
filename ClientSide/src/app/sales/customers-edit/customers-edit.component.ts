@@ -59,7 +59,7 @@ export class CustomersEditComponent implements OnInit {
     this.client = new Customer();
     this.client = this.myForm.value;
     this.client.id = 1033;
-    alert( "client value : "+ this.client + "\n email client "+ this.client.name1  );
+    alert( "client value : "+ this.client + "\n email client "+ this.client.email  );
     this.service.EditClient(this.client).subscribe( resultat => {
 
     });

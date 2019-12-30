@@ -42,12 +42,7 @@ export class InvoiceEditComponent implements OnInit {
   get customers(){
     return this._customers;
   }
- 
-
-
-
- 
-
+  
   AddDetails(obj:InvoiceDetail ) {  
     console.log(obj);
     console.log("obj.no "+obj.no); 

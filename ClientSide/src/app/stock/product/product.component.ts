@@ -28,7 +28,7 @@ export class ProductComponent implements OnInit {
   }
 
   LoadData() { 
-    this.dataservce.Get1().subscribe((tempdate) => {
+    this.dataservce.GetAll().subscribe((tempdate) => {
       this.objlist = tempdate;
       console.log(this.objlist);
       if (this.objlist.length > 0) {
@@ -43,7 +43,7 @@ export class ProductComponent implements OnInit {
         console.log(err);
       }
   }
-  deleteconfirmation(id: string) {
+  deleteconfirmation(id: number) {
     if (confirm("Are you sure you want to delete this ?")) {
       this.tempemp = new Product();
       this.tempemp.id = id;

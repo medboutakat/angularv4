@@ -10,17 +10,22 @@ import { Observable } from 'rxjs';
 export class ProductService {
 
   Objects: Observable<Product[]>;
+  Products:Product[];
   newObject: Product;
   fullURL:string;
   fullURLS:string;
 
   constructor(private http: HttpClient) {
-    this.fullURL=ROOT_URL+"Trips";
+    this.fullURL=ROOT_URL+"Products";
     this.fullURLS=this.fullURL+"/"; 
   }
 
-  Get1():Observable<Product[]> {
-    return this.http.get<Product[]>(ROOT_URL+"Trips");
+   
+
+  GetAll():Observable<Product[]> {
+
+    console.log("this.fullURLS",this.fullURLS)
+    return this.http.get<Product[]>(this.fullURLS);
   }
   Get() {
     return this.http.get(ROOT_URL+"Trips");
@@ -29,7 +34,7 @@ export class ProductService {
     const headers = new HttpHeaders().set('content-type', 'application/json');
   
     var body = {
-      Code: obj.code, Name1: obj.name1, Description: obj.description,
+      Code: obj.code, Name1: obj.name, Description: obj.description,
       Price:obj.price,//tva=obj.tva
 
     }
@@ -44,14 +49,14 @@ export class ProductService {
     const params = new HttpParams().set('ID', obj.id.toString());
     const headers = new HttpHeaders().set('content-type', 'application/json');
     var body = {
-      Code: obj.code, Name1: obj.name1, Description: obj.description,
+      Code: obj.code, Name1: obj.name, Description: obj.description,
       Price:obj.price,//tva=obj.tva,id=obj.id
     }
     
     return this.http.put<Product>(this.fullURLS+obj.id, body, { headers, params })
   }
   
-  Delete(id: string) {
+  Delete(id: number) {
     const params = new HttpParams().set('ID', id.toString());
     const headers = new HttpHeaders().set('content-type', 'application/json');
     return this.http.delete<Product>(this.fullURLS + id)

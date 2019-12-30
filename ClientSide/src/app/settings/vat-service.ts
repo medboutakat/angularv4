@@ -11,8 +11,7 @@ export class VatService {
   newVat: Vat;
   constructor(private http: HttpClient) {
 
-  }
-
+  } 
   getVat() {
     return this.http.get<Vat[]>(ROOT_URL + 'Vats');
   }

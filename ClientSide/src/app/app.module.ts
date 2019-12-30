@@ -84,6 +84,7 @@ import { NavComponent } from './page-section/nav/nav.component';
 import { LeftbarComponent } from './page-section/leftbar/leftbar.component'; 
 import { ControlsModule } from './controls/controls.module';
 import { SettingsModule } from './settings/settings.module';
+import { CustomerCategoryEditComponent } from './settings/customer-category-edit/customer-category-edit.component';
 
 //import { Grid } from 'ag-grid-community';
 // import {MatChipsModule} from '@angular/material/chips';

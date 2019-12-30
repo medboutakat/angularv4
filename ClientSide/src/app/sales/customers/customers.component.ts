@@ -70,9 +70,13 @@ export class CustomersComponent implements OnInit {
   service: string;
   animate;
 
+  IsRowSelected: boolean = false;
+  IsMultiple: boolean = false;
+  IsNew: boolean;
+
   private createColumnDefs() {
     return [
-      { headerName: 'code', field: 'code', editable: true, filter: true, sortable: true, checkboxSelection: true },
+      { headerName: 'Code', field: 'code', editable: true, filter: true, sortable: true, checkboxSelection: true },
       { headerName: 'Nom', field: 'name1', editable: true, filter: true, sortable: true },
       { headerName: 'name2', field: 'name2', editable: true, filter: true, sortable: true }
     ]
@@ -86,7 +90,6 @@ export class CustomersComponent implements OnInit {
   }
 
   
-
   onGridReady(params): void {
     this.api = params.api;
     this.columnApi = params.columnApi;
@@ -107,17 +110,15 @@ export class CustomersComponent implements OnInit {
     )
   }
   
-  IsRowSelected: boolean = false;
-  IsMultiple: boolean = false;
-  IsNew: boolean;
+  
   onSelectionChanged(event) {
 
     if (this.api.getSelectedRows().length == 0) {
       this.IsRowSelected = false;
     } else {
       this.IsRowSelected = true;
-
     }
+
     if (this.api.getSelectedRows().length != 1) {
       this.IsMultiple = true;
       console.log("multiple....");
@@ -172,6 +173,8 @@ export class CustomersComponent implements OnInit {
     this.mode = 1;
     this.IsNew = true;
     this.firstFormGroup.reset();
+    
+    
     //oussama
     // this.customerEdit.client.id = 0;
     // this.customerEdit.client.code = "I123";
@@ -272,7 +275,7 @@ export class CustomersComponent implements OnInit {
     console.log(event); ///to test it
     event.data.modified = true;
     console.log(event);
-    this.openSnackBar(" Data Changed ", "Edit");
+    //this.openSnackBar(" Data Changed ", "Edit");
 
   }
 
@@ -414,6 +417,7 @@ export class CustomersComponent implements OnInit {
 
   openDialog(clientsToDelete: Customer[]): void {
     console.log(clientsToDelete);
+    
     let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '260px',
       data: clientsToDelete
@@ -424,13 +428,12 @@ export class CustomersComponent implements OnInit {
         clientsToDelete.forEach(element => {
           console.log(element.id)
         });
+
         this.api.deselectAll();
         this.IsRowSelected = false;
 
         this.openSnackBar(" Supression reussi ", "Suppression");
-
       }
-
     });
   }
 
@@ -438,13 +441,13 @@ export class CustomersComponent implements OnInit {
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 2000,
-    });
+      });
+    }
   }
 
 
 
 
-}
 
 @Component({
   template: '<h1 mat-dialog-title>Supression </h1>\n' +

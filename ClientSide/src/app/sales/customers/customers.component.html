@@ -28,6 +28,7 @@
             <!--Panel d'affichage -->
             <div class="panel panel-default"> 
                 <div class="panel-body"> 
+                    
                     <div class="row">
                         <div class="col-md-5" style="text-align: left">
                             <mat-checkbox [(ngModel)]="OnlySelected">Only selected items </mat-checkbox>
@@ -50,12 +51,11 @@
                     </div>
                     <br>
                     <!------------------- AG GRID COMPONENT ------------- -->
-                    <ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham" (gridReady)="onGridReady($event)" 
-                                (cellValueChanged)="onCellValueChanged($event)" [columnDefs]="columnDefs" [rowData]="rowData" 
-                                [rowSelection]="rowSelection" [paginationAutoPageSize]="true"
+                    <ag-grid-angular style="width: 80%; height: 500px;" class="ag-theme-balham" (gridReady)="onGridReady($event)" 
+                        (cellValueChanged)="onCellValueChanged($event)" [columnDefs]="columnDefs" [rowData]="rowData" 
+                        [rowSelection]="rowSelection" [paginationAutoPageSize]="true"
                         (selectionChanged)="onSelectionChanged($event)" [pagination]="true">
                     </ag-grid-angular>
-
 
                 </div>
 

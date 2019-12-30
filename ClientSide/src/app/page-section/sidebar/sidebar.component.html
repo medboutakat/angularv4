@@ -55,12 +55,17 @@
               <a href="#">About</a>
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">stock</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
-                  <li><a href="#">Page 1</a></li>
-                  <li>
-                        <a routerLink="statut" [class.activated]="currentUrl == '/statut'">
-                            <i class="material-icons">statut</i>
-                        </a> 
-                </li> 
+                <li><a href="#">Page 1</a></li>
+                <li>
+                      <a routerLink="status" [class.activated]="currentUrl == 'stock/statuts'">
+                          <i class="material-icons">statut</i>
+                      </a> 
+                </li>
+                <li>
+                  <a routerLink="customerCategory" [class.activated]="currentUrl == 'settings/customerCategory'">
+                      <i class="material-icons">Customer ctegory</i>
+                  </a> 
+                </li>
                 <li>
                 <a routerLink="stock" [class.activated]="currentUrl == '/stock'">
                   <i class="material-icons">stock</i>

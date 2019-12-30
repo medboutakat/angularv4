@@ -53,7 +53,6 @@ export class VatEditComponent implements OnInit {
         alert("Vat Added successfully");
         this.TakeHome();
       })
-
     }
   }
   
