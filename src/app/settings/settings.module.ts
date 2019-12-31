@@ -8,6 +8,10 @@ import { AgGridModule } from 'ag-grid-angular';
 import { VatService } from './vat-service';
 import { VatResolverService } from "./vat-resolver-service";
 import { StatutComponent } from './statut/statut.component';
+import { CustomerCategoryResolverService } from './customer.category-resolver-service';
+import { CustomerCategoryService } from './customer.category-service';
+import { CustomerCategoryEditComponent } from './customer.category-edit/customer.category-edit.component';
+import { CustomerCategoryComponent } from './customer.category/customer.category.component';
 
 
 
@@ -16,6 +20,8 @@ import { StatutComponent } from './statut/statut.component';
     VatComponent,
     VatEditComponent,
     StatutComponent, 
+    CustomerCategoryComponent ,
+    CustomerCategoryEditComponent 
   ],
   imports: [
     CommonModule ,
@@ -26,7 +32,9 @@ import { StatutComponent } from './statut/statut.component';
   ],
   providers: [
     VatService,
-    VatResolverService
+    VatResolverService,
+    CustomerCategoryService,
+    CustomerCategoryResolverService
   ]
 })
 export class SettingsModule { }

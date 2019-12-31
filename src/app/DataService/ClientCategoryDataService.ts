@@ -2,19 +2,19 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core'; 
 import { ROOT_URL } from 'src/Models/Config'
 import { Observable } from 'rxjs';
-import { ClientCategory } from 'src/Models/ClientCategory';
+import { CustomerCategory } from 'src/Models/CustomerCategory';
 @Injectable()
 export class ClientCategoryDataService {
 
   endPoints:String="clientcategories";  
   endPoint:String="clientcategory";
-  Categories: Observable<ClientCategory[]>; 
+  Categories: Observable<CustomerCategory[]>; 
   constructor(private http: HttpClient) {
 
   }
 //http://localhost:42333/api/Categories
   getCategory() {
-    return this.http.get<ClientCategory[]>(ROOT_URL +this.endPoints);
+    return this.http.get<CustomerCategory[]>(ROOT_URL +this.endPoints);
   }
   // AddCategory(emp: ClientCategory) {
   //   const headers = new HttpHeaders().set('content-type', 'application/json');

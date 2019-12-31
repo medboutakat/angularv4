@@ -41,7 +41,7 @@ import { CustomerResolverService } from './customer-resolver-service';
     InvoiceEditComponent,
     CustomersComponent,
     DialogOverviewExampleDialog,
-    CustomersEditComponent,
+    CustomersEditComponent, 
   ],
   imports: [
     CommonModule,

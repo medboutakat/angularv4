@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input, EventEmitter, Output, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms'; 
-import { ClientCategory } from 'src/Models/ClientCategory'; 
+import { CustomerCategory } from 'src/Models/CustomerCategory'; 
 import { CustomerService } from '../customer-service';
 import { ClientCategoryDataService } from '../../DataService/ClientCategoryDataService';
 import { Customer } from 'src/Models/Customer';
@@ -13,7 +13,7 @@ import { Customer } from 'src/Models/Customer';
 })
 
 export class ClientEditComponent implements OnInit {
-catList:ClientCategory[];
+catList:CustomerCategory[];
 
   constructor(
     private cateService:ClientCategoryDataService, 
