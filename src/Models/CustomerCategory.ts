@@ -1,5 +1,4 @@
-
-export class  CustomerCategory{
+export class  ClientCategory{
     id:string;
     name:string;
     remarque:string;
