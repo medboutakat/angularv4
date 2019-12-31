@@ -125,7 +125,6 @@ export class CustomersComponent implements OnInit {
       this.IsMultiple = false;
     }
     console.log(event);
-
   }
   //oussama
   @ViewChild( CustomersEditComponent, { static:false, }) customerEdit:CustomersEditComponent;

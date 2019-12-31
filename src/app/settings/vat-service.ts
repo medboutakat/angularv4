@@ -27,7 +27,6 @@ export class VatService {
     return this.http.post<Vat>(ROOT_URL + 'Vats/', body, { headers })
   }
 
-  ///
   EditVat(emp: Vat) {
     console.log(emp);
     const params = new HttpParams().set('ID', emp.id);

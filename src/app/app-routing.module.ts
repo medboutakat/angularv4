@@ -29,28 +29,9 @@ const routes: Routes = [
   { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) },
   { path: 'apptest', loadChildren: () => import('./apptest/apptest.module').then(m => m.ApptestModule) },
   { path: 'purchase', loadChildren: () => import('./purchase/purchase.module').then(m => m.PurchaseModule) },
-  { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) }
-
-  // { path: '', component: HomeComponent },
-  // { path: 'employee', component: EmployeesComponent },
-  // { path: 'clients', component: ClientsComponent },
-  // { path: 'navbar', component: NavBarComponent },
-  // { path: 'login', component: LoginComponent },
-  // { path: 'signup', component: SignupComponent },  
-  // { path: 'commande', component: CommandeComponent }, 
-  // { path: 'bank', component: BankComponent },
-  // { path: 'home', component: HomeComponent },
-  // { path: 'contact', component: HomeComponent },
-  // { path: 'chart', component: ChartComponent },
-  // { path: 'maps', component: MapsComponent },
-  // { path: 'upload', component: UploadfilesComponent },
-  // { path: 'statut', component: StatutComponent },
-  // { path: 'trip', component: TripComponent },
-  // { path: 'delivery', component: DeliveryComponent },
-  // { path: 'route', component: VatComponent },
-  // { path: 'test', component: TestComponent },
-  // { path: 'invoice', component: InvoiceComponent },
-  // { path: 'demo', component: DemoComponent },
+  { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
+  { path: 'grid', loadChildren: () => import('./grid-exemple/grid.exemple.module').then(m => m.GridExempleModule) }
+ 
 
   // {
   // path: 'sales', component: ProductComponent,

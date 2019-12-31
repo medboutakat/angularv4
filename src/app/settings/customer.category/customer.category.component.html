@@ -1,0 +1,29 @@
+<div class="container">
+  <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal" value="Create New">
+  <button type="text" class="btn btn-success"  (click)="edit()"  data-toggle="modal" data-target="#myModal">Edit</button>
+  
+  <hr>
+  <div *ngIf="this.objlist.length > 0">  
+    <h4> No Employee Data is present Click Add new to add Data.</h4>
+  </div>
+  
+  <ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham" (gridReady)="onGridReady($event)"
+  [columnDefs]="columnDefs" [rowData]="objlist" (selectionChanged)="onSelectionChanged($event)">
+  </ag-grid-angular>
+
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-primary">{{action}}</h4>
+        </div>
+        <!-- <div class="modal-body"> 
+          <app-costomer.category-edit #editCustomerCategory (nameEvent)="RefreshData($event)"></app-costomer.category-edit>
+        </div> -->
+        <div class="modal-footer">
+          <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

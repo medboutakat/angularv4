@@ -122,7 +122,7 @@ import { GridExempleModule } from './grid-exemple/grid.exemple.module';
     InvoiceComponent,
     DemoComponent,
     NavComponent,
-    LeftbarComponent,
+    LeftbarComponent
     ],
   imports: [
     BrowserModule,

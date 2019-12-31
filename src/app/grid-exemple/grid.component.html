@@ -1,11 +1,11 @@
 <div>
-    <button (click)="insertNewRow()" [disabled]="editInProgress" class="action-button">Insert New Row</button>
+    <!-- <button (click)="insertNewRow()" [disabled]="editInProgress" class="action-button">Insert New Row</button>
     <button (click)="deleteSelectedRows()" [disabled]="!rowsSelected() || editInProgress" class="action-button">Delete
         Selected Row
-    </button>
+    </button> -->
 </div>
 <div>
-    <ag-grid-angular style="width: 100%; height: 500px;"
+    <!-- <ag-grid-angular style="width: 100%; height: 500px;"
                      class="ag-theme-balham"
 
                      #grid
@@ -23,11 +23,11 @@
 
                      (gridReady)="onGridReady($event)"
                      (rowDoubleClicked)="onRowDoubleClicked($event)">
-    </ag-grid-angular>
+    </ag-grid-angular> -->
 </div>
 
-<ng-template [ngIf]="editInProgress">
+<!-- <ng-template [ngIf]="editInProgress">
     <app-athlete-edit-screen [athlete]="athleteBeingEdited"
                              [containerCoords]="containerCoords"
                              (onAthleteSaved)="onAthleteSaved($event)"></app-athlete-edit-screen>
-</ng-template>
+</ng-template> -->

@@ -55,6 +55,7 @@ export class CustomerService {
     return this.http.put<Customer>(ROOT_URL + this.endPoints + '/' + emp.id, body, { headers, params })
 
   }
+  
   Delete(id:number) {
     const params = new HttpParams().set('ID',id+'');
     const headers = new HttpHeaders().set('content-type', 'application/json');

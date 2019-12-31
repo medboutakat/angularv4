@@ -56,19 +56,29 @@
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">stock</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
                   <li><a href="#">Page 1</a></li>
-                  <li>
-                        <a routerLink="statut" [class.activated]="currentUrl == '/statut'">
-                            <i class="material-icons">statut</i>
-                        </a> 
+                <li>
+                      <a routerLink="statut" [class.activated]="currentUrl == '/statut'">
+                          <i class="material-icons">statut</i>
+                      </a> 
                 </li> 
                 <li>
                 <a routerLink="stock" [class.activated]="currentUrl == '/stock'">
                   <i class="material-icons">stock</i>
                 </a> 
-               </li>
+                </li>
+                <li>
+                <a routerLink="productcategory" [class.activated]="currentUrl == '/productcategory'">
+                    <i class="material-icons">Products ctegory's</i>
+                </a> 
+                </li> 
+                <li>
+                  <a routerLink="customerLocation" [class.activated]="currentUrl == '/customerLocation'">
+                      <i class="material-icons">Customers location's</i>
+                  </a> 
+                  </li> 
               </ul>
           </li>
-
+          
           <li> 
             <a href="#sales" data-toggle="collapse" aria-expanded="false">Sales</a>
             <ul class="collapse list-unstyled" id="sales"> 
