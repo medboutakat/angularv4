@@ -7,6 +7,7 @@ import { AthleteEditScreenComponent } from './athlete-edit-screen.component';
 import { GridComponent } from './grid.component';
 import { AthleteService } from './athlete.service';
 import { StaticDataService } from './static-data.service';
+import { GridExempleRoutingModule } from './grid.exemple.routing.module';
  
 
 @NgModule({
@@ -16,7 +17,8 @@ import { StaticDataService } from './static-data.service';
         AthleteEditScreenComponent
     ],
     imports: [
-        BrowserModule,
+        // BrowserModule,
+        GridExempleRoutingModule,
         // HttpModule,
         FormsModule,
         AgGridModule.withComponents([])
