@@ -1,0 +1,21 @@
+<!-----------------------Form---------------------------------------->
+<div class="container">
+   <form #EditForm='ngForm' name="editform" (ngSubmit)="EditMainObject(EditForm)" class="form-horizontal" style="width:40%">
+      <div class="form-group">
+         <input  type="hidden"  id="id" placeholder="Id" name="id" id required [(ngModel)]='objemp.id' #id="ngModel">
+      </div>
+      <div class="form-group">
+         <input  type="text" class="form-control"  id="libelle" placeholder="libelle" name="libelle" libelle required [(ngModel)]='objemp.libelle' #libelle="ngModel">
+      </div>  
+      <div class="form-group">
+         <input  required type="text" class="form-control"  id="remarque" placeholder="remarque" name="remarque" remarque required [(ngModel)]='objemp.remarque' #remarque="ngModel">
+      </div>
+      <div class="form-group">
+         <button style="background-color:#448AFF;color: white;" type="submit" mat-raised-button >Save Statut</button>
+      </div>
+  </form>
+</div>
+                
+             
+
+   

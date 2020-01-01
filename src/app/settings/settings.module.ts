@@ -12,23 +12,35 @@ import { CustomerCategoryResolverService } from './customer.category-resolver-se
 import { CustomerCategoryService } from './customer.category-service';
 import { CustomerCategoryEditComponent } from './customer.category-edit/customer.category-edit.component';
 import { CustomerCategoryComponent } from './customer.category/customer.category.component';
+import { StatutEditComponent } from './statut-edit/statut-edit.component';
+import { MatInputModule, MatFormFieldModule, MatLabel, MatButtonModule } from '@angular/material';
 
+ 
+const MaterialComponents=[
+  MatButtonModule,
+  MatInputModule,
+  MatFormFieldModule,
+]
 
 
 @NgModule({
   declarations: [
     VatComponent,
     VatEditComponent,
-    StatutComponent, 
+    StatutComponent,  
+    StatutEditComponent,
     CustomerCategoryComponent ,
     CustomerCategoryEditComponent 
   ],
   imports: [
+    
+    MaterialComponents,
     CommonModule ,
     SettingsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AgGridModule.withComponents([]),
+    AgGridModule.withComponents([]), 
+
   ],
   providers: [
     VatService,
