@@ -26,10 +26,9 @@
                      </ag-grid-angular>
                   </div>
              </div>
-      </div>
-   </div>
+      </div> 
 <!-------------------------------Modal (Add or Edit)------------------------------------------>
-<div id="myModal" class="modal fade" role="dialog">
+ <div id="myModal" class="modal fade" role="dialog">
        <div class="modal-dialog">
             <div class="modal-content">
              <div class="modal-header">
@@ -44,26 +43,24 @@
                 </div>
             </div>
       </div>
- </div>
+ </div>  
  <!------------------------------------Delete()--------------------------------------------->
- <div id="myModal2" class="modal fade" role="dialog">
+  <div id="myModal2" class="modal fade" role="dialog">
    <div class="modal-dialog">
         <div *ngFor="let item of StObjet" class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-primary">Delete Statut</h4>
-         </div>
-           <div  class="modal-body">
-              <h4>Do you really want to delete  Statut ?</h4>
-              <h5 style="font-weight: normal;font-size: 14px;">N°: {{item.id}} <br> libelle : {{item.libelle}} <br> remarque : {{item.remarque}}</h5>
-           </div>
-           <div class="modal-footer">
-              <button style="margin-right:10px;" mat-raised-button color="warn" type="button" #closeBtn  data-dismiss="modal">Close </button>
-              <button mat-raised-button color="primary" (click)="deleteStatut(item.id)" type="button" >Delete</button>
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-primary">Delete Statut</h4>
+            </div>
+            <div  class="modal-body">
+               <h4>Do you really want to delete  Statut ?</h4>
+               <h5 style="font-weight: normal;font-size: 14px;">N°: {{item.id}} <br> libelle : {{item.libelle}} <br> remarque : {{item.remarque}}</h5>
+            </div>
+            <div class="modal-footer">
+               <button style="margin-right:10px;" mat-raised-button color="warn" type="button" #closeBtn  data-dismiss="modal">Close </button>
+               <button mat-raised-button color="primary" (click)="deleteStatut(item.id)" type="button" >Delete</button>
             </div>
         </div>
   </div>
-</div>
- 
-
+</div> 
 

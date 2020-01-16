@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, ViewChild, EventEmitter, Output, ElementRef } from '@angular/core';
 import { StautService } from '../staut.service';
-import { Statut } from 'src/Models/statut.model';
 import { NgForm } from '@angular/forms';
-import { StatutComponent } from '../statut/statut.component';
 import { stat } from 'fs';
+import { Statut } from 'src/Models/Statut';
 
 @Component({
   selector: 'app-statut-edit',
@@ -60,8 +59,8 @@ export class StatutEditComponent implements OnInit {
     /********************Edit Code******************************** */
     else{
       this.objtempemp=new Statut();      
-      this.objtempemp.libelle=regForm.value.libelle;
-      this.objtempemp.remarque=regForm.value.remarque;    
+      this.objtempemp.name=regForm.value.libelle;
+      this.objtempemp.remark=regForm.value.remarque;    
       this.dataservce.AddStatut(this.objtempemp).subscribe(res=>{
         alert("Statut Added successfully");
         this.RefreshData();

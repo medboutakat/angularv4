@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, Inject } from '@angular/core';
 import { StautService } from '../staut.service';
 import { NgForm, FormBuilder } from '@angular/forms';
-import { Statut } from 'src/Models/statut.model';
 import { StatutEditComponent } from '../statut-edit/statut-edit.component';
 import { GridApi, ColumnApi } from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
+import { Statut } from 'src/Models/Statut';
 
 @Component({
   selector: 'app-statut',
@@ -117,8 +117,8 @@ constructor(private dataservce:StautService,private http: HttpClient){
   /**********************Add()***************************** */
   AddStatut(regForm: NgForm) {
       this.objtempemp=new Statut();      
-      this.objtempemp.libelle=regForm.value.libelle;
-      this.objtempemp.remarque=regForm.value.remarque;    
+      this.objtempemp.name=regForm.value.libelle;
+      this.objtempemp.remark=regForm.value.remarque;    
       this.dataservce.AddStatut(this.objtempemp).subscribe(res=>{
         alert("Statut Added successfully");
       })
