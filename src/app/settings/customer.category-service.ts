@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { ROOT_URL } from 'src/Models/Config';
 import { Observable } from 'rxjs';
 import { CustomerCategory } from 'src/Models/CustomerCategory';
+import { ResourceService } from '../ResourceService';
+import { CustomerCategorySerializer } from './CustomerCategorySerializer';
 @Injectable()
 export class CustomerCategoryService extends ResourceService<CustomerCategory> {
   constructor(httpClient: HttpClient) {
@@ -10,7 +12,7 @@ export class CustomerCategoryService extends ResourceService<CustomerCategory> {
       httpClient,
       ROOT_URL,
       'statuts',
-      new StatutSerializer());
+      new CustomerCategorySerializer());
   }
 }
 

@@ -1,6 +1,7 @@
 import { SettingResource } from "src/Models/SettingResource";
+import { ISerializer } from "./ISerializer";
 
-export class SettingSerializer<T extends SettingResource> {
+export class SettingSerializer<T extends SettingResource> implements ISerializer{
     fromJson(json: any): SettingResource {
         const obj = new SettingResource();
         obj.id = json.id;

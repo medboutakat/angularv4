@@ -1,5 +1,5 @@
 import { Statut } from "src/Models/Statut";  
-import { SettingSerializer } from "../Serializer";
+import { SettingSerializer } from "../SettingSerializer";
 
 export class StatutSerializer extends SettingSerializer<Statut>{
  

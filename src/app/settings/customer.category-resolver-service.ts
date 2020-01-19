@@ -11,7 +11,7 @@ import { CustomerCategory } from "src/Models/CustomerCategory";
     constructor(private service: CustomerCategoryService) { }
   
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) { 
-      var datas=this.service.Get();  
+      var datas=this.service.get();  
       return datas;  
     } 
   }

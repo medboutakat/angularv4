@@ -62,12 +62,12 @@ export class CustomerCategoryComponent implements OnInit {
       }); 
     }
 
-    deleteconfirmation(id: string) {
+    deleteconfirmation(id: number) {
   
       if (confirm("Are you sure you want to delete this ?")) {
         this.tempemp = new CustomerCategory();
         this.tempemp.id = id;
-        this.dataservce.Delete(this.tempemp).subscribe(res => {
+        this.dataservce.delete(this.tempemp.id).subscribe(res => {
           alert("Deleted successfully !!!");
           this.LoadData();
         })
@@ -105,8 +105,7 @@ export class CustomerCategoryComponent implements OnInit {
     loadAddnew() {
       this.action="add vat";
       this.editcomponent.objemp.name = ""
-      this.editcomponent.objemp.remarque = "" 
-      this.editcomponent.objemp.id = "" 
+      this.editcomponent.objemp.remark = ""
       this.editcomponent.IsNew=true;
     } 
 

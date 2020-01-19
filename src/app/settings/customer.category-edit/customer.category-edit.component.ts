@@ -37,7 +37,7 @@ export class CustomerCategoryEditComponent implements OnInit {
 
       this.objemp = regForm.value;
       console.log('this.objemp',this.objemp)
-      this.dataservice.Edit(this.objemp).subscribe(res => {
+      this.dataservice.update(this.objemp).subscribe(res => {
          
         this.nameEvent.emit("ccc");
         this.cb.nativeElement.click(); 
@@ -48,8 +48,8 @@ export class CustomerCategoryEditComponent implements OnInit {
          
       this.objtempemp=new CustomerCategory();      
       this.objtempemp.name=regForm.value.name;
-      this.objtempemp.remarque=regForm.value.remarque;    
-      this.dataservice.Add(this.objtempemp).subscribe(res=>{
+      this.objtempemp.remark=regForm.value.remarque;    
+      this.dataservice.add(this.objtempemp).subscribe(res=>{
         alert("Vat Added successfully");
         this.TakeHome();
       })

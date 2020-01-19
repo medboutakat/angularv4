@@ -1,7 +1,5 @@
-export class  CustomerCategory{
-    id:string;
-    name:string;
-    remarque:string;
+import { SettingResource } from "./SettingResource"; 
+export class  CustomerCategory extends SettingResource{ 
     dateCreate:string;
     dateUpdate:string; 
 }
