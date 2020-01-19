@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, Inject } from '@angular/core';
-import { StautService } from '../staut.service';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, Inject } from '@angular/core'; 
 import { NgForm, FormBuilder } from '@angular/forms';
 import { StatutEditComponent } from '../statut-edit/statut-edit.component';
 import { GridApi, ColumnApi } from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
 import { Statut } from 'src/Models/Statut';
+import { StatutService } from '../StatutService';
 
 @Component({
   selector: 'app-statut',
@@ -13,7 +13,7 @@ import { Statut } from 'src/Models/Statut';
 })
 export class StatutComponent implements OnInit {
 
-constructor(private dataservce:StautService,private http: HttpClient){
+constructor(private dataservce:StatutService ,private http: HttpClient){
   this.rowSelection = "multiple";
 }
 @Output() nameEvent = new EventEmitter<string>();
@@ -97,7 +97,7 @@ constructor(private dataservce:StautService,private http: HttpClient){
   }
   /***************************get Data()********************************** */
   LoadData(){
-    this.dataservce.getStatuts().subscribe((tempdate) => {
+    this.dataservce.get().subscribe((tempdate) => {
       this.objlist = tempdate;
         console.log(this.objlist);
         if (this.objlist.length > 0) {
@@ -119,7 +119,7 @@ constructor(private dataservce:StautService,private http: HttpClient){
       this.objtempemp=new Statut();      
       this.objtempemp.name=regForm.value.libelle;
       this.objtempemp.remark=regForm.value.remarque;    
-      this.dataservce.AddStatut(this.objtempemp).subscribe(res=>{
+      this.dataservce.add(this.objtempemp).subscribe(res=>{
         alert("Statut Added successfully");
       })
   }

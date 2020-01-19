@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, ViewChild, EventEmitter, Output, ElementRef } from '@angular/core';
-import { StautService } from '../staut.service';
 import { NgForm } from '@angular/forms';
 import { stat } from 'fs';
 import { Statut } from 'src/Models/Statut';
+import { StatutService } from '../StatutService';
 
 @Component({
   selector: 'app-statut-edit',
@@ -20,7 +20,7 @@ export class StatutEditComponent implements OnInit {
   RefreshData() {
     this.LoadData();
   }
-  constructor(private dataservce:StautService){
+  constructor(private dataservce:StatutService){
   }
   /***********************Variable******************************** */
   @Input() IsNew: boolean = true;
@@ -31,7 +31,7 @@ export class StatutEditComponent implements OnInit {
     @Input() objemp: Statut = new Statut();
     /********************Get Data()************************************* */
   LoadData(){
-    this.dataservce.getStatuts().subscribe((tempdate) => {
+    this.dataservce.get().subscribe((tempdate) => {
       this.objlist = tempdate;
         console.log(this.objlist);
         if (this.objlist.length > 0) {
@@ -51,7 +51,7 @@ export class StatutEditComponent implements OnInit {
     /************************Add Code******************** */
     if(!this.IsNew){      
       this.objemp = regForm.value;
-      this.dataservce.EditStatut(this.objemp).subscribe(res => {
+      this.dataservce.update(this.objemp).subscribe(res => {
         alert("Statut modified successfully");
         this.RefreshData();
       });
@@ -61,7 +61,7 @@ export class StatutEditComponent implements OnInit {
       this.objtempemp=new Statut();      
       this.objtempemp.name=regForm.value.libelle;
       this.objtempemp.remark=regForm.value.remarque;    
-      this.dataservce.AddStatut(this.objtempemp).subscribe(res=>{
+      this.dataservce.add(this.objtempemp).subscribe(res=>{
         alert("Statut Added successfully");
         this.RefreshData();
       })

@@ -1,6 +1,4 @@
+import { SettingResource } from "./SettingResource";
 
-export class  Statut{
-    name:string;
-    remark:string ; 
-    id:string 
+export class  Statut extends SettingResource{ 
 }

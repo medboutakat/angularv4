@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { configuration } from './configuration';
 import { Observable, of } from 'rxjs';
-import { Post } from './post';
+import { Post } from '../Models/Post';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';

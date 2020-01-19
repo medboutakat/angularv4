@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../../config.service';
 import { PagerService } from '../../pager.service';
-import { Post } from '../../post';
+import { Post } from '../../../Models/Post';
 
 
 @Component({
