@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { InvoiceHeader, InvoiceDetail } from 'src/Models/InvoiceModels';
 import { CustomerService } from 'src/app/sales/customer-service';
 import { ColDef } from 'ag-grid-community';
-import { AgGridNg2 } from 'ag-grid-angular';
+import { AgGridAngular } from 'ag-grid-angular';
 @Component({
   selector: 'app-invoice-edit',
   templateUrl: './invoice-edit.component.html',
@@ -13,7 +13,7 @@ import { AgGridNg2 } from 'ag-grid-angular';
 })
 
 export class InvoiceEditComponent implements OnInit {
-  @ViewChild('agGrid', { static: false, }) agGrid: AgGridNg2;
+  @ViewChild('agGrid', { static: false, }) agGrid: AgGridAngular;
 
   objectFromDetail: any;
   _customers: any;

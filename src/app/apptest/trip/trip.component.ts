@@ -2,9 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../DataService/authentication.service';
 import { TripService } from '../../DataService/trip.service';
-import { Router } from '@angular/router';
-import { Trip } from 'src/Models/Trip';
-import { AgGridNg2 } from 'ag-grid-angular';
+import { Router } from '@angular/router';  
 import { HttpClient } from '@angular/common/http';
 
 @Component({

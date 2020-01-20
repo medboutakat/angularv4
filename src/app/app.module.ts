@@ -4,7 +4,7 @@ import { ChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EmployeeDataService } from '../app/DataService/EmployeeDataService';
 import { LayoutComponent } from './page-section/layout/layout.component';
 import { SidebarComponent } from './page-section/sidebar/sidebar.component';
@@ -48,7 +48,8 @@ import { CommandeDataService } from './DataService/CommandeDataService';
 import { SalesModule } from './sales/sales.module';
 import { NavBarComponent } from './page-section/nav-bar/nav-bar.component';
 import { TestComponent } from './apptest/test/test.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+
 
 import {MatChipsModule,
   MatButtonModule,
@@ -84,6 +85,15 @@ import { LeftbarComponent } from './page-section/leftbar/leftbar.component';
 import { ControlsModule } from './controls/controls.module';
 import { SettingsModule } from './settings/settings.module';
 import { GridExempleModule } from './grid-exemple/grid.exemple.module';
+import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { environment } from 'src/environments/environment';
+import { API_BASE_URL } from './SysManage-traders-api';
+import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
+import { NavTopMenuComponent } from './nav-top-menu/nav-top-menu.component';
+import { NavSideMenuComponent } from './nav-side-menu/nav-side-menu.component';
+
+import { CamelCaseToText } from '../pipes/camel-case-to-text';
+import { AppIconsModule } from './app.icons.module';
 
 //import { Grid } from 'ag-grid-community';
 // import {MatChipsModule} from '@angular/material/chips';
@@ -91,6 +101,8 @@ import { GridExempleModule } from './grid-exemple/grid.exemple.module';
 @NgModule({
   declarations: [
     AppComponent,
+    NavTopMenuComponent,
+    NavSideMenuComponent,
     LayoutComponent,
     SidebarComponent,
     FixedtopbarComponent, 
@@ -123,9 +135,12 @@ import { GridExempleModule } from './grid-exemple/grid.exemple.module';
     DemoComponent,
     NavComponent,
     LeftbarComponent,
+    CamelCaseToText,
     ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+   
+    // BrowserModule,
     BrowserAnimationsModule,
     AgGridModule.withComponents([ButtonRendererComponent]),
     AppRoutingModule,
@@ -157,11 +172,16 @@ import { GridExempleModule } from './grid-exemple/grid.exemple.module';
     SettingsModule,
     ControlsModule, 
     GridExempleModule,
-    MatChipsModule
+    MatChipsModule,
+    ApiAuthorizationModule, 
+    AppIconsModule,
     //Grid
 
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    { provide: API_BASE_URL, useValue: environment.apiBaseUrl },
+
     EmployeeDataService,
     DeliveryDataService, 
     AuthenticationService, 

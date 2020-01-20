@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ChildComponent } from './child/child.component';
+import { RouterModule, Routes } from '@angular/router'; 
 import { CommonModule } from '@angular/common';
 
-const routes: Routes = [
-  { path: '', component: ChildComponent }
+const routes: Routes = [ 
 ];
 
 @NgModule({
