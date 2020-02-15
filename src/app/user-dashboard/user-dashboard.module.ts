@@ -11,6 +11,6 @@ import { UserProfileIconComponent } from './user-profile-icon/user-profile-icon.
     UserDashboardRoutingModule
   ],
   declarations: [UserDashboardComponent, UserProfileIconComponent],
-  exports: [UserDashboardComponent, UserProfileIconComponent]
+  // exports: [UserDashboardComponent, UserProfileIconComponent]
 })
 export class UserDashboardModule { }

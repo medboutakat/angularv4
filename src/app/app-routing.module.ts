@@ -4,6 +4,7 @@ import { AuthorizeGuard } from '../api-authorization/authorize.guard';
 
 const routes: Routes = [
 
+  { path: '', loadChildren: () => import('./user-dashboard/user-dashboard.module').then(m => m.UserDashboardModule) },
   { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule),canActivate:[AuthorizeGuard]  },
   { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) },
   { path: 'apptest', loadChildren: () => import('./apptest/apptest.module').then(m => m.ApptestModule) },

@@ -40,7 +40,6 @@ import { UploadfilesComponent } from './apptest/uploadfiles/uploadfiles.componen
 import { StatutComponent } from './settings/statut/statut.component';
 import { TripComponent } from './apptest/trip/trip.component';
 import { StockModule } from './stock/stock.module';
-import { DeliveryComponent } from './sales/delivery/delivery.component';
 import { DeliveryEditComponent } from './sales/delivery-edit/delivery-edit.component';
 import { DeliveryDataService } from './DataService/DeliveryDataService'; 
 import { ClientCategoryDataService } from './DataService/ClientCategoryDataService';
@@ -126,8 +125,7 @@ import { AppIconsModule } from './app.icons.module';
     ChartComponent,
     MapsComponent,
     UploadfilesComponent, 
-    TripComponent,
-    DeliveryComponent,
+    TripComponent, 
     DeliveryEditComponent,NavBarComponent, TestComponent, ClientsComponent,
     DialogOverviewExampleDialog,
     InvoiceComponent,
@@ -193,6 +191,7 @@ import { AppIconsModule } from './app.icons.module';
     StockModule,
     SalesModule,
     ApptestModule,
+    UserDashboardModule,
     DemoService
   ],
   bootstrap: [AppComponent]
