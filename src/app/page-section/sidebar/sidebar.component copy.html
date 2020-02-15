@@ -1,0 +1,118 @@
+
+
+
+      
+  <!-- Sidebar Holder -->
+  <nav id="sidebar" class="">
+    <div class="sidebar-header">
+        <h3>MEDLANE-ERP</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        <p>Xettings</p>
+        <li class="active">
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Settings</a>  
+            <ul class="collapse list-unstyled" id="homeSubmenu"> 
+                <a routerLink="" [class.activated]="currentUrl == ''">
+                  <i class="material-icons">Home</i>
+                </a>
+                <a routerLink="tva" [class.activated]="currentUrl == '/tva'">
+                  <i class="material-icons">tva</i>
+                </a> 
+                <a routerLink="commande" [class.activated]="currentUrl == '/commande'">
+                  <i class="material-icons">commande</i>
+                </a> 
+                <a routerLink="client" [class.activated]="currentUrl == '/client'">
+                  <i class="material-icons">Client</i>
+                </a> 
+                <a routerLink="bank" [class.activated]="currentUrl == '/bank'">
+                  <i class="material-icons">Bank</i>
+                </a>  
+                <a routerLink="contactus" [class.activated]="currentUrl == '/contactus'">
+                  <i class="material-icons">Contactus</i>
+                </a>   
+                <a routerLink="home" [class.activated]="currentUrl == '/home'">
+                  <i class="material-icons">Home</i>
+                </a>     
+                 <a routerLink="chart" [class.activated]="currentUrl == '/chart'">
+                  <i class="material-icons">chart</i>
+                </a> 
+                <a routerLink="maps" [class.activated]="currentUrl == '/maps'">
+                  <i class="material-icons">Maps</i>
+                </a> 
+                <a routerLink="upload" [class.activated]="currentUrl == '/upload'">
+                  <i class="material-icons">Upload</i>
+                </a> 
+                 <a routerLink="trip" [class.activated]="currentUrl == '/trip'">
+                  <i class="material-icons">Trip</i>
+                </a> 
+                <a routerLink="delivery" [class.activated]="currentUrl == '/delivery'">
+                  <i class="material-icons">Delivery</i>
+                </a> 
+                <a routerLink="route" [class.activated]="currentUrl == '/route'">
+                  <i class="material-icons">route</i>
+                </a>  
+            </ul>
+        </li>
+        <li>
+            <a href="#">About</a>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">stock</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li><a href="#">Page 1</a></li>
+                <li>
+                      <a routerLink="statut" [class.activated]="currentUrl == '/statut'">
+                          <i class="material-icons">statut</i>
+                      </a> 
+              </li> 
+              <li>
+              <a routerLink="stock" [class.activated]="currentUrl == '/stock'">
+                <i class="material-icons">stock</i>
+              </a> 
+             </li>
+            </ul>
+        </li>
+
+        <li> 
+          <a href="#sales" data-toggle="collapse" aria-expanded="false">Sales</a>
+          <ul class="collapse list-unstyled" id="sales"> 
+            <li>
+              <a routerLink="sales/invoices" [class.activated]="currentUrl == 'sales/invoices'">
+                  <i class="material-icons">Invoice</i>
+              </a> 
+            </li> 
+            <li>
+              <a routerLink="sales/customers" [class.activated]="currentUrl == 'sales/customers'">
+                <i class="material-icons">Customers</i>
+              </a> 
+            </li> 
+          </ul>
+        </li> 
+        <li> 
+          <a href="#Purchase" data-toggle="collapse" aria-expanded="false">Purchase</a>
+          <ul class="collapse list-unstyled" id="Purchase"> 
+              <li>
+                    <a routerLink="vendor" [class.activated]="currentUrl == 'Purchase'">
+                        <i class="material-icons">Purchase</i>
+                    </a> 
+            </li> 
+          </ul>
+        </li> 
+
+        <li> 
+          <a href="#Paiements" data-toggle="collapse" aria-expanded="false">Paiements</a>
+          <ul class="collapse list-unstyled" id="Paiements"> 
+              <li>
+                    <a routerLink="Paiements" [class.activated]="currentUrl == 'Paiements'">
+                        <i class="material-icons">Paiements</i>
+                    </a> 
+            </li> 
+          </ul>
+        </li> 
+
+
+    </ul>
+
+    <ul class="list-unstyled CTAs">
+    
+    </ul>
+</nav>

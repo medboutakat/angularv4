@@ -210,7 +210,7 @@ export class CustomersComponent implements OnInit {
 
     this.LoadData();
     this.firstFormGroup = this._formBuilder.group({
-      id: ['', Validators.required],
+      id: [0, Validators.required],
       name1: ['', [Validators.required, Validators.minLength(4)]],
       name2: ['', [Validators.required, Validators.minLength(4)]],
       gender: ['', Validators.required],

@@ -1,258 +1,183 @@
-<div class="wrapper">
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-    <!-- Sidebar Holder -->
-    <nav id="sidebar" style="z-index: 10000;">
-        <div id="dismiss">
-            <i class="glyphicon glyphicon-arrow-left"></i>
-        </div> 
- 
-         <!-- <div class="sidebar-header">
-            <img src="../../assets/logo.png" alt="">
-        </div> -->
-
-        <ul class="list-unstyled components">
-            <!-- <p>GM-SOFT</p>  -->
-            <!--<li [ngClass]="{'active':url=='home'}">
-      [routerLink]="['/home']"
-      -->
-            <li>
-                <a href="#homeSubmenu">
-                    <i class="glyphicon glyphicon-home"></i> Home
-                </a>
-
-            </li>
-            <!--
-       <li  [ngClass]="{'active':url=='employes'}">
-        <a [routerLink]="['/employes']">Employee</a>
-        [ngClass]="{'active':url=='conges'}"
-      -->
-            <li>
-                <a>Employee</a>
-            </li>
-            <li>
-
-                <a href="#congesSubmenu" data-toggle="collapse" aria-expanded="false">Conges</a>
-                <ul class="collapse list-unstyled" id="congesSubmenu">
-                    <li>
-                        <a>Demander Congé</a>
-                    </li>
-                    <li>
-                        <a>Mes demandes</a>
-                    </li>
-                    <li>
-                        <a>Calendrier</a>
-                    </li>
-                    <li>
-                        <a>Listes des demandes</a>
-                    </li>
-                </ul>
-
-            </li>
-            <li>
-
-                <a href="#absenceSubmenu" data-toggle="collapse" aria-expanded="false">Absence</a>
-                <ul class="collapse list-unstyled" id="absenceSubmenu">
-                    <li>
-                        <a class="drop">Calendrier d'absence</a>
-                    </li>
-                    <li>
-                        <a class="drop">Verification d'absence</a>
-                    </li>
-                    <li>
-                        <a class="drop">Justifier absence</a>
-                    </li>
-                </ul>
-
-            </li>
-            <li>
-
-                <a href="#pointageSubmenu" data-toggle="collapse" aria-expanded="false">Pointage</a>
-                <ul class="collapse list-unstyled" id="pointageSubmenu">
-                    <li>
-                        <a class="drop">Pointage Employe</a>
-                    </li>
-                    <li>
-                        <a class="drop">Pointage Visiteur</a>
-                    </li>
-                    <li>
-                        <a class="drop">Importer pointage</a>
-                    </li>
-                </ul>
-
-            </li>
-            <li>
-
-                <a href="#stagaireSubmenu" data-toggle="collapse" aria-expanded="false">Stagaire</a>
-                <ul class="collapse list-unstyled" id="stagaireSubmenu">
-                    <li>
-                        <a class="drop">Stagaire RH</a>
-                    </li>
-                    <li>
-                        <a class="drop">Pointage Visiteur</a>
-                    </li>
-                    <li>
-                        <a class="drop">Importer pointage</a>
-                    </li>
-                </ul>
-
-            </li>
-
-        </ul>
-
-        <ul class="list-unstyled CTAs">
-            <li>
-                <a class="download">Mes information</a>
-            </li>
-            <li>
-                <a class="article">Déconnexion</a>
-            </li>
-        </ul>
-    </nav>
-
-
-
-
-    <!--  ========== NAVBAR =========== -->
-    <nav class="navbar">
-        <div class="container">
-
-            <!-- Navbar Header [collects both toggle button and navbar brand] -->
-            <div class="navbar-header">
-                <!-- Toggle Button [handles opening navbar menu on mobile screens]-->
-                <button type="button" id="sidebarCollapse1" class="navbar-toggle collapsed">
-            <i class="fas fa-bars fa-2x"></i>
-
-            </button>
-            
-                <!-- Navbar Brand -->
-                <!-- <a routerLink="/home" class="navbar-brand">
-                    <img class="logo-navbar" src="../../assets/logo.png" alt="">
-                </a> -->
-                
-        </div>
-
-
-            <!-- Navbar Collapse [collect navbar components such as navbar links and forms ] -->
-            <div class="collapse navbar-collapse" id="exampleNavComponents">
-
-                <!-- Navbar Links -->
-                <ul class="nav navbar-nav navbar-left" style="    height: 10px;">
-                    <li>
-                        <a [routerLink]="['/home']" routerLinkActive="selected">
-
-                            <i class="fas fa-home fa-lg"></i> Accueil
-
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/clients']" routerLinkActive="selected"><i
-                            class="fas fa-users fa-lg"></i>
-                        Clients</a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/purchase/vendor']" routerLinkActive="selected"><i
-                            class="fas fa-users fa-lg"></i>
-                        Vendor</a>
-                    </li>                    
-                    <li>
-                        <a data-toggle="dropdown" class="Zdropdown" aria-expanded="true">Sales</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="background: #025b96">
-                            <li>
-                                <a class="drop" [routerLink]="['/sales']">Invoice </a>
-                            </li>
-                            <li>
-                                <a class="drop" [routerLink]="['/sales/customers']">Customer</a>
-                            </li>
-                            <li>
-                                <a class="drop">Action 3</a>
-                            </li>
-                            <li role="separator" class="divider" style="margin-top: 0px"></li>
-                            <li>
-                                <a class="drop">Action 4</a>
-                            </li>
-                        </ul>
-                    </li>
-                    
-
-
-
-                </ul>
-                <ul class="nav navbar-nav navbar-right ">
-                    <ul style="width: 0px;height: 0px">
-                        <!--
-            <button mat-icon-button class="nav-link text-light"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-top: 6px;">
-              <i class="fa fa-bell-o fa-lg"  matBadgeColor="accent" *ngIf="Notif!=0"></i>
-              <i class="fa fa-bell-o fa-lg" matBadgeColor="accent" *ngIf="Notif==0"></i>
-            </button>
-            -->
-                    </ul>
-                </ul>
-                <button id="sidebarCollapse" type="button" class="btn navbar-btn navbar-right"><i class="fas fa-bars fa-lg"></i>
-          Menu
+        <!-- Sidebar Toggle (Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <i class="fa fa-bars"></i>
         </button>
-                <button type="button" class="btn navbar-btn navbar-right" style="border-right: 0.2px solid;" [routerLink]="['/test']">Connexion</button>
 
-                <ul class="nav navbar-nav navbar-right ">
-                    <li>
-                        <button type="button" class="btn navbar-btn navbar-right" style="border-right: 0.2px solid;" data-toggle="dropdown"><i class="far fa-user fa-lg"></i> ZAKARYA</button>
-
-                        <ul class="dropdown-menu">
-                            <li>
-                                <div class="navbar-content">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <img src="../../assets/logo.JPG" alt="Alternate Text" class="img-responsive" />
-                                        </div>
-                                        <div class="col-md-7">
-                                            <span>ZAKARYA ROUZKI</span>
-                                            <div class="divider"></div>
-                                            <small>Privilieges : ADMIN</small>
-                                            <button type="button" class="btn navbar-btn" matTooltip="Voir et modifier votre informations"> Mes
-                        informations </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="navbar-footer">
-                                    <div class="navbar-footer-content">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <button type="button" matTooltip="changer votre mot de passe" class="btn navbar-btn">
-                          Changer</button>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <button type="button" class="btn navbar-btn">Déconnexion</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-
-
-
-
-
-
-                <!-- Navbar Button -->
-
+        <!-- Topbar Search -->
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-search fa-sm"></i>
+              </button>
             </div>
-        </div>
+          </div>
+        </form>
 
-    </nav>
+        <!-- Topbar Navbar -->
+        <ul class="navbar-nav ml-auto">
 
-    <div class="menu">
+          <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+          <li class="nav-item dropdown no-arrow d-sm-none">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+              <form class="form-inline mr-auto w-100 navbar-search">
+                <div class="input-group">
+                  <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">
+                      <i class="fas fa-search fa-sm"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </li>
 
-        <div class="dropdown">
-            <ul>
-                <li>
-                    <a style="padding: 10px;
-    font-size: 1.1em;
-    display: block;"></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="overlay"></div>
+          <!-- Nav Item - Alerts -->
+          <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bell fa-fw"></i>
+              <!-- Counter - Alerts -->
+              <span class="badge badge-danger badge-counter">3+</span>
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+              <h6 class="dropdown-header">
+                Alerts Center
+              </h6>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                  <div class="icon-circle bg-primary">
+                    <i class="fas fa-file-alt text-white"></i>
+                  </div>
+                </div>
+                <div>
+                  <div class="small text-gray-500">December 12, 2019</div>
+                  <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                </div>
+              </a>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                  <div class="icon-circle bg-success">
+                    <i class="fas fa-donate text-white"></i>
+                  </div>
+                </div>
+                <div>
+                  <div class="small text-gray-500">December 7, 2019</div>
+                  $290.29 has been deposited into your account!
+                </div>
+              </a>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                  <div class="icon-circle bg-warning">
+                    <i class="fas fa-exclamation-triangle text-white"></i>
+                  </div>
+                </div>
+                <div>
+                  <div class="small text-gray-500">December 2, 2019</div>
+                  Spending Alert: We've noticed unusually high spending for your account.
+                </div>
+              </a>
+              <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+            </div>
+          </li>
+
+          <!-- Nav Item - Messages -->
+          <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-envelope fa-fw"></i>
+              <!-- Counter - Messages -->
+              <span class="badge badge-danger badge-counter">7</span>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+              <h6 class="dropdown-header">
+                Message Center
+              </h6>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                  <div class="status-indicator bg-success"></div>
+                </div>
+                <div class="font-weight-bold">
+                  <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                  <div class="small text-gray-500">Emily Fowler · 58m</div>
+                </div>
+              </a>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                  <div class="status-indicator"></div>
+                </div>
+                <div>
+                  <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                  <div class="small text-gray-500">Jae Chun · 1d</div>
+                </div>
+              </a>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                  <div class="status-indicator bg-warning"></div>
+                </div>
+                <div>
+                  <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                  <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                </div>
+              </a>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                  <div class="status-indicator bg-success"></div>
+                </div>
+                <div>
+                  <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                  <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                </div>
+              </a>
+              <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+            </div>
+          </li>
+
+          <div class="topbar-divider d-none d-sm-block"></div>
+
+          <!-- Nav Item - User Information -->
+          <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+              <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Settings
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                Activity Log
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Logout(21)
+              </a>
+            </div>
+          </li>
+
+        </ul>
+
+      </nav>
+      <!-- End of Topbar -->
+

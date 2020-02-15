@@ -48,8 +48,7 @@ import { CommandeDataService } from './DataService/CommandeDataService';
 import { SalesModule } from './sales/sales.module';
 import { NavBarComponent } from './page-section/nav-bar/nav-bar.component';
 import { TestComponent } from './apptest/test/test.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
 
 import {MatChipsModule,
   MatButtonModule,
@@ -138,8 +137,7 @@ import { AppIconsModule } from './app.icons.module';
     CamelCaseToText,
     ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-   
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }), 
     // BrowserModule,
     BrowserAnimationsModule,
     AgGridModule.withComponents([ButtonRendererComponent]),
@@ -179,8 +177,8 @@ import { AppIconsModule } from './app.icons.module';
 
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
-    { provide: API_BASE_URL, useValue: environment.apiBaseUrl },
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    // { provide: API_BASE_URL, useValue: environment.apiBaseUrl },
 
     EmployeeDataService,
     DeliveryDataService, 
