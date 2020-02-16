@@ -4,10 +4,8 @@
   
   <hr>
   <div *ngIf="this.objlist.length > 0">  
-    <h4> No Employee Data is present Click Add new to add Data.</h4>
+    <h4> No object data.</h4>
   </div>
-
-
   
   <ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham" (gridReady)="onGridReady($event)"
   [columnDefs]="columnDefs" [rowData]="objlist" (selectionChanged)="onSelectionChanged($event)">

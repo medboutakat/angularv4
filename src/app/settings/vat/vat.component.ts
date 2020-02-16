@@ -20,7 +20,8 @@ export class VatComponent implements OnInit {
     private createColumnDefs() {
       return [ 
         { headerName: 'id', field: 'id', editable: true, filter: true, sortable: true, checkboxSelection: true },
-        { headerName: 'displayName', field: 'displayName', editable: true, filter: true, sortable: true },
+        { headerName: 'code', field: 'code', editable: true, filter: true, sortable: true },
+        { headerName: 'name', field: 'value', editable: true, filter: true, sortable: true },
         { headerName: 'value', field: 'value', editable: true, filter: true, sortable: true },
       ]
     }
@@ -45,18 +46,20 @@ export class VatComponent implements OnInit {
     
 
     constructor(private dataservce: VatService,private activatedRoute: ActivatedRoute, private route: Router) {
-      this.columnDefs = this.createColumnDefs();
-  //    this.hidden = true;
+      this.columnDefs = this.createColumnDefs(); 
     }
   
     ngOnInit() {
+
+      console.log("hello ")
       this.LoadData();  
     }
   
     LoadData() { 
+
+      console.log(this.activatedRoute.data);
       this.dataavailbale = true;
       this.activatedRoute.data.subscribe((data: { vats: Vat[] }) => { 
-        // this.objlist = data.objs; 
         console.log("vats : ",data.vats);
         this.objlist = data.vats; 
       });
@@ -123,7 +126,8 @@ export class VatComponent implements OnInit {
   
     loadAddnew() {
       this.action="add vat";
-      this.editcomponent.objemp.displayName = ""
+      this.editcomponent.objemp.code = ""
+      this.editcomponent.objemp.name = "" 
       this.editcomponent.objemp.value = "" 
       this.editcomponent.objemp.id = "" 
       this.editcomponent.IsNew=true;
@@ -141,17 +145,7 @@ export class VatComponent implements OnInit {
         console.log("is new :" + this.editcomponent.IsNew);
         console.log("objemp value :" , this.editcomponent.objemp);
       }
-    }
-  
-    // loadnewForm(id: string, displayname: string, value: string) {
-
-    //   this.editcomponent.IsNew=false;
-    //   this.action="Edit vat : "+displayname;
-    //   console.log(displayname);
-    //   this.editcomponent.objemp.displayname = displayname
-    //   this.editcomponent.objemp.value = value 
-    //   this.editcomponent.objemp.id = id  
-    // }
+    } 
   
     RefreshData() {
       this.LoadData();

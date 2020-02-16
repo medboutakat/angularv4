@@ -8,9 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EmployeeDataService } from '../app/DataService/EmployeeDataService';
 import { LayoutComponent } from './page-section/layout/layout.component';
 import { SidebarComponent } from './page-section/sidebar/sidebar.component';
-import { FixedtopbarComponent } from './page-section/fixedtopbar/fixedtopbar.component';
-import { VatComponent } from './settings/vat/vat.component' 
-import { VatEditComponent } from './settings/vat-edit/vat-edit.component';
+import { FixedtopbarComponent } from './page-section/fixedtopbar/fixedtopbar.component'; 
 import { LoginComponent } from './security/login/login.component';
 import { AuthenticationService } from './DataService/authentication.service';
 import { SignupComponent } from './security/signup/signup.component';
@@ -94,7 +92,7 @@ import { CamelCaseToText } from '../pipes/camel-case-to-text';
 import { AppIconsModule } from './app.icons.module';
 
 //import { Grid } from 'ag-grid-community';
-// import {MatChipsModule} from '@angular/material/chips';
+//import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -139,6 +137,7 @@ import { AppIconsModule } from './app.icons.module';
     // BrowserModule,
     BrowserAnimationsModule,
     AgGridModule.withComponents([ButtonRendererComponent]),
+    
     AppRoutingModule,
     MatStepperModule,
     FormsModule,

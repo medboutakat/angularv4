@@ -14,13 +14,15 @@ export class VatService {
   }
 
   getVat() {
+
+    console.log("vats : ")
     return this.http.get<Vat[]>(ROOT_URL + 'Vats');
   }
   AddVat(emp: Vat) {
     const headers = new HttpHeaders().set('content-type', 'application/json');
   
     var body = {
-      Displayname: emp.displayName, Value: emp.value,   ID: emp.id
+      Code: emp.code, Name: emp.name, Value: emp.value,  ID: emp.id
     }
     
     console.log(ROOT_URL);
@@ -33,7 +35,7 @@ export class VatService {
     const params = new HttpParams().set('ID', emp.id);
     const headers = new HttpHeaders().set('content-type', 'application/json');
     var body = {
-      DisplayName: emp.displayName, Value: emp.value,   ID: emp.id
+      Code: emp.code, Name: emp.name, Value: emp.value,  ID: emp.id
     }
     
     return this.http.put<Vat>(ROOT_URL + 'Vats/' + emp.id, body, { headers, params })
@@ -43,7 +45,7 @@ export class VatService {
     const params = new HttpParams().set('ID', emp.id);
     const headers = new HttpHeaders().set('content-type', 'application/json');
     var body = {
-      Displayname: emp.displayName, Value: emp.value,   ID: emp.id
+      name: emp.name,  code: emp.code , Value: emp.value,   id: emp.id
     }
     return this.http.delete<Vat>(ROOT_URL + 'Vats/' + emp.id)
 

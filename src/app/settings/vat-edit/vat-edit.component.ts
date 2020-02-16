@@ -36,7 +36,7 @@ export class VatEditComponent implements OnInit {
     if(!this.IsNew){      
 
       this.objemp = regForm.value;
-      console.log('this.objemp',this.objemp)
+      console.log('this.objemp=>',this.objemp)
       this.dataservice.EditVat(this.objemp).subscribe(res => {
          
         this.nameEvent.emit("ccc");
@@ -47,8 +47,10 @@ export class VatEditComponent implements OnInit {
     else{
          
       this.objtempemp=new Vat();      
-      this.objtempemp.displayName=regForm.value.displayName;
-      this.objtempemp.value=regForm.value.value;    
+      this.objtempemp.code=regForm.value.code;
+      this.objtempemp.name=regForm.value.name;   
+      this.objtempemp.value=regForm.value.value;   
+       
       this.dataservice.AddVat(this.objtempemp).subscribe(res=>{
         alert("Vat Added successfully");
         this.TakeHome();
