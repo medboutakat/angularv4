@@ -6,7 +6,6 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import { VatService } from './vat-service';
-import { VatResolverService } from "./vat-resolver-service";
 import { StatutComponent } from './statut/statut.component';
 import { CustomerCategoryResolverService } from './customer.category-resolver-service';
 import { CustomerCategoryService } from './customer.category-service';
@@ -44,7 +43,6 @@ const MaterialComponents=[
   ],
   providers: [
     VatService,
-    VatResolverService,
     CustomerCategoryService,
     CustomerCategoryResolverService
   ]

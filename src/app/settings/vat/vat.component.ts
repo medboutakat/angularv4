@@ -1,9 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Vat } from 'src/Models/Vat'; 
+import { Vat } from 'src/Models/Vat';
 import { VatService } from '../vat-service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { VatEditComponent } from '../vat-edit/vat-edit.component';
 import { ColumnApi, ColDef, GridApi } from 'ag-grid-community';
+import { Store, select } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.states'; 
+import { selectAll,selectOne } from 'src/app/store/settings/vat.selector';
+import { GetAll } from 'src/app/store/settings/vat.action';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-vat',
@@ -11,144 +16,114 @@ import { ColumnApi, ColDef, GridApi } from 'ag-grid-community';
   styleUrls: ['./vat.component.sass']
 })
 export class VatComponent implements OnInit {
+
+  objlist: Observable<Vat[]>;
+  dataavailbale: Boolean = false;
+  action: string;
+  tempemp: Vat;
+
+  private createColumnDefs() {
+    return [
+      { headerName: 'id', field: 'id', editable: true, filter: true, sortable: true, checkboxSelection: true },
+      { headerName: 'code', field: 'code', editable: true, filter: true, sortable: true },
+      { headerName: 'name', field: 'value', editable: true, filter: true, sortable: true },
+      { headerName: 'value', field: 'value', editable: true, filter: true, sortable: true },
+    ]
+  }
+
+  exist: boolean = false;
+
+  // row data and column definitions
+  private rowData: Vat[];
+  private columnDefs: ColDef[];
+
+
+  // gridApi and columnApi
+  private api: GridApi;
+  private columnApi: ColumnApi;
+
+  private rowSelection;
+  private IsRowSelected: boolean;
+  private IsMultple: boolean;
+
+  private SelectedClient: Vat=new Vat();
  
-    objlist: Vat[];
-    dataavailbale: Boolean = false;
-    action:string;
-    tempemp: Vat;
 
-    private createColumnDefs() {
-      return [ 
-        { headerName: 'id', field: 'id', editable: true, filter: true, sortable: true, checkboxSelection: true },
-        { headerName: 'code', field: 'code', editable: true, filter: true, sortable: true },
-        { headerName: 'name', field: 'value', editable: true, filter: true, sortable: true },
-        { headerName: 'value', field: 'value', editable: true, filter: true, sortable: true },
-      ]
+
+  constructor(private dataservce: VatService, private activatedRoute: ActivatedRoute, private route: Router, private _store: Store<IAppState>) {
+    this.columnDefs = this.createColumnDefs();
+  }
+
+  ngOnInit() {
+    this.LoadData();
+    this._store.dispatch(GetAll())    
+  }
+
+  LoadData() {
+    this.objlist = this._store.pipe(select(selectAll));
+  }
+
+  deleteconfirmation(id: number) {
+
+    if (confirm("Are you sure you want to delete this ?")) {
+      this.tempemp = new Vat();
+      this.tempemp.id = id;
+      this.dataservce.Delete(this.tempemp).subscribe(res => {
+        alert("Deleted successfully !!!");
+        this.LoadData();
+      })
     }
-   
-    exist:boolean = false;
-    
-    // row data and column definitions
-    private rowData: Vat[];
-    private columnDefs: ColDef[];
-    
-    
-    // gridApi and columnApi
-    private api: GridApi;
-    private columnApi: ColumnApi;
-  
-    private rowSelection;
-    private IsRowSelected:boolean;
-    private IsMultple:boolean;
-  
-    private SelectedClient: Vat;  
-    var:any;
-    
+  }
 
-    constructor(private dataservce: VatService,private activatedRoute: ActivatedRoute, private route: Router) {
-      this.columnDefs = this.createColumnDefs(); 
-    }
-  
-    ngOnInit() {
+ 
 
-      console.log("hello ")
-      this.LoadData();  
-    }
-  
-    LoadData() { 
+  @ViewChild('editvat', { static: false, }) editcomponent: VatEditComponent
 
-      console.log(this.activatedRoute.data);
-      this.dataavailbale = true;
-      this.activatedRoute.data.subscribe((data: { vats: Vat[] }) => { 
-        console.log("vats : ",data.vats);
-        this.objlist = data.vats; 
-      });
+  onGridReady(params): void {
+    this.api = params.api;
+    this.columnApi = params.columnApi;
 
-      // this.dataservce.getVat().subscribe((tempdate) => {
-      // this.objlist = tempdate;
-      
-      //   console.log(this.objlist);
-      //   if (this.objlist.length > 0) {
-      //     this.dataavailbale = true;
-      //   }
-      //   else {
-      //     this.dataavailbale = false;
-      //   }
-      // }
-      // )
-      //   , err => {
-      //     console.log(err);
-      //   }
+    this.api.sizeColumnsToFit();
+    console.log('params', params);
+  }
+
+  onSelectionChanged(event) { 
+
+    if (this.api.getSelectedRows().length == 0) {
+      this.IsRowSelected = false;
+    } else {
+      this.IsRowSelected = true;
     }
 
-    deleteconfirmation(id: string) {
-  
-      if (confirm("Are you sure you want to delete this ?")) {
-        this.tempemp = new Vat();
-        this.tempemp.id = id;
-        this.dataservce.DeleteVat(this.tempemp).subscribe(res => {
-          alert("Deleted successfully !!!");
-          this.LoadData();
-        })
-      }
+    if (this.api.getSelectedRows().length >= 1) {
+      this.IsMultple = true;
+      console.log("multiple....");
+    } else {
+      this.IsMultple = false;
     }
+    console.log(event);
 
+    this.SelectedClient= this.IsRowSelected? this.api.getSelectedRows()[0]:new Vat();
 
-    // @ViewChild('empadd') addcomponent: VatAddComponent
+    console.log("Selected row :",this.SelectedClient)
+  }
 
-    @ViewChild('editvat', { static: false, }) editcomponent: VatEditComponent   
-    
-    onGridReady(params): void {
-      this.api = params.api;
-      this.columnApi = params.columnApi;
-  
-      this.api.sizeColumnsToFit();
-      console.log('params',params);
-    }
+  loadAddnew() {
+    this.action = "add vat"; 
+    this.editcomponent.objemp=this.SelectedClient; 
+    this.editcomponent.IsNew = true;
+  } 
+  edit() { 
+ 
+      this._store.select(selectOne,{id:this.SelectedClient.id}).subscribe(res=>{
+          console.log("selected res", res);
+          this.editcomponent.IsNew = false;
+          this.editcomponent.objemp = res;        
+      })  
+  }
 
-    onSelectionChanged(event) {
+  RefreshData() {
+    this.LoadData();
+  }
 
-      if (this.api.getSelectedRows().length == 0) {
-        this.IsRowSelected = false;
-      } else {
-        this.IsRowSelected = true;
-      }
-  
-      if (this.api.getSelectedRows().length != 1) {
-        this.IsMultple = true;
-        console.log("multiple....");
-      } else {
-        this.IsMultple = false;        
-      }
-      console.log(event);
-  
-    }
-  
-    loadAddnew() {
-      this.action="add vat";
-      this.editcomponent.objemp.code = ""
-      this.editcomponent.objemp.name = "" 
-      this.editcomponent.objemp.value = "" 
-      this.editcomponent.objemp.id = "" 
-      this.editcomponent.IsNew=true;
-    }
-    //oussama
-    edit(){
-
-      if(this.IsRowSelected ){                
-
-        this.SelectedClient = this.api.getSelectedRows()[0];
-        console.log("selected client", this.SelectedClient);
-        this.editcomponent.IsNew = false;
-        this.editcomponent.objemp = this.SelectedClient;                
-        
-        console.log("is new :" + this.editcomponent.IsNew);
-        console.log("objemp value :" , this.editcomponent.objemp);
-      }
-    } 
-  
-    RefreshData() {
-      this.LoadData();
-    }
-  
 }

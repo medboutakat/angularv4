@@ -2,13 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component'; 
+import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EmployeeDataService } from '../app/DataService/EmployeeDataService';
 import { LayoutComponent } from './page-section/layout/layout.component';
 import { SidebarComponent } from './page-section/sidebar/sidebar.component';
-import { FixedtopbarComponent } from './page-section/fixedtopbar/fixedtopbar.component'; 
+import { FixedtopbarComponent } from './page-section/fixedtopbar/fixedtopbar.component';
 import { LoginComponent } from './security/login/login.component';
 import { AuthenticationService } from './DataService/authentication.service';
 import { SignupComponent } from './security/signup/signup.component';
@@ -39,15 +39,16 @@ import { StatutComponent } from './settings/statut/statut.component';
 import { TripComponent } from './apptest/trip/trip.component';
 import { StockModule } from './stock/stock.module';
 import { DeliveryEditComponent } from './sales/delivery-edit/delivery-edit.component';
-import { DeliveryDataService } from './DataService/DeliveryDataService'; 
+import { DeliveryDataService } from './DataService/DeliveryDataService';
 import { ClientCategoryDataService } from './DataService/ClientCategoryDataService';
 import { CommandeDataService } from './DataService/CommandeDataService';
 import { SalesModule } from './sales/sales.module';
 import { NavBarComponent } from './page-section/nav-bar/nav-bar.component';
 import { TestComponent } from './apptest/test/test.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatChipsModule,
+import {
+  MatChipsModule,
   MatButtonModule,
   MatCardModule,
   MatMenuModule,
@@ -77,12 +78,11 @@ import { DemoComponent } from './apptest/demo/demo.component';
 import { DemoService } from './apptest/demo/demo.service';
 import { PurchaseModule } from './purchase/purchase.module';
 import { NavComponent } from './page-section/nav/nav.component';
-import { LeftbarComponent } from './page-section/leftbar/leftbar.component'; 
+import { LeftbarComponent } from './page-section/leftbar/leftbar.component';
 import { ControlsModule } from './controls/controls.module';
 import { SettingsModule } from './settings/settings.module';
 import { GridExempleModule } from './grid-exemple/grid.exemple.module';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
-import { environment } from 'src/environments/environment';
 import { API_BASE_URL } from './SysManage-traders-api';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { NavTopMenuComponent } from './nav-top-menu/nav-top-menu.component';
@@ -90,6 +90,12 @@ import { NavSideMenuComponent } from './nav-side-menu/nav-side-menu.component';
 
 import { CamelCaseToText } from '../pipes/camel-case-to-text';
 import { AppIconsModule } from './app.icons.module';
+import { StoreDevtoolsModule, StoreDevtools } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { StoreRootModule, StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { vatsReducer } from './store/settings/vat.reducer';
+import { VatsEffects } from './store/settings/vat.effect';
 
 //import { Grid } from 'ag-grid-community';
 //import {MatChipsModule} from '@angular/material/chips';
@@ -101,7 +107,7 @@ import { AppIconsModule } from './app.icons.module';
     NavSideMenuComponent,
     LayoutComponent,
     SidebarComponent,
-    FixedtopbarComponent, 
+    FixedtopbarComponent,
     ButtonRendererComponent,
     LoginComponent,
     SignupComponent,
@@ -122,22 +128,29 @@ import { AppIconsModule } from './app.icons.module';
     ContactComponent,
     ChartComponent,
     MapsComponent,
-    UploadfilesComponent, 
-    TripComponent, 
-    DeliveryEditComponent,NavBarComponent, TestComponent, ClientsComponent,
+    UploadfilesComponent,
+    TripComponent,
+    DeliveryEditComponent, NavBarComponent, TestComponent, ClientsComponent,
     DialogOverviewExampleDialog,
     InvoiceComponent,
     DemoComponent,
     NavComponent,
     LeftbarComponent,
     CamelCaseToText,
-    ],
+  ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }), 
+    StoreModule.forRoot({
+      all: vatsReducer
+    }),
+    EffectsModule.forRoot([
+      VatsEffects
+    ]),
+    !environment.production?StoreDevtoolsModule.instrument():[],
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     // BrowserModule,
     BrowserAnimationsModule,
     AgGridModule.withComponents([ButtonRendererComponent]),
-    
+
     AppRoutingModule,
     MatStepperModule,
     FormsModule,
@@ -165,11 +178,11 @@ import { AppIconsModule } from './app.icons.module';
     MatSnackBarModule,
     PurchaseModule,
     SettingsModule,
-    ControlsModule, 
+    ControlsModule,
     GridExempleModule,
     MatChipsModule,
-    ApiAuthorizationModule, 
-    AppIconsModule,
+    ApiAuthorizationModule,
+    AppIconsModule, StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     //Grid
 
   ],
@@ -178,8 +191,8 @@ import { AppIconsModule } from './app.icons.module';
     // { provide: API_BASE_URL, useValue: environment.apiBaseUrl },
 
     EmployeeDataService,
-    DeliveryDataService, 
-    AuthenticationService, 
+    DeliveryDataService,
+    AuthenticationService,
     CommandeDataService,
     ClientCategoryDataService,
     IDataService,

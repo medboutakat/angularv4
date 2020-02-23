@@ -9,7 +9,7 @@ import { ConfigService } from 'src/app/config.service';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  // styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit, AfterContentChecked {
 

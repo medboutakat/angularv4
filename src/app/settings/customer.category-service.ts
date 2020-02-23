@@ -11,7 +11,7 @@ export class CustomerCategoryService extends ResourceService<CustomerCategory> {
     super(
       httpClient,
       ROOT_URL,
-      'statuts',
+      'CustomerCategories',
       new CustomerCategorySerializer());
   }
 }

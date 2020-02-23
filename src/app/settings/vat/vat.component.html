@@ -1,14 +1,16 @@
 <div class="container">
   <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal" value="Create New">
-  <button type="text" class="btn btn-success"  (click)="edit()"  data-toggle="modal" data-target="#myModal">Edit</button>
   
+  <button [disabled]="!IsRowSelected" type="text" class="btn btn-success"  (click)="edit()"  data-toggle="modal" data-target="#myModal">Edit</button>
+ 
+
   <hr>
-  <div *ngIf="this.objlist.length > 0">  
+  <!-- <div *ngIf="(objlist | async).length > 0">  
     <h4> No object data.</h4>
-  </div>
+  </div> -->
   
   <ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham" (gridReady)="onGridReady($event)"
-  [columnDefs]="columnDefs" [rowData]="objlist" (selectionChanged)="onSelectionChanged($event)">
+  [columnDefs]="columnDefs" [rowData]="(objlist | async)" (selectionChanged)="onSelectionChanged($event)">
   </ag-grid-angular>
 
   <div id="myModal" class="modal fade" role="dialog">

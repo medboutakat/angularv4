@@ -61,5 +61,5 @@ constructor(
         console.log(error);
         return Observable.throw(error.json().error || 'Server error')
     };
-}
+ }
 }

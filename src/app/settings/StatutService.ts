@@ -14,4 +14,3 @@ export class StatutService extends ResourceService<Statut> {
         new StatutSerializer());
     }
 }
- 
