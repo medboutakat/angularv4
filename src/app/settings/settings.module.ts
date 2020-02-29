@@ -13,6 +13,9 @@ import { CustomerCategoryEditComponent } from './customer.category-edit/customer
 import { CustomerCategoryComponent } from './customer.category/customer.category.component';
 import { StatutEditComponent } from './statut-edit/statut-edit.component';
 import { MatInputModule, MatFormFieldModule, MatLabel, MatButtonModule } from '@angular/material';
+import { EditSettingsComponent } from './edit-settings/edit-settings.component';
+import { EditCodeNameSettingsComponent } from './edit-code-name-settings/edit-code-name-settings.component';
+import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
 
  
 const MaterialComponents=[
@@ -29,7 +32,10 @@ const MaterialComponents=[
     StatutComponent,  
     StatutEditComponent,
     CustomerCategoryComponent ,
-    CustomerCategoryEditComponent 
+    CustomerCategoryEditComponent,
+    EditSettingsComponent,
+    EditCodeNameSettingsComponent,
+    SettingsMenuComponent 
   ],
   imports: [
     

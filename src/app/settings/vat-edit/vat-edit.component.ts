@@ -5,49 +5,49 @@ import { VatService } from '../vat-service';
 import { Vat } from 'src/Models/Vat';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from 'src/app/store/app.states';
-import { Update, Add, Upsert } from 'src/app/store/settings/vat.action';
-import { selectAll,selectOne } from 'src/app/store/settings/vat.selector';
+import { Update, Add } from 'src/app/store/settings/vat/vat.action';
+import { selectAll,selectOne } from 'src/app/store/settings/vat/vat.selector';
 import { ObservableInput, Observable } from 'rxjs';
+import { EditSettingsComponent } from '../edit-settings/edit-settings.component';
 @Component({
   selector: 'app-vat-edit',
   templateUrl: './vat-edit.component.html',
   styleUrls: ['./vat-edit.component.sass']
 })
 
-export class VatEditComponent implements OnInit{
+export class VatEditComponent implements OnInit {
 
-  constructor(private route: Router,private _store: Store<IAppState>) {
-
-
-  }
-  
-  @Output() nameEvent = new EventEmitter<string>();
-  @ViewChild('closeBtn', { static: false, }) cb: ElementRef;
-  ngOnInit() { 
+  constructor(private route: Router,private _store: Store<IAppState<Vat>>) {
  
   }
-
-   
-  @Input() reset: boolean = false;
-  @ViewChild('editvat', { static: false, }) myForm: NgForm;
-  @Input() isReset: boolean = false;
-  @Input() IsNew: boolean = true;
-
-   
-  @Input() objemp: Vat = new Vat();
-
   
-  EditMainObject(regForm: NgForm) { 
-    this.objemp = regForm.value;  
-    console.log('this.objemp=>',this.objemp); 
-    this._store.dispatch(this.IsNew?
-      Add({one:this.objemp}):
-      Update({one:this.objemp})
-      );     
+  @Output() nameEvent = new EventEmitter<string>(); 
 
-    this._store.dispatch(this.IsNew?
-        Add({one:this.objemp}):
-        Update({one:this.objemp})
+  @ViewChild('editVat', { static: false, }) myForm: NgForm;
+  @ViewChild('closeBtn', { static: false, }) cb: ElementRef;
+  
+  ngOnInit() {  
+  }
+  
+   
+  @Input() reset: boolean = false; 
+  @Input() isReset: boolean = false;
+  @Input() isNew: boolean = true;   
+
+
+  @Input() objemp= new Vat() ;
+
+ 
+  EditMainObject(regForm: NgForm) {  
+     console.log('regForm.value=>',regForm);
+    var payLoad={
+      one:this.objemp
+    }
+    console.log('payLoad=>',payLoad);  
+
+    this._store.dispatch(this.isNew?
+        Add(payLoad):
+        Update(payLoad)
         );    
   }
   
@@ -55,7 +55,9 @@ export class VatEditComponent implements OnInit{
     this.nameEvent.emit("ccc");
     this.cb.nativeElement.click();
     //this.route.navigateByUrl('tva'); 
+  } 
+
+  detectChanges() { 
+    console.log('detectChanges=>');  
   }
-
-
 }

@@ -1,19 +1,14 @@
 import {Action, createReducer, on} from '@ngrx/store';
-import * as vatActions from './vat.action';
-import { IAllState, IOneState } from './vat.state';
+import * as vatActions from './vat.action'; 
 import { Vat } from 'src/Models/Vat';
+import { IAllState } from '../settings.state';
 
 const initVatsState: IAllState<Vat> = {
     loading: false,
     error: null,
     all: [],
 };
-
-// const initVatState: IOneState<Vat> = {
-//     loading: false,
-//     error: null,
-//     one:null,
-// };
+ 
 
 const reducer = createReducer(initVatsState,
 
@@ -94,9 +89,34 @@ const reducer = createReducer(initVatsState,
             error: err, 
         } 
     }),
+
+    on(vatActions.Delete, (state) =>
+    { 
+        return {
+                ...state,
+                loading: true
+        } 
+    }), 
+    on(vatActions.DeleteSuccess, (state, {all}) =>
+    { 
+        return {
+            ...state,
+            loading: false,
+            error: null,
+            all:all
+        } 
+    }),
+    on(vatActions.DeleteFaillure, (state, {err}) =>
+    { 
+        return {
+            ...state,
+            loading: false,
+            error: err, 
+        } 
+    }),
 );
 
-export function vatsReducer(state: IAllState<Vat> | undefined, action: Action)
+export function vatReducer(state: IAllState<Vat> | undefined, action: Action)
 {
     return reducer(state, action);
 }

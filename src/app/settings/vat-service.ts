@@ -40,7 +40,7 @@ export class VatService {
     var body = {
       "code": emp.code, "name": emp.name, "value": emp.value,  "id": emp.id
     }    
-    console.log("post request",body)
+    console.log("put request",body)
     
     return this.http.put<Vat>(ROOT_URL + 'vats/' + emp.id, body, { headers, params })
   }

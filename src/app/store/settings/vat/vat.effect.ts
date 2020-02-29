@@ -73,7 +73,22 @@ export class VatsEffects {
                 ))
         ))
     );
+   
+    delete$ = createEffect(() => this.actions$.pipe(
+        ofType(actions.Delete),
 
+        switchMap(({all}) => this.vatService.Delete(all.find(x=>x.id==1))
+            .pipe(
+                map((vat: Vat) => actions.DeleteSuccess({ all })),                
+                tap((data) => {
+                    console.log(data);
+                }),
+                catchError(err =>
+                    of(actions.DeleteFaillure({ err }))
+                ))
+        ))
+    );
+    
     constructor(
         private actions$: Actions,
         private vatService: VatService

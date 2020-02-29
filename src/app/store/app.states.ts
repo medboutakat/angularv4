@@ -1,8 +1,7 @@
-import { IAllState } from "./settings/vat.state";
-import { Vat } from "src/Models/Vat";
+import { IAllState } from "./settings/settings.state";  
 
-export interface IAppState
+export interface IAppState<T>
 {
-    readonly all: IAllState<Vat>
+    readonly all: IAllState<T>
 }
  

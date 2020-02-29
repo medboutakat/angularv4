@@ -15,3 +15,7 @@ export const AddFaillure = createAction("AddFaillure", props<{ err }>())
 export const Update = createAction("Update", props<{ one: Vat }>())
 export const UpdateSuccess = createAction("UpdateSuccess", props<{ one: Vat }>())
 export const UpdateFaillure = createAction("UpdateFaillure", props<{ err }>())
+ 
+export const Delete = createAction("Delete", props<{ all: Vat[] }>())
+export const DeleteSuccess = createAction("DeleteSuccess", props<{ all: Vat[] }>())
+export const DeleteFaillure = createAction("DeleteFaillure", props<{ err }>())

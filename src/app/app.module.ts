@@ -94,12 +94,22 @@ import { StoreDevtoolsModule, StoreDevtools } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreRootModule, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { vatsReducer } from './store/settings/vat.reducer';
-import { VatsEffects } from './store/settings/vat.effect';
+import { VatsEffects } from './store/settings/vat/vat.effect'; 
+import { vatReducer } from './store/settings/vat/vat.reducer';
+import { Customer } from 'src/Models/Customer';
+import { CustomerCategory } from 'src/Models/CustomerCategory'; 
+import { customerCategoryReducer } from './store/settings/customer-category/customer-category.reducer';
+import { CustomerCategoryEffects } from './store/settings/customer-category/customer-category.effect';
 
 //import { Grid } from 'ag-grid-community';
 //import {MatChipsModule} from '@angular/material/chips';
-
+let vatStore={
+  all: vatReducer,
+  // CustomerCategoryStore: customerCategoryReducer,
+};
+let CustomerCategoryStore={
+  all:  customerCategoryReducer,
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -139,11 +149,11 @@ import { VatsEffects } from './store/settings/vat.effect';
     CamelCaseToText,
   ],
   imports: [
-    StoreModule.forRoot({
-      all: vatsReducer
-    }),
+    StoreModule.forRoot( vatStore),
+    StoreModule.forRoot( CustomerCategoryStore),
     EffectsModule.forRoot([
-      VatsEffects
+      VatsEffects,
+      // CustomerCategoryEffects
     ]),
     !environment.production?StoreDevtoolsModule.instrument():[],
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

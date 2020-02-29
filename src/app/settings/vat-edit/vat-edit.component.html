@@ -1,44 +1,12 @@
-<div class="container" style="border:thin"> 
-  <!-- <h1> {{IsNew}}</h1>   -->
-    <form #EditForm='ngForm' name="editform" (ngSubmit)="EditMainObject(EditForm)" class="form-horizontal" style="width:50%">
-      <div>
-        <input style="width:50%" type="hidden" class="form-control" width="50%" id="id" placeholder="Id"
-        name="id" id required [(ngModel)]='objemp.id' #id="ngModel">
-      </div>
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="code">Code:</label>
-        <div class="ccd..
-        col-sm-10"> 
-          <input style="width:50%" type="text" class="form-control" width="50%" id="code" placeholder="code"
-            name="code" code required [(ngModel)]='objemp.code' #code="ngModel">
-          <span class="help-bpx" *ngIf="code.touched && !code.valid ">Required</span>
-        </div>
-      </div>
+  <div class="container" style="border:thin"> 
+  <h1> {{IsNew}}</h1> 
+  <form #EditForm='ngForm' name="editform" (ngSubmit)="EditMainObject(EditForm)" class="form-horizontal" style="width:50%"> 
 
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="name">Name:</label>
-        <div class="ccd..
-        col-sm-10">  
-            <input style="width:50%"  type="text" class="form-control" id="name" name="name" placeholder="Name" required
-            #name="ngModel" [(ngModel)]='objemp.name' ngModel>
+      <app-edit-settings #editsettings (nameEvent)="detectChanges($event)"  
+    [objemp]='objemp' [isNew]='isNew' [reset]="reset"></app-edit-settings>
 
-          <span class="help-bpx" *ngIf="name.touched && !name.valid ">Required</span>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="value">Value:</label>
-        <div class="col-sm-10">
-          <input style="width:50%" required type="number" class="form-control" width="50%" id="value" placeholder="value"
-            name="value" value required [(ngModel)]='objemp.value' #value="ngModel">
-          <span class="help-bpx" *ngIf="value.touched && !value.valid ">Required</span>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
-    </form>
-  </div>
-  <button style="display:none" type="button" #closeBtn class="btn btn-default" data-dismiss="modal">Close</button>
+  </form> 
+  </div> 
+  <button style="display:none" type="button" #closeBtn class="btn btn-default" data-dismiss="modal">Close</button> 
+ 

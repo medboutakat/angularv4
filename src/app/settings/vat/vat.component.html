@@ -1,15 +1,19 @@
 <div class="container">
-  <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal" value="Create New">
   
-  <button [disabled]="!IsRowSelected" type="text" class="btn btn-success"  (click)="edit()"  data-toggle="modal" data-target="#myModal">Edit</button>
- 
+ <app-settings-menu [IsRowSelected]="IsRowSelected" 
+ [addAction]="add" 
+ [editAction]="edit" 
+ [deleteAction]="delete" 
+ [IsMultple]="IsMultple"
+ [isNew]="isNew" 
+ ></app-settings-menu>
 
-  <hr>
-  <!-- <div *ngIf="(objlist | async).length > 0">  
-    <h4> No object data.</h4>
-  </div> -->
+  <div *ngIf="(objlist | async).length == 0">  
+    <h4> No data.</h4>
+  </div>
   
-  <ag-grid-angular style="width: 100%; height: 800px;" class="ag-theme-balham" (gridReady)="onGridReady($event)"
+  <ag-grid-angular style="width: 100%; height: 800px;"
+  class="ag-theme-balham" (gridReady)="onGridReady($event)" rowSelection='multiple' 
   [columnDefs]="columnDefs" [rowData]="(objlist | async)" (selectionChanged)="onSelectionChanged($event)">
   </ag-grid-angular>
 
@@ -17,20 +21,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-primary">{{action}}</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button> 
         </div>
-        <div class="modal-body"> 
-          
-          <app-vat-edit #editvat (nameEvent)="RefreshData($event)"></app-vat-edit>
-  
-        <!-- <app-employeeupdate (nameEvent)="RefreshData($event)" 
-          [isReset]="resetForm" #regForm></app-employeeupdate> -->
-       
-
-        <!-- <app-employee-add #empadd (nameEvent)="RefreshData($event)"></app-employee-add> -->
-        <!-- <app-employeeupdate (nameEvent)="RefreshData($event)" [isReset]="resetForm" #regForm></app-employeeupdate> -->
-                
+        <div class="modal-body">  
+          <app-vat-edit #editsettings (nameEvent)="RefreshData($event)"  [isReset]="isNew" ></app-vat-edit>
         </div>
         <div class="modal-footer">
           <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -38,5 +33,3 @@
       </div>
     </div>
   </div>
-
-   
