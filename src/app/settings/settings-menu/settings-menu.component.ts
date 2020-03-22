@@ -22,7 +22,6 @@ export class SettingsMenuComponent implements ControlValueAccessor{
 
   set value(val){ 
      // this value is updated by programmatic changes 
-
      console.log("val",val)
      if( val !== undefined && this.val !== val){
        this.val = val

@@ -2,11 +2,10 @@
   <h1> {{IsNew}}</h1> 
   <form #EditForm='ngForm' name="editform" (ngSubmit)="EditMainObject(EditForm)" class="form-horizontal" style="width:50%"> 
 
-      <app-edit-settings #editsettings (nameEvent)="detectChanges($event)"  
-    [objemp]='objemp' [isNew]='isNew' [reset]="reset"></app-edit-settings>
-
-
+      <app-edit-settings #editsettings  (nameEvent)="detectChanges($event)" 
+    [objemp]='objemp' [isNew]='isNew' [reset]="reset"></app-edit-settings> 
+    
   </form> 
   </div> 
-  <button style="display:none" type="button" #closeBtn class="btn btn-default" data-dismiss="modal">Close</button> 
+  <button style="display:none" type="button" (click)="TakeHome()" #closeBtn class="btn btn-default" data-dismiss="modal">Close</button> 
  

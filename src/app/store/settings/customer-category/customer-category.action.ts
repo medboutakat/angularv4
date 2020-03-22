@@ -5,7 +5,6 @@ export const GetAll = createAction("GetAll")
 export const GetAllSuccess = createAction("GetAllSuccess", props<{ all: CustomerCategory[] }>())
 export const GetAllFaillure = createAction("GetAllFaillure", props<{ err }>())
 
-
 export const Upsert = createAction("Upsert", props<{ one: CustomerCategory,isNew:Boolean }>())
 
 export const Add = createAction("Add", props<{ one: CustomerCategory }>())

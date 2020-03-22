@@ -21,7 +21,6 @@ export class EditSettingsComponent implements  ControlValueAccessor{
 
   set value(val){ 
      // this value is updated by programmatic changes 
-
      console.log("val",val)
      if( val !== undefined && this.val !== val){
        this.val = val
@@ -30,8 +29,7 @@ export class EditSettingsComponent implements  ControlValueAccessor{
       }
   }
   // this method sets the value programmatically
-  writeValue(value: any)
-  { 
+  writeValue(value: any){ 
     console.log("val",value)
     this.value = value
   }

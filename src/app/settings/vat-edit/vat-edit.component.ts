@@ -51,10 +51,12 @@ export class VatEditComponent implements OnInit {
         );    
   }
   
-  TakeHome(){
+  TakeHome(){ 
+    console.log('settings/vats');  
     this.nameEvent.emit("ccc");
     this.cb.nativeElement.click();
-    //this.route.navigateByUrl('tva'); 
+    console.log('settings/vats');  
+    this.route.navigateByUrl('settings/vats'); 
   } 
 
   detectChanges() { 
